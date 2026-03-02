@@ -1,0 +1,45 @@
+@using global::MudBlazor
+
+<div class="mudblazor-ui-notification-stack">
+    @foreach (var item in Notifications)
+    {
+        <MudPaper Elevation="6" Class="mudblazor-ui-notification-item pa-3">
+            <div class="d-flex justify-space-between align-start">
+                <div class="me-2">
+                    @if (!string.IsNullOrWhiteSpace(item.Title))
+                    {
+                        <MudText Typo="Typo.subtitle2">@item.Title</MudText>
+                    }
+                    <MudText Typo="Typo.body2">@item.Message</MudText>
+                </div>
+                <MudIconButton Icon="@Icons.Material.Filled.Close"
+                               Size="Size.Small"
+                               Color="@GetColor(item.Type)"
+                               OnClick="@(() => DismissClosed(item.Id))" />
+            </div>
+            @if (!string.IsNullOrWhiteSpace(item.OkButtonText))
+            {
+                <div class="mt-2">
+                    <MudButton Variant="Variant.Text" Color="@GetColor(item.Type)" OnClick="@(() => DismissOk(item.Id))">@item.OkButtonText</MudButton>
+                </div>
+            }
+        </MudPaper>
+    }
+</div>
+
+<style>
+    .mudblazor-ui-notification-stack {
+        position: fixed;
+        right: 16px;
+        bottom: 16px;
+        z-index: 1900;
+        width: min(380px, calc(100vw - 32px));
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mudblazor-ui-notification-item {
+        border-left: 4px solid var(--mud-palette-primary);
+    }
+</style>

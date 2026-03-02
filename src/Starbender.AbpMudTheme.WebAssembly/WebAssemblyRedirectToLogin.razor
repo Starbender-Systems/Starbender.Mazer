@@ -1,0 +1,27 @@
+
+@using Volo.Abp.DependencyInjection
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.Components.Web
+
+@inherits RedirectToLogin
+@attribute [ExposeServices(typeof(RedirectToLogin))]
+@attribute [Dependency(ReplaceServices = true)]
+
+@inject IOptions<AuthenticationOptions> AuthenticationOptions
+@inject IOptions<AbpAspNetCoreComponentsWebOptions> AbpAspNetCoreComponentsWebOptions
+@inject NavigationManager Navigation
+
+@code {
+    protected override void OnInitialized()
+    {
+        if (AbpAspNetCoreComponentsWebOptions.Value.IsBlazorWebApp)
+        {
+            Navigation.NavigateTo(AuthenticationOptions.Value.LoginUrl, forceLoad: true);
+        }
+        else
+        {
+            Navigation.NavigateToLogin(AuthenticationOptions.Value.LoginUrl);
+        }
+    }
+}

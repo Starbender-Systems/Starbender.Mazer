@@ -1,0 +1,36 @@
+@using Microsoft.AspNetCore.Components.Routing
+@using Volo.Abp.UI.Navigation
+@{
+    var customComponentType = MenuItem.GetComponentTypeOrDefault();
+    var menuItemCssClass = string.IsNullOrWhiteSpace(MenuItem.CssClass) ? string.Empty : MenuItem.CssClass;
+    var menuItemElementId = MenuItem.ElementId ?? "MenuItem_" + MenuItem.Name.Replace(".", "_");
+}
+
+@if (customComponentType != null && typeof(ComponentBase).IsAssignableFrom(customComponentType))
+{
+    <DynamicComponent Type="@customComponentType" />
+}
+else if (MenuItem.Items.Any())
+{
+    <MudNavGroup Title="@MenuItem.DisplayName"
+                 Disabled="MenuItem.IsDisabled"
+                 Class="@menuItemCssClass"
+                 Icon="@GetMudIcon(MenuItem.Icon)">
+        @foreach (var item in MenuItem.Items)
+        {
+            <SecondLevelNavMenuItem MenuItem="item" />
+        }
+    </MudNavGroup>
+}
+else
+{
+    var url = MenuItem.Url == null ? "#" : MenuItem.Url.TrimStart('/', '~');
+    <MudNavLink Href="@url"
+                Target="@MenuItem.Target"
+                Disabled="MenuItem.IsDisabled"
+                Icon="@GetMudIcon(MenuItem.Icon)"
+                Class="@menuItemCssClass"
+                Match="NavLinkMatch.Prefix">
+        <span id="@menuItemElementId">@MenuItem.DisplayName</span>
+    </MudNavLink>
+}

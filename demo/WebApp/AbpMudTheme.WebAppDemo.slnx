@@ -1,0 +1,9 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Project Path="AbpMudTheme.WebAppDemo.Contracts/AbpMudTheme.WebAppDemo.Contracts.csproj" />
+    <Project Path="AbpMudTheme.WebAppDemo.Client/AbpMudTheme.WebAppDemo.Client.csproj" />
+    <Project Path="AbpMudTheme.WebAppDemo/AbpMudTheme.WebAppDemo.csproj" />
+</Solution>

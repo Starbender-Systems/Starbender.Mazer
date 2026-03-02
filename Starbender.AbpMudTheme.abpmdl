@@ -1,0 +1,26 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "demo": {}
+    }
+  },
+  "packages": {
+    "Starbender.AbpMudTheme.Server": {
+      "path": "src/Starbender.AbpMudTheme.Server/Starbender.AbpMudTheme.Server.abppkg",
+      "folder": "src"
+    },
+    "Starbender.AbpMudTheme": {
+      "path": "src/Starbender.AbpMudTheme/Starbender.AbpMudTheme.abppkg",
+      "folder": "src"
+    },
+    "Starbender.AbpMudTheme.WebAssembly": {
+      "path": "src/Starbender.AbpMudTheme.WebAssembly/Starbender.AbpMudTheme.WebAssembly.abppkg",
+      "folder": "src"
+    },
+    "Starbender.AbpMudTheme.WebAssembly.Bundling": {
+      "path": "src/Starbender.AbpMudTheme.WebAssembly.Bundling/Starbender.AbpMudTheme.WebAssembly.Bundling.abppkg",
+      "folder": "src"
+    }
+  }
+}

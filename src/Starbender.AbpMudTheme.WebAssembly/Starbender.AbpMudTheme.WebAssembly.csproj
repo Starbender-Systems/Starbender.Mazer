@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <Import Project="..\..\configureawait.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.Theming" />
+        <PackageReference Include="Volo.Abp.Http.Client.IdentityModel.WebAssembly" />
+        <ProjectReference Include="..\Starbender.AbpMudTheme.WebAssembly.Bundling\Starbender.AbpMudTheme.WebAssembly.Bundling.csproj" />
+        <ProjectReference Include="..\Starbender.AbpMudTheme\Starbender.AbpMudTheme.csproj" />
+    </ItemGroup>
+
+</Project>

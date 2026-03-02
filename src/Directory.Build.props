@@ -1,0 +1,38 @@
+<Project>
+	<PropertyGroup>
+		<AbpProjectType>module</AbpProjectType>
+		<RepositoryUrl>hhttps://github.com/alvahdean/Starbender.AbpMudTheme.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/alvahdean/Starbender.AbpMudTheme.git</PackageProjectUrl>
+		<Company>StarbenderSystems</Company>
+		<RepositoryType>GIT</RepositoryType>
+		<Authors>Dean Fuqua</Authors>
+		<PackageReadmeFile>Nuget.md</PackageReadmeFile>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageIcon>NugetIcon.png</PackageIcon>
+		<PackageTags>blazor csharp abp mudblazor theme</PackageTags>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(UsingMicrosoftNETSdkWeb)' != 'true' AND '$(UsingMicrosoftNETSdkRazor)' != 'true'">
+		<None Remove="*.abppkg.analyze.json" />
+		<Content Include="*.abppkg.analyze.json">
+			<Pack>true</Pack>
+			<PackagePath>content\</PackagePath>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="*.abppkg" />
+		<Content Include="*.abppkg">
+			<Pack>true</Pack>
+			<PackagePath>content\</PackagePath>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup Condition="$(AssemblyName.EndsWith('HttpApi.Client'))">
+		<EmbeddedResource Include="**\*generate-proxy.json" />
+		<Content Remove="**\*generate-proxy.json" />
+	</ItemGroup>
+</Project>

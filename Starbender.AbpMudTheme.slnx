@@ -1,0 +1,41 @@
+<Solution>
+  <Folder Name="/demo/" />
+  <Folder Name="/demo/BlazorServer/">
+    <Project Path="demo/Server/AbpMudTheme.ServerDemo/AbpMudTheme.ServerDemo.csproj" />
+  </Folder>
+  <Folder Name="/demo/WebApp/">
+    <Project Path="demo/WebApp/AbpMudTheme.WebAppDemo.Client/AbpMudTheme.WebAppDemo.Client.csproj" />
+    <Project Path="demo/WebApp/AbpMudTheme.WebAppDemo.Contracts/AbpMudTheme.WebAppDemo.Contracts.csproj" />
+    <Project Path="demo/WebApp/AbpMudTheme.WebAppDemo/AbpMudTheme.WebAppDemo.csproj" />
+  </Folder>
+  <Folder Name="/demo/WebAssembly/">
+    <Project Path="demo/WebAssembly/AbpMudTheme.WebAssemblyDemo.Blazor/AbpMudTheme.WebAssemblyDemo.Blazor.csproj" />
+    <Project Path="demo/WebAssembly/AbpMudTheme.WebAssemblyDemo.Contracts/AbpMudTheme.WebAssemblyDemo.Contracts.csproj" />
+    <Project Path="demo/WebAssembly/AbpMudTheme.WebAssemblyDemo.Host/AbpMudTheme.WebAssemblyDemo.Host.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Starbender.AbpMudTheme.Installer/Starbender.AbpMudTheme.Installer.csproj" />
+    <Project Path="src/Starbender.AbpMudTheme.Server/Starbender.AbpMudTheme.Server.csproj" />
+    <Project Path="src/Starbender.AbpMudTheme.WebAssembly.Bundling/Starbender.AbpMudTheme.WebAssembly.Bundling.csproj" />
+    <Project Path="src/Starbender.AbpMudTheme.WebAssembly/Starbender.AbpMudTheme.WebAssembly.csproj" />
+    <Project Path="src/Starbender.AbpMudTheme/Starbender.AbpMudTheme.csproj" />
+  </Folder>
+  <Folder Name="/_SolutionItems/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="configureawait.props" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="LICENSE.md" />
+    <File Path="NuGet.Config" />
+    <File Path="README.md" />
+    <File Path="Starbender.AbpMudTheme.abpmdl" />
+    <File Path="Starbender.AbpMudTheme.abpsln" />
+  </Folder>
+  <Folder Name="/_SolutionItems/abp/">
+    <File Path="configureawait.props" />
+    <File Path="Starbender.AbpMudTheme.abpmdl" />
+    <File Path="Starbender.AbpMudTheme.abpsln" />
+  </Folder>
+</Solution>
