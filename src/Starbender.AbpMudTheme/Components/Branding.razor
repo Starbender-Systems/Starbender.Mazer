@@ -1,0 +1,10 @@
+@using Volo.Abp.Ui.Branding
+
+@inject IBrandingProvider BrandingProvider
+<MudLink Color="@Color.Inherit" Href="" Class="d-flex align-center gap-2">
+    @if (!BrandingProvider.LogoUrl.IsNullOrWhiteSpace())
+    {
+        <MudImage Src="@BrandingProvider.LogoUrl.TrimStart('/', '~')" Alt="@BrandingProvider.AppName" Style="height: 32px;" />
+    }
+    <span>@BrandingProvider.AppName</span>
+</MudLink>

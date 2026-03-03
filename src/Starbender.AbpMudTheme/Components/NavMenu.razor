@@ -1,0 +1,9 @@
+@if (Menu != null)
+{
+    <MudNavMenu Dense="true">
+        @foreach (var menuItem in Menu.Items)
+        {
+            <FirstLevelNavMenuItem MenuItem="menuItem" />
+        }
+    </MudNavMenu>
+}

@@ -347,3 +347,12 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+# appsettings.secrets.json
+**/appsettings.secrets.json
+**/appsettings.Development.json
+
+# No .cursor settings
+**/.cursor/
+
+.vscode/

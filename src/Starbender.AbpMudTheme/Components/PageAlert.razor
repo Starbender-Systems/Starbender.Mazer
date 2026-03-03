@@ -1,0 +1,18 @@
+@foreach (var alert in Alerts.Where(x => x.IsVisible))
+{
+    <MudAlert Severity="@GetSeverity(alert.AlertMessage.Type)" Dense="true" Class="mb-3">
+        <div class="d-flex justify-space-between align-center w-100">
+            <div class="flex-grow-1 me-2">
+                @if (!string.IsNullOrWhiteSpace(alert.AlertMessage.Title))
+                {
+                    <div class="fw-bold mb-1">@alert.AlertMessage.Title</div>
+                }
+                <div>@alert.AlertMessage.Text</div>
+            </div>
+            @if (alert.AlertMessage.Dismissible)
+            {
+                <MudIconButton Icon="@Icons.Material.Filled.Close" Size="Size.Small" OnClick="@(() => Dismiss(alert))" />
+            }
+        </div>
+    </MudAlert>
+}

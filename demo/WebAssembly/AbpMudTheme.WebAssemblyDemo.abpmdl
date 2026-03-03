@@ -1,0 +1,56 @@
+{
+  "template": "app-nolayers",
+  "imports": {
+    "Volo.Abp.BasicTheme": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.Account": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.OpenIddict": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.Identity": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.TenantManagement": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.SettingManagement": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.PermissionManagement": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    },
+    "Volo.Abp.FeatureManagement": {
+      "version": "10.0.2",
+      "isInstalled": true,
+      "creationTime": "03/02/2026 17:27:17 +00:00"
+    }
+  },
+  "packages": {
+    "AbpMudTheme.WebAssemblyDemo.Blazor": {
+      "path": "AbpMudTheme.WebAssemblyDemo.Blazor/AbpMudTheme.WebAssemblyDemo.Blazor.abppkg"
+    },
+    "AbpMudTheme.WebAssemblyDemo.Host": {
+      "path": "AbpMudTheme.WebAssemblyDemo.Host/AbpMudTheme.WebAssemblyDemo.Host.abppkg"
+    },
+    "AbpMudTheme.WebAssemblyDemo.Contracts": {
+      "path": "AbpMudTheme.WebAssemblyDemo.Contracts/AbpMudTheme.WebAssemblyDemo.Contracts.abppkg"
+    }
+  }
+}
