@@ -1,38 +1,34 @@
-﻿using Blazorise;
+﻿using AbpMudTheme.WebAppDemo.Menus;
 using Blazorise.Bootstrap5;
 using Blazorise.Icons.FontAwesome;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Volo.Abp.AspNetCore.Components.Web;
-using AbpMudTheme.WebAppDemo.Menus;
+using MudBlazor;
+using MudBlazor.Services;
+using Starbender.AbpMudTheme.WebAssembly;
+using Starbender.AbpMudTheme.WebAssembly.Bundling;
 using Volo.Abp.Account;
-using Volo.Abp.AspNetCore.Components.Web.BasicTheme.Themes.Basic;
-using Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme;
+using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
-using Volo.Abp.OpenIddict;
-using Volo.Abp.Identity.Blazor;
-using Volo.Abp.Identity.Blazor.WebAssembly;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.Blazor.WebAssembly;
 using Volo.Abp.Autofac.WebAssembly;
-using Volo.Abp.Mapperly;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.Blazor.WebAssembly;
 using Volo.Abp.Identity;
+using Volo.Abp.Identity.Blazor.WebAssembly;
 using Volo.Abp.Modularity;
+using Volo.Abp.OpenIddict;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.PermissionManagement.Blazor.WebAssembly;
-using Volo.Abp.SettingManagement.Blazor.WebAssembly;
 using Volo.Abp.SettingManagement;
+using Volo.Abp.SettingManagement.Blazor.WebAssembly;
+using Volo.Abp.TenantManagement;
+using Volo.Abp.TenantManagement.Blazor.WebAssembly;
 using Volo.Abp.UI.Navigation;
-using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
 
 namespace AbpMudTheme.WebAppDemo;
 
 [DependsOn(
     typeof(WebAppDemoContractsModule),
-        
+
     // ABP Framework packages
     typeof(AbpAutofacWebAssemblyModule),
 
@@ -63,7 +59,8 @@ namespace AbpMudTheme.WebAppDemo;
     typeof(AbpSettingManagementBlazorWebAssemblyModule),
 
     // Theme
-    typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeModule)
+    typeof(AbpMudThemeWebAssemblyBundlingModule),
+    typeof(AbpMudThemeWebAssemblyModule)
 )]
 public class WebAppDemoClientModule : AbpModule
 {
@@ -83,13 +80,14 @@ public class WebAppDemoClientModule : AbpModule
         ConfigureAuthentication(builder);
         ConfigureHttpClient(context, environment);
         ConfigureBlazorise(context);
+        ConfigureMudBlazor(context);
         ConfigureRouter(context);
         ConfigureMenu(context);
 
         context.Services.AddHttpClientProxies(typeof(WebAppDemoContractsModule).Assembly);
     }
 
-    private void ConfigureRouter(ServiceConfigurationContext context)
+    private void ConfigureRouter(ServiceConfigurationContext _)
     {
         Configure<AbpRouterOptions>(options =>
         {
@@ -108,20 +106,48 @@ public class WebAppDemoClientModule : AbpModule
     private void ConfigureBlazorise(ServiceConfigurationContext context)
     {
         context.Services
-            .AddBlazorise(options =>
-            {
-                // TODO (IMPORTANT): To use Blazorise, you need a license key. Get your license key directly from Blazorise, follow  the instructions at https://abp.io/faq#how-to-get-blazorise-license-key
-                //options.ProductToken = "Your Product Token";
-            })
+            //.AddBlazorise(options =>
+            //{
+            //    // TODO (IMPORTANT): To use Blazorise, you need a license key. Get your license key directly from Blazorise, follow  the instructions at https://abp.io/faq#how-to-get-blazorise-license-key
+            //    //options.ProductToken = "Your Product Token";
+            //})
             .AddBootstrap5Providers()
             .AddFontAwesomeIcons();
+    }
+
+    private void ConfigureMudBlazor(ServiceConfigurationContext context)
+    {
+        // The MudBlazor Services are already configured but you may 
+        // override the defaults here. If you don't want any additional 
+        // customizations, you can remove the AddMudServices(...) here
+        context.Services.AddMudServices(config =>
+        {
+            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            config.SnackbarConfiguration.RequireInteraction = false;
+            config.SnackbarConfiguration.PreventDuplicates = false;
+            config.SnackbarConfiguration.NewestOnTop = false;
+            config.SnackbarConfiguration.ShowCloseIcon = true;
+            config.SnackbarConfiguration.VisibleStateDuration = 5000;
+            config.SnackbarConfiguration.HideTransitionDuration = 500;
+            config.SnackbarConfiguration.ShowTransitionDuration = 500;
+            config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        });
+
+        // You can override the AbpMudTheme here
+        // Note: DO NOT try to assign a new MudTheme(), you must set properties on the 
+        // instance passed to Configure
+        // TODO: Add a theme.Replace(MudTheme) extension so you can just 
+        //       provide a whole new theme.
+        Configure<MudTheme>(theme =>
+        {
+            theme.LayoutProperties.DrawerWidthLeft = "300px";
+        });
     }
 
     private static void ConfigureAuthentication(WebAssemblyHostBuilder builder)
     {
         builder.Services.AddBlazorWebAppServices();
     }
-
 
     private static void ConfigureHttpClient(ServiceConfigurationContext context, IWebAssemblyHostEnvironment environment)
     {

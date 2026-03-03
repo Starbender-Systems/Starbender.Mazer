@@ -1,5 +1,4 @@
 ﻿using Starbender.AbpMudTheme.Server.Bundling;
-using Starbender.AbpMudTheme;
 using Volo.Abp.AspNetCore.Components.Server.Theming;
 using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;

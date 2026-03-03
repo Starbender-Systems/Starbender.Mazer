@@ -17,6 +17,7 @@ using Starbender.AbpMudTheme.Server;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
+using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Mvc;
@@ -254,14 +255,13 @@ public class ServerDemoModule : AbpModule
                 }
             );
 
-            // Remove Blazor Basic bundles
-            // options.StyleBundles.Configure(
-            //    BlazorBasicThemeBundles.Styles.Global,
-            //    bundle =>
-            //    {
-            //        bundle.AddFiles("/global-styles.css");
-            //    }
-            // );
+            options.StyleBundles.Configure(
+               BlazorStandardBundles.Styles.Global,
+               bundle =>
+               {
+                   bundle.AddFiles("/global-styles.css");
+               }
+            );
         });
     }
 
@@ -311,7 +311,7 @@ public class ServerDemoModule : AbpModule
         });
     }
 
-    private void ConfigureRouter(ServiceConfigurationContext context)
+    private void ConfigureRouter(ServiceConfigurationContext _)
     {
         Configure<AbpRouterOptions>(options =>
         {

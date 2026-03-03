@@ -16,13 +16,13 @@ namespace Starbender.AbpMudTheme.WebAssembly;
     typeof(AbpAspNetCoreComponentsWebAssemblyThemingModule),
     typeof(AbpHttpClientIdentityModelWebAssemblyModule)
     )]
-public class AbpAspNetCoreComponentsWebAssemblyMudBlazorThemeModule : AbpModule
+public class AbpMudThemeWebAssemblyModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
         Configure<AbpRouterOptions>(options =>
         {
-            options.AdditionalAssemblies.Add(typeof(AbpAspNetCoreComponentsWebAssemblyMudBlazorThemeModule).Assembly);
+            options.AdditionalAssemblies.Add(typeof(AbpMudThemeWebAssemblyModule).Assembly);
         });
 
         Configure<AbpToolbarOptions>(options =>

@@ -1,72 +1,71 @@
-using Blazorise;
-using Blazorise.Bootstrap5;
-using Blazorise.Icons.FontAwesome;
-using Microsoft.AspNetCore.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
-using Microsoft.OpenApi.Models;
 using AbpMudTheme.WebAppDemo.Components;
 using AbpMudTheme.WebAppDemo.Data;
 using AbpMudTheme.WebAppDemo.Localization;
 using AbpMudTheme.WebAppDemo.Menus;
 using AbpMudTheme.WebAppDemo.MultiTenancy;
+using Blazorise.Bootstrap5;
+using Blazorise.Icons.FontAwesome;
+using Microsoft.AspNetCore.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using MudBlazor;
+using MudBlazor.Services;
 using OpenIddict.Validation.AspNetCore;
+using Starbender.AbpMudTheme.Server;
+using Starbender.AbpMudTheme.WebAssembly.Bundling;
 using Volo.Abp;
-using Volo.Abp.Studio;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
+using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
+using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
+using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.Autofac;
-using Volo.Abp.Mapperly;
+using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
+using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
 using Volo.Abp.Caching;
+using Volo.Abp.Emailing;
+using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.SqlServer;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.FeatureManagement.Blazor.Server;
+using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
-using Volo.Abp.Uow;
 using Volo.Abp.Identity.Blazor.Server;
-using Volo.Abp.TenantManagement;
-using Volo.Abp.TenantManagement.Blazor.Server;
-using Volo.Abp.Emailing;
+using Volo.Abp.Identity.EntityFrameworkCore;
+using Volo.Abp.Mapperly;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.OpenIddict;
+using Volo.Abp.OpenIddict.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.PermissionManagement.Blazor.Server;
+using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.OpenIddict;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.SettingManagement.Blazor.Server;
-using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
-using Volo.Abp.AspNetCore.Components.Server.BasicTheme;
-using Volo.Abp.AspNetCore.Components.Server.BasicTheme.Bundling;
-using Volo.Abp.AspNetCore.Components.WebAssembly.BasicTheme.Bundling;
+using Volo.Abp.SettingManagement.EntityFrameworkCore;
+using Volo.Abp.Studio;
+using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Swashbuckle;
+using Volo.Abp.TenantManagement;
+using Volo.Abp.TenantManagement.Blazor.Server;
+using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
-using Volo.Abp.EntityFrameworkCore;
-using Volo.Abp.TenantManagement.EntityFrameworkCore;
-using Volo.Abp.OpenIddict.EntityFrameworkCore;
-using Volo.Abp.SettingManagement.EntityFrameworkCore;
-using Volo.Abp.PermissionManagement.EntityFrameworkCore;
-using Volo.Abp.Identity.EntityFrameworkCore;
-using Volo.Abp.FeatureManagement.EntityFrameworkCore;
-using Volo.Abp.BlobStoring.Database.EntityFrameworkCore;
-using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
-using Volo.Abp.AuditLogging.EntityFrameworkCore;
-using Volo.Abp.EntityFrameworkCore.SqlServer;
-using Volo.Abp.Studio.Client.AspNetCore;
 
 namespace AbpMudTheme.WebAppDemo;
 
@@ -93,7 +92,7 @@ namespace AbpMudTheme.WebAppDemo;
     typeof(AbpIdentityBlazorServerModule),
     typeof(AbpIdentityHttpApiModule),
     typeof(AbpIdentityApplicationModule),
-        
+
     // Tenant Management module packages
     typeof(AbpTenantManagementBlazorServerModule),
     typeof(AbpTenantManagementHttpApiModule),
@@ -116,8 +115,8 @@ namespace AbpMudTheme.WebAppDemo;
 
     // Theme module packages
     typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-    typeof(AbpAspNetCoreComponentsServerBasicThemeModule),
-    typeof(AbpAspNetCoreComponentsWebAssemblyBasicThemeBundlingModule),
+    typeof(AbpMudThemeServerModule),
+    typeof(AbpMudThemeWebAssemblyBundlingModule),
 
     // Entity Framework Core packages for the used modules
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
@@ -196,6 +195,7 @@ public class WebAppDemoModule : AbpModule
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureBlazorise(context);
+        ConfigureMudBlazor(context);
         ConfigureRouter(context);
         ConfigureMultiTenancy();
         ConfigureMenu(context);
@@ -252,7 +252,7 @@ public class WebAppDemoModule : AbpModule
 
             // Blazor UI
             options.StyleBundles.Configure(
-                BlazorBasicThemeBundles.Styles.Global,
+                BlazorStandardBundles.Styles.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
@@ -274,16 +274,40 @@ public class WebAppDemoModule : AbpModule
     private void ConfigureBlazorise(ServiceConfigurationContext context)
     {
         context.Services
-            .AddBlazorise(options =>
-            {
-                // TODO (IMPORTANT): To use Blazorise, you need a license key. Get your license key directly from Blazorise, follow  the instructions at https://abp.io/faq#how-to-get-blazorise-license-key
-                //options.ProductToken = "Your Product Token";
-            })
             .AddBootstrap5Providers()
             .AddFontAwesomeIcons();
     }
 
-    private void ConfigureRouter(ServiceConfigurationContext context)
+    private void ConfigureMudBlazor(ServiceConfigurationContext context)
+    {
+        // The MudBlazor Services are already configured but you may 
+        // override the defaults here. If you don't want any additional 
+        // customizations, you can remove the AddMudServices(...) here
+        context.Services.AddMudServices(config =>
+        {
+            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            config.SnackbarConfiguration.RequireInteraction = false;
+            config.SnackbarConfiguration.PreventDuplicates = false;
+            config.SnackbarConfiguration.NewestOnTop = false;
+            config.SnackbarConfiguration.ShowCloseIcon = true;
+            config.SnackbarConfiguration.VisibleStateDuration = 5000;
+            config.SnackbarConfiguration.HideTransitionDuration = 500;
+            config.SnackbarConfiguration.ShowTransitionDuration = 500;
+            config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        });
+
+        // You can override the AbpMudTheme here
+        // Note: DO NOT try to assign a new MudTheme(), you must set properties on the 
+        // instance passed to Configure
+        // TODO: Add a theme.Replace(MudTheme) extension so you can just 
+        //       provide a whole new theme.
+        Configure<MudTheme>(theme =>
+        {
+            theme.LayoutProperties.DrawerWidthLeft = "300px";
+        });
+    }
+
+    private void ConfigureRouter(ServiceConfigurationContext _)
     {
         Configure<AbpRouterOptions>(options =>
         {
@@ -349,7 +373,7 @@ public class WebAppDemoModule : AbpModule
             }
         });
     }
-    
+
     private void ConfigureEfCore(ServiceConfigurationContext context)
     {
         context.Services.AddAbpDbContext<WebAppDemoDbContext>(options =>
@@ -368,9 +392,8 @@ public class WebAppDemoModule : AbpModule
                 configurationContext.UseSqlServer();
             });
         });
-        
-    }
 
+    }
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {

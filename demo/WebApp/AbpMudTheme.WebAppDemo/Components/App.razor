@@ -1,6 +1,7 @@
 @using System.Globalization
 @using Microsoft.Extensions.Hosting
-@using Volo.Abp.AspNetCore.Components.Server.BasicTheme.Bundling
+@* @using Volo.Abp.AspNetCore.Components.Server.BasicTheme.Bundling *@
+@using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling
 @using Volo.Abp.Localization
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Bundling
 @inject IHostEnvironment Env
@@ -16,7 +17,7 @@
     <title>AbpMudTheme.WebAppDemo</title>
     <base href="/" />
 
-    <AbpStyles BundleName="@BlazorBasicThemeBundles.Styles.Global" WebAssemblyStyleFiles="GlobalStyles" @rendermode="InteractiveAuto" />
+    <AbpStyles BundleName="@BlazorStandardBundles.Styles.Global" WebAssemblyStyleFiles="GlobalStyles" @rendermode="InteractiveAuto" />
 
     <link href="AbpMudTheme.WebAppDemo.styles.css" rel="stylesheet"/>
     <link href="AbpMudTheme.WebAppDemo.Client.styles.css" rel="stylesheet"/>
@@ -42,7 +43,7 @@
         <a class="dismiss">🗙</a>
     </div>
     
-    <AbpScripts BundleName="@BlazorBasicThemeBundles.Scripts.Global" WebAssemblyScriptFiles="GlobalScripts" @rendermode="InteractiveAuto" />
+    <AbpScripts BundleName="@BlazorStandardBundles.Scripts.Global" WebAssemblyScriptFiles="GlobalScripts" @rendermode="InteractiveAuto" />
 
     <script src="_framework/blazor.web.js"></script>
 
