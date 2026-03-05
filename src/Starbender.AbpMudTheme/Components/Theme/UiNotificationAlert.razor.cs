@@ -9,7 +9,7 @@ using Starbender.AbpMudTheme.Services;
 using Volo.Abp.AspNetCore.Components.Notifications;
 using Volo.Abp.Localization;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
 public partial class UiNotificationAlert : ComponentBase, IDisposable
 {

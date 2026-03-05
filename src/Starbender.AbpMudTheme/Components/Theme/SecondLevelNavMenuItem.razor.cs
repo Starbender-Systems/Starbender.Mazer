@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Components;
 using Volo.Abp.UI.Navigation;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
-public partial class FirstLevelNavMenuItem
+public partial class SecondLevelNavMenuItem
 {
     [Parameter]
     public ApplicationMenuItem MenuItem { get; set; } = default!;

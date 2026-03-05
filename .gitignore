@@ -356,3 +356,5 @@ MigrationBackup/
 **/.cursor/
 
 .vscode/
+
+**/Logs/

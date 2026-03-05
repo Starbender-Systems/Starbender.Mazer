@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Components.Web.Security;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
 public partial class NavToolbar : IDisposable
 {

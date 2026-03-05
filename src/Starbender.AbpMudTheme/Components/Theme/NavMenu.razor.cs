@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Components.Web.Security;
 using Volo.Abp.UI.Navigation;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
 public partial class NavMenu : IDisposable
 {

@@ -5,7 +5,7 @@ using MudBlazor;
 using Starbender.AbpMudTheme.Services;
 using Volo.Abp.AspNetCore.Components.Messages;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
 public partial class UiMessageAlert : ComponentBase, IDisposable
 {

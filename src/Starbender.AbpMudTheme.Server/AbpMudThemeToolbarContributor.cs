@@ -1,4 +1,4 @@
-using Starbender.AbpMudTheme.Components;
+using Starbender.AbpMudTheme.Components.Theme;
 using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 

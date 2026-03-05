@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using Volo.Abp.AspNetCore.Components.Progression;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
 public partial class UiPageProgress : ComponentBase, IDisposable
 {

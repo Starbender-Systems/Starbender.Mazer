@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components.Routing;
 using MudBlazor;
 using Volo.Abp.AspNetCore.Components.Alerts;
 
-namespace Starbender.AbpMudTheme.Components;
+namespace Starbender.AbpMudTheme.Components.Theme;
 
 public partial class PageAlert : ComponentBase, IDisposable
 {
