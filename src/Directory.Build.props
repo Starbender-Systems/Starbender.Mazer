@@ -13,6 +13,8 @@
 		<PackageTags>blazor csharp abp mudblazor theme</PackageTags>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+		<IsPackable>true</IsPackable>
+    	<OutputType>Library</OutputType>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(UsingMicrosoftNETSdkWeb)' != 'true' AND '$(UsingMicrosoftNETSdkRazor)' != 'true'">

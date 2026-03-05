@@ -13,7 +13,8 @@ using Microsoft.OpenApi.Models;
 using MudBlazor;
 using MudBlazor.Services;
 using OpenIddict.Validation.AspNetCore;
-using Starbender.AbpMudTheme;
+using Starbender.AbpMudTheme.Mvc;
+using Starbender.AbpMudTheme.Mvc.Bundling;
 using Starbender.AbpMudTheme.Server;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -24,8 +25,6 @@ using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
 using Volo.Abp.AspNetCore.Serilog;
@@ -116,7 +115,7 @@ namespace AbpMudTheme.ServerDemo;
     typeof(AbpSettingManagementApplicationModule),
 
     // Theme module packages
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+    typeof(AbpMudThemeMvcModule),
     typeof(AbpMudThemeServerModule),
 
     // Entity Framework Core packages for the used modules
@@ -242,7 +241,7 @@ public class ServerDemoModule : AbpModule
         Configure<AbpBundlingOptions>(options =>
         {
             options.StyleBundles.Configure(
-                BasicThemeBundles.Styles.Global,
+                AbpMudThemeBundles.Styles.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
@@ -250,7 +249,7 @@ public class ServerDemoModule : AbpModule
             );
 
             options.ScriptBundles.Configure(
-                BasicThemeBundles.Scripts.Global,
+                AbpMudThemeBundles.Scripts.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-scripts.js");
@@ -271,15 +270,6 @@ public class ServerDemoModule : AbpModule
     {
 
         context.Services
-            // If you are completely replacing the Basic Theme with AbpMudTheme,
-            // you should remove "AddBlazorise(...)" below.
-            // If you are doing a phased replacement you can leave it until you finish converting 
-            // any code that is dependent on the Basic theme
-            //.AddBlazorise(options =>
-            //{
-            //    // TODO (IMPORTANT): To use Blazorise, you need a license key. Get your license key directly from Blazorise, follow  the instructions at https://abp.io/faq#how-to-get-blazorise-license-key
-            //    //options.ProductToken = "Your Product Token";
-            //})
             .AddBootstrap5Providers()   // Leave this (for now)
             .AddFontAwesomeIcons();     // Leave this (for now)
     }
@@ -329,7 +319,7 @@ public class ServerDemoModule : AbpModule
         });
     }
 
-    private void ConfigureMenu(ServiceConfigurationContext context)
+    private void ConfigureMenu(ServiceConfigurationContext _)
     {
         Configure<AbpNavigationOptions>(options =>
         {

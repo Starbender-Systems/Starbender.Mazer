@@ -15,6 +15,7 @@
   </Folder>
   <Folder Name="/src/">
     <Project Path="src/Starbender.AbpMudTheme.Installer/Starbender.AbpMudTheme.Installer.csproj" />
+    <Project Path="src/Starbender.AbpMudTheme.Mvc/Starbender.AbpMudTheme.Mvc.csproj" />
     <Project Path="src/Starbender.AbpMudTheme.Server/Starbender.AbpMudTheme.Server.csproj" />
     <Project Path="src/Starbender.AbpMudTheme.WebAssembly.Bundling/Starbender.AbpMudTheme.WebAssembly.Bundling.csproj" />
     <Project Path="src/Starbender.AbpMudTheme.WebAssembly/Starbender.AbpMudTheme.WebAssembly.csproj" />
