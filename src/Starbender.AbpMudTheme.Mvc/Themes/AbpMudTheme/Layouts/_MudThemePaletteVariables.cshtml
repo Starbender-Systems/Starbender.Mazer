@@ -1,0 +1,10 @@
+@using Microsoft.Extensions.Options
+@using MudBlazor
+@using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Styling
+@inject IOptionsMonitor<MudTheme> MudThemeOptions
+@{
+    var paletteVariablesCss = MudThemeCssVariablesBuilder.Build(MudThemeOptions.CurrentValue);
+}
+<style id="abp-mud-theme-palette-variables">
+@Html.Raw(paletteVariablesCss)
+</style>

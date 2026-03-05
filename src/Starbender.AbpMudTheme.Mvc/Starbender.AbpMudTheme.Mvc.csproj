@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MudBlazor" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" />
   </ItemGroup>

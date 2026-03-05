@@ -100,6 +100,7 @@
         <meta name="description" content="@(ViewBag.Description as string)" />
     }
     <abp-style-bundle name="@AbpMudThemeBundles.Styles.Global" />
+    @await Html.PartialAsync("~/Themes/AbpMudTheme/Layouts/_MudThemePaletteVariables.cshtml")
 
     @await RenderSectionAsync("styles", false)
 

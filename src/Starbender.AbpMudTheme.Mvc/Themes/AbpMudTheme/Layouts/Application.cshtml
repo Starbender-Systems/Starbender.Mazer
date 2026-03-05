@@ -106,6 +106,7 @@
     </script>
 
     <abp-style-bundle name="@AbpMudThemeBundles.Styles.Global" />
+    @await Html.PartialAsync("~/Themes/AbpMudTheme/Layouts/_MudThemePaletteVariables.cshtml")
 
     @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 

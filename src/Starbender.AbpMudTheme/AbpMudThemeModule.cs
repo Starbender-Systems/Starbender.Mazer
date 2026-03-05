@@ -75,7 +75,7 @@ public class AbpMudThemeModule : AbpModule
                 Background = "#0B1220",
                 Surface = "#111827",           // gray-900
 
-                AppbarBackground = "#0F172A",  // slate-900
+                AppbarBackground = "#1E3A8A",  // blue-900
                 AppbarText = "#E2E8F0",
 
                 DrawerBackground = "#0F172A",
@@ -100,8 +100,9 @@ public class AbpMudThemeModule : AbpModule
 
             cfg.LayoutProperties = new LayoutProperties
             {
-                DrawerWidthLeft = "300px"
+                DrawerWidthLeft = "200px"
             };
+
         });
     }
 }
