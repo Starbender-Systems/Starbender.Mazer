@@ -41,7 +41,10 @@ public class AbpMudThemeMvcModule : AbpModule
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
-            options.FileSets.AddEmbedded<AbpMudThemeMvcModule>("Starbender.AbpMudThemeMvc");
+            options.FileSets.AddEmbedded<AbpMudThemeMvcModule>(
+                "Starbender.AbpMudTheme.Mvc",
+                "/wwwroot"
+            );
         });
 
         Configure<AbpToolbarOptions>(options =>

@@ -358,3 +358,5 @@ MigrationBackup/
 .vscode/
 
 **/Logs/
+
+.dotnet_home/

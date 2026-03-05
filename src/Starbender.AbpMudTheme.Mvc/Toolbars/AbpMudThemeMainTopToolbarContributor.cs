@@ -1,5 +1,6 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.Toolbar.LightDarkModeToggle;
 using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.Toolbar.LanguageSwitch;
 using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.Toolbar.UserMenu;
 using Volo.Abp.AspNetCore.Mvc;
@@ -22,6 +23,8 @@ public class AbpMudThemeMainTopToolbarContributor : IToolbarContributor
         {
             return;
         }
+
+        context.Toolbar.Items.Add(new ToolbarItem(typeof(LightDarkModeToggleViewComponent)));
 
         var languageProvider = context.ServiceProvider.GetService<ILanguageProvider>();
 

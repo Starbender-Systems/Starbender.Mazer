@@ -35,7 +35,7 @@
 
 <!DOCTYPE html>
 
-<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl">
+<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl" class="abp-theme-init-pending">
 <head>
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Empty)
 
@@ -49,6 +49,57 @@
     }
 
     <title>@pageTitle</title>
+
+    <style>
+        html.abp-theme-init-pending body {
+            visibility: hidden;
+        }
+    </style>
+    <noscript>
+        <style>
+            html.abp-theme-init-pending body {
+                visibility: visible;
+            }
+        </style>
+    </noscript>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var storageKey = "abpMudBlazorTheme.state";
+            var isDarkMode = false;
+
+            try {
+                var raw = window.localStorage.getItem(storageKey);
+                if (raw) {
+                    var state = JSON.parse(raw);
+                    if (state && typeof state.isDarkMode === "boolean") {
+                        isDarkMode = state.isDarkMode;
+                    } else {
+                        isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                    }
+                } else {
+                    isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                }
+            } catch (error) {
+                isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+            }
+
+            var mode = isDarkMode ? "dark" : "light";
+            root.setAttribute("data-bs-theme", mode);
+
+            if (document.body) {
+                document.body.setAttribute("data-bs-theme", mode);
+            } else {
+                document.addEventListener("DOMContentLoaded", function () {
+                    if (document.body) {
+                        document.body.setAttribute("data-bs-theme", mode);
+                    }
+                }, { once: true });
+            }
+
+            root.classList.remove("abp-theme-init-pending");
+        })();
+    </script>
     @if (ViewBag.Description != null)
     {
         <meta name="description" content="@ViewBag.Description" />

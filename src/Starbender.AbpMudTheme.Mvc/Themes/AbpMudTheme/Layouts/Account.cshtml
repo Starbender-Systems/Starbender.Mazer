@@ -5,6 +5,7 @@
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
 @using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.MainNavbar
+@using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.Menu
 @using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.PageAlerts
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
@@ -28,20 +29,71 @@
 
 <!DOCTYPE html>
 
-<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl">
+<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl" class="abp-theme-init-pending">
 <head>
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	  <link rel="icon" href="~/themes/abpmudtheme/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="~/themes/abpmudtheme/favicon.svg" type="image/svg+xml">
     @if (!ThemingOptions.Value.BaseUrl.IsNullOrWhiteSpace())
     {
         <base href="@ThemingOptions.Value.BaseUrl" />
     }
 
     <title>@(ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title)</title>
+
+    <style>
+        html.abp-theme-init-pending body {
+            visibility: hidden;
+        }
+    </style>
+    <noscript>
+        <style>
+            html.abp-theme-init-pending body {
+                visibility: visible;
+            }
+        </style>
+    </noscript>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var storageKey = "abpMudBlazorTheme.state";
+            var isDarkMode = false;
+
+            try {
+                var raw = window.localStorage.getItem(storageKey);
+                if (raw) {
+                    var state = JSON.parse(raw);
+                    if (state && typeof state.isDarkMode === "boolean") {
+                        isDarkMode = state.isDarkMode;
+                    } else {
+                        isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                    }
+                } else {
+                    isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                }
+            } catch (error) {
+                isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+            }
+
+            var mode = isDarkMode ? "dark" : "light";
+            root.setAttribute("data-bs-theme", mode);
+
+            if (document.body) {
+                document.body.setAttribute("data-bs-theme", mode);
+            } else {
+                document.addEventListener("DOMContentLoaded", function () {
+                    if (document.body) {
+                        document.body.setAttribute("data-bs-theme", mode);
+                    }
+                }, { once: true });
+            }
+
+            root.classList.remove("abp-theme-init-pending");
+        })();
+    </script>
 
     @if (ViewBag.Description != null)
     {
@@ -58,50 +110,64 @@
 <body class="abp-account-layout @rtl">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
 
-    @(await Component.InvokeAsync<MainNavbarViewComponent>())
+    <div class="abp-mud-shell">
+        @(await Component.InvokeAsync<MainNavbarViewComponent>())
 
-    <div class="@containerClass">
-        <abp-row>
-            <abp-column class="col mx-auto mb-5" style="max-width: 440px">
-                <div class="brand-container">
-                    <img class="brand-logo" src="@(BrandingProvider.LogoUrl ?? Url.Content("~/themes/abpmudtheme/logo.svg"))" alt="@BrandingProvider.AppName" />
-                    <h2 class="brand-text">@BrandingProvider.AppName</h2>
-                </div>
-                @if (MultiTenancyOptions.Value.IsEnabled &&
-                  (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true ||
-                   TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(QueryStringTenantResolveContributor.ContributorName) == true))
-                {
-                    <div class="card shadow-sm rounded mb-3">
-                        <div class="card-body px-5">
-                            <div class="row">
-                                <div class="col">
-                                    <span style="font-size: .8em;" class="text-uppercase text-muted">@MultiTenancyStringLocalizer["Tenant"]</span><br />
-                                    <h6 class="m-0 d-inline-block">
-                                        @if (CurrentTenant.Id == null)
-                                        {
-                                            <span>
-                                                @MultiTenancyStringLocalizer["NotSelected"]
-                                            </span>
-                                        }
-                                        else
-                                        {
-                                            <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
-                                        }
-                                    </h6>
-                                </div>
-                                <div class="col-auto">
-                                    <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-sm mt-3 btn-outline-primary">@MultiTenancyStringLocalizer["Switch"]</a>
-                                </div>
+        <div class="abp-mud-layout">
+            <aside id="abp-mud-drawer" class="abp-mud-drawer">
+                <nav class="navbar p-0">
+                    <ul class="navbar-nav flex-column w-100">
+                        @(await Component.InvokeAsync<MainNavbarMenuViewComponent>())
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="abp-mud-main">
+                <div class="@containerClass mt-4">
+                    <abp-row>
+                        <abp-column class="col mx-auto mb-5" style="max-width: 440px">
+                            <div class="brand-container">
+                                <img class="brand-logo" src="@(BrandingProvider.LogoUrl ?? Url.Content("~/themes/abpmudtheme/logo.svg"))" alt="@BrandingProvider.AppName" />
+                                <h2 class="brand-text">@BrandingProvider.AppName</h2>
                             </div>
-                        </div>
-                    </div>
-                }
-                @(await Component.InvokeAsync<PageAlertsViewComponent>())
-                @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
-                @RenderBody()
-                @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
-            </abp-column>
-        </abp-row>
+                            @if (MultiTenancyOptions.Value.IsEnabled &&
+                              (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true ||
+                               TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(QueryStringTenantResolveContributor.ContributorName) == true))
+                            {
+                                <div class="card shadow-sm rounded mb-3">
+                                    <div class="card-body px-5">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span style="font-size: .8em;" class="text-uppercase text-muted">@MultiTenancyStringLocalizer["Tenant"]</span><br />
+                                                <h6 class="m-0 d-inline-block">
+                                                    @if (CurrentTenant.Id == null)
+                                                    {
+                                                        <span>
+                                                            @MultiTenancyStringLocalizer["NotSelected"]
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                                                    }
+                                                </h6>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-sm mt-3 btn-outline-primary">@MultiTenancyStringLocalizer["Switch"]</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @(await Component.InvokeAsync<PageAlertsViewComponent>())
+                            @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
+                            @RenderBody()
+                            @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
+                        </abp-column>
+                    </abp-row>
+                </div>
+            </main>
+        </div>
     </div>
 
     <abp-script-bundle name="@AbpMudThemeBundles.Scripts.Global" />

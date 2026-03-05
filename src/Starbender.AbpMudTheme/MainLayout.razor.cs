@@ -37,7 +37,7 @@ public partial class MainLayout : IDisposable
 
         try
         {
-            var prefersDarkMode = await JSRuntime.InvokeAsync<bool>("abpMudBlazorTheme.getSystemDarkMode");
+            var prefersDarkMode = await JSRuntime.InvokeAsync<bool>("abpMudBlazorTheme.getPreferredDarkMode");
             ThemeManager.SetDarkMode(prefersDarkMode);
             await SetBootstrapThemeModeAsync();
         }
@@ -85,7 +85,7 @@ public partial class MainLayout : IDisposable
     {
         try
         {
-            await JSRuntime.InvokeVoidAsync("abpMudBlazorTheme.setBootstrapTheme", ThemeManager.IsDarkMode);
+            await JSRuntime.InvokeVoidAsync("abpMudBlazorTheme.setDarkMode", ThemeManager.IsDarkMode);
         }
         catch (InvalidOperationException)
         {
