@@ -115,7 +115,7 @@ table.dataTable tfoot td {
 
 .brand-container {
     text-align: center;
-    margin-top: 8rem;
+    margin-top: 1rem;
 }
 
 .brand-logo {
@@ -123,7 +123,7 @@ table.dataTable tfoot td {
 }
 
 .brand-text {
-    color: #292D33;
+    color: var(--bs-body-color);
     font-family: Lexend;
     font-size: 30px;
     font-style: normal;

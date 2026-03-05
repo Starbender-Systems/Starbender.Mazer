@@ -5,6 +5,7 @@
   	<Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+    <DisableBuildCompression>true</DisableBuildCompression>
   </PropertyGroup>
 
   <ItemGroup>

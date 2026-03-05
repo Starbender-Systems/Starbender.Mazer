@@ -36,7 +36,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="~/themes/abpmudtheme/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="~/themes/abpmudtheme/favicon.ico" type="image/x-icon">
     @if (!ThemingOptions.Value.BaseUrl.IsNullOrWhiteSpace())
     {
         <base href="@ThemingOptions.Value.BaseUrl" />
@@ -127,7 +127,6 @@
                     <abp-row>
                         <abp-column class="col mx-auto mb-5" style="max-width: 440px">
                             <div class="brand-container">
-                                <img class="brand-logo" src="@(BrandingProvider.LogoUrl ?? Url.Content("~/themes/abpmudtheme/logo.svg"))" alt="@BrandingProvider.AppName" />
                                 <h2 class="brand-text">@BrandingProvider.AppName</h2>
                             </div>
                             @if (MultiTenancyOptions.Value.IsEnabled &&
