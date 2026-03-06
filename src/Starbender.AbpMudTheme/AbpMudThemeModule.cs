@@ -30,7 +30,18 @@ public class AbpMudThemeModule : AbpModule
 
     private void ConfigureMudBlazor(ServiceConfigurationContext context)
     {
-        context.Services.AddMudServices();
+        context.Services.AddMudServices(config =>
+        {
+            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            config.SnackbarConfiguration.RequireInteraction = false;
+            config.SnackbarConfiguration.PreventDuplicates = false;
+            config.SnackbarConfiguration.NewestOnTop = false;
+            config.SnackbarConfiguration.ShowCloseIcon = true;
+            config.SnackbarConfiguration.VisibleStateDuration = 5000;
+            config.SnackbarConfiguration.HideTransitionDuration = 500;
+            config.SnackbarConfiguration.ShowTransitionDuration = 500;
+            config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        });
 
         Configure<MudTheme>(cfg =>
         {

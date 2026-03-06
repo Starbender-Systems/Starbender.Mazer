@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using OpenIddict.Validation.AspNetCore;
+using Starbender.AbpMudTheme.Mvc;
 using Starbender.AbpMudTheme.WebAssembly.Bundling;
 using Volo.Abp;
 using Volo.Abp.Account;
@@ -17,8 +18,6 @@ using Volo.Abp.AspNetCore.Components.WebAssembly.WebApp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -96,7 +95,7 @@ namespace AbpMudTheme.WebAssemblyDemo;
     typeof(AbpSettingManagementApplicationModule),
 
     // theme
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+    typeof(AbpMudThemeMvcModule),
     typeof(AbpMudThemeWebAssemblyBundlingModule),
 
     // Entity Framework Core packages for the used modules
@@ -272,7 +271,6 @@ public class WebAssemblyDemoHostModule : AbpModule
             });
     }
 
-
     private void ConfigureCors(ServiceConfigurationContext context, IConfiguration configuration)
     {
         context.Services.AddCors(options =>
@@ -333,7 +331,6 @@ public class WebAssemblyDemoHostModule : AbpModule
         });
 
     }
-
 
     public override void OnApplicationInitialization(ApplicationInitializationContext context)
     {

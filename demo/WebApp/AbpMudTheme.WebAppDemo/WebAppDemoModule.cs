@@ -258,6 +258,14 @@ public class WebAppDemoModule : AbpModule
                     bundle.AddFiles("/global-styles.css");
                 }
             );
+            options.ScriptBundles.Configure(
+                BlazorStandardBundles.Scripts.Global,
+                bundle =>
+                {
+                    bundle.AddFiles("/global-scripts.js");
+                }
+            );
+
         });
 
         Configure<AbpBundlingOptions>(options =>
@@ -281,30 +289,26 @@ public class WebAppDemoModule : AbpModule
     private void ConfigureMudBlazor(ServiceConfigurationContext context)
     {
         // The MudBlazor Services are already configured but you may 
-        // override the defaults here. If you don't want any additional 
-        // customizations, you can remove the AddMudServices(...) here
-        context.Services.AddMudServices(config =>
-        {
-            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
-            config.SnackbarConfiguration.RequireInteraction = false;
-            config.SnackbarConfiguration.PreventDuplicates = false;
-            config.SnackbarConfiguration.NewestOnTop = false;
-            config.SnackbarConfiguration.ShowCloseIcon = true;
-            config.SnackbarConfiguration.VisibleStateDuration = 5000;
-            config.SnackbarConfiguration.HideTransitionDuration = 500;
-            config.SnackbarConfiguration.ShowTransitionDuration = 500;
-            config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
-        });
+        // override the defaults here by calling AddMudServices 
+        //context.Services.AddMudServices(config =>
+        //{
+        //    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+        //    config.SnackbarConfiguration.RequireInteraction = false;
+        //    config.SnackbarConfiguration.PreventDuplicates = false;
+        //    config.SnackbarConfiguration.NewestOnTop = false;
+        //    config.SnackbarConfiguration.ShowCloseIcon = true;
+        //    config.SnackbarConfiguration.VisibleStateDuration = 5000;
+        //    config.SnackbarConfiguration.HideTransitionDuration = 500;
+        //    config.SnackbarConfiguration.ShowTransitionDuration = 500;
+        //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        //});
 
-        // You can override the AbpMudTheme here
-        // Note: DO NOT try to assign a new MudTheme(), you must set properties on the 
-        // instance passed to Configure
         // TODO: Add a theme.Replace(MudTheme) extension so you can just 
         //       provide a whole new theme.
-        Configure<MudTheme>(theme =>
-        {
-            theme.LayoutProperties.DrawerWidthLeft = "300px";
-        });
+        //Configure<MudTheme>(theme =>
+        //{
+        //    theme.LayoutProperties.DrawerWidthLeft = "300px";
+        //});
     }
 
     private void ConfigureRouter(ServiceConfigurationContext _)
