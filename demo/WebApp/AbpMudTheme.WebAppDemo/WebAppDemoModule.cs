@@ -12,6 +12,8 @@ using Microsoft.OpenApi.Models;
 using MudBlazor;
 using MudBlazor.Services;
 using OpenIddict.Validation.AspNetCore;
+using Starbender.AbpMudTheme.Mvc;
+using Starbender.AbpMudTheme.Mvc.Bundling;
 using Starbender.AbpMudTheme.Server;
 using Starbender.AbpMudTheme.WebAssembly.Bundling;
 using Volo.Abp;
@@ -24,8 +26,6 @@ using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.Basic.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Serilog;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -114,7 +114,7 @@ namespace AbpMudTheme.WebAppDemo;
     typeof(AbpSettingManagementApplicationModule),
 
     // Theme module packages
-    typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+    typeof(AbpMudThemeMvcModule),
     typeof(AbpMudThemeServerModule),
     typeof(AbpMudThemeWebAssemblyBundlingModule),
 
@@ -235,7 +235,7 @@ public class WebAppDemoModule : AbpModule
 
             // MVC UI
             options.StyleBundles.Configure(
-                BasicThemeBundles.Styles.Global,
+                AbpMudThemeBundles.Styles.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
@@ -243,7 +243,7 @@ public class WebAppDemoModule : AbpModule
             );
 
             options.ScriptBundles.Configure(
-                BasicThemeBundles.Scripts.Global,
+                AbpMudThemeBundles.Scripts.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-scripts.js");
