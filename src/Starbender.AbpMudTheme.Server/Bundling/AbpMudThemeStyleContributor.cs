@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 
 namespace Starbender.AbpMudTheme.Server.Bundling;

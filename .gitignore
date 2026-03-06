@@ -360,3 +360,5 @@ MigrationBackup/
 **/Logs/
 
 .dotnet_home/
+
+.dotnet/
