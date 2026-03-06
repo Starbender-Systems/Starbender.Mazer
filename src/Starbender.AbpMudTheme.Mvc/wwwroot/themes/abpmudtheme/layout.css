@@ -296,6 +296,11 @@ table.dataTable tfoot td {
     color: var(--abp-mud-appbar-text);
 }
 
+#main-navbar-tools .abp-user-menu-toggle {
+    text-transform: uppercase;
+    letter-spacing: 0.02857em;
+}
+
 #main-navbar-tools .abp-theme-mode-toggle {
     border: 0;
     background: transparent;
