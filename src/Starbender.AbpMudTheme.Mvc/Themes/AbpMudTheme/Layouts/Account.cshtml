@@ -5,7 +5,6 @@
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
 @using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.MainNavbar
-@using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.Menu
 @using Starbender.AbpMudTheme.Mvc.Themes.AbpMudTheme.Components.PageAlerts
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
@@ -47,6 +46,10 @@
     <style>
         html.abp-theme-init-pending body {
             visibility: hidden;
+        }
+
+        .abp-account-layout .abp-mud-drawer-toggle {
+            display: none;
         }
     </style>
     <noscript>
@@ -115,14 +118,6 @@
         @(await Component.InvokeAsync<MainNavbarViewComponent>())
 
         <div class="abp-mud-layout">
-            <aside id="abp-mud-drawer" class="abp-mud-drawer">
-                <nav class="navbar p-0">
-                    <ul class="navbar-nav flex-column w-100">
-                        @(await Component.InvokeAsync<MainNavbarMenuViewComponent>())
-                    </ul>
-                </nav>
-            </aside>
-
             <main class="abp-mud-main">
                 <div class="@containerClass mt-4">
                     <abp-row>
