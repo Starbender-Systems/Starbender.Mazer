@@ -108,8 +108,7 @@ public class WebAssemblyDemoMenuContributor : IMenuContributor
             accountStringLocalizer["MyAccount"],
             $"{authServerUrl.EnsureEndsWith('/')}Account/Manage",
             icon: "fa fa-cog",
-            order: 1000,
-            target: "_blank").RequireAuthenticated());
+            order: 1000).RequireAuthenticated());
 
 
         await Task.CompletedTask;

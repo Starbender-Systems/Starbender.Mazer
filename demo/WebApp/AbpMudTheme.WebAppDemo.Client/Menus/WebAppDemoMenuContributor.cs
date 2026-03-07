@@ -107,7 +107,7 @@ public class WebAppDemoMenuContributor : IMenuContributor
             var authServerUrl = _configuration["AuthServer:Authority"] ?? "";
             var accountResource = context.GetLocalizer<AccountResource>();
 
-            context.Menu.AddItem(new ApplicationMenuItem("Account.Manage", accountResource["MyAccount"], $"{authServerUrl.EnsureEndsWith('/')}Account/Manage", icon: "fa fa-cog", order: 900,  target: "_blank").RequireAuthenticated());
+            context.Menu.AddItem(new ApplicationMenuItem("Account.Manage", accountResource["MyAccount"], $"{authServerUrl.EnsureEndsWith('/')}Account/Manage", icon: "fa fa-cog", order: 900).RequireAuthenticated());
 
         }
         else

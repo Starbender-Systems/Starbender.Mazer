@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Routing;
@@ -47,14 +48,28 @@ public partial class LoginDisplay : IDisposable
 
     private async Task NavigateToAsync(string uri, string target = null)
     {
+        var normalizedUri = NormalizeMenuUri(uri);
+
         if (target == "_blank")
         {
-            await JsRuntime.InvokeVoidAsync("open", uri, target);
+            await JsRuntime.InvokeVoidAsync("open", normalizedUri, target);
         }
         else
         {
-            Navigation.NavigateTo(uri);
+            Navigation.NavigateTo(normalizedUri, forceLoad: true);
         }
+    }
+
+    private static string NormalizeMenuUri([NotNullIfNotNull(nameof(uri))] string uri)
+    {
+        if (string.IsNullOrWhiteSpace(uri))
+        {
+            return "/";
+        }
+
+        return uri.StartsWith("~/", StringComparison.Ordinal)
+            ? uri[1..]
+            : uri;
     }
 
     private void BeginSignOut()
@@ -69,3 +84,6 @@ public partial class LoginDisplay : IDisposable
         }
     }
 }
+
+
+
