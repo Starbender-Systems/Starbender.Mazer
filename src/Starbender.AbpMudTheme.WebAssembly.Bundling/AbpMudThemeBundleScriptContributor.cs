@@ -1,3 +1,4 @@
+using Starbender.AbpMudTheme.Shared;
 using System.Collections.Generic;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 
@@ -9,5 +10,6 @@ public class AbpMudThemeBundleScriptContributor : BundleContributor
     {
         context.Files.AddIfNotContains(AbpMudThemeAssetFiles.MudBlazorJs);
         context.Files.AddIfNotContains(AbpMudThemeAssetFiles.ThemeModeJs);
+        context.Files.AddIfNotContains(AbpMudThemeAssetFiles.MvcLayoutJs);
     }
 }

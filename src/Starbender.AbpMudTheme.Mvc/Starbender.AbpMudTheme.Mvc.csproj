@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
+  <Import Project="..\Starbender.AbpMudTheme.Shared\Starbender.AbpMudTheme.Shared.projitems" Label="Shared" />
+
   <Import Project="..\..\configureawait.props" />
 
   <PropertyGroup>

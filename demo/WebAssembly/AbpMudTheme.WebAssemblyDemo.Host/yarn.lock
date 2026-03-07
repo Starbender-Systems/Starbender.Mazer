@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-"@abp/aspnetcore.mvc.ui.theme.basic@~10.0.2":
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/@abp/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-10.0.3.tgz#fdd0b769531e0d2d6ba6c37a12e424c3cfae8a8d"
-  integrity sha512-Z4b6A2yekSdFKM29pWpc252Wz/uofSKTlSzoO1mImLWnm4LH6YeQwK5eEx9LSYtHq0Y0R5i+yVhqYed98hWong==
-  dependencies:
-    "@abp/aspnetcore.mvc.ui.theme.shared" "~10.0.3"
-
 "@abp/aspnetcore.mvc.ui.theme.shared@~10.0.3":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@abp/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-10.0.3.tgz#1e7edfe0f229f5c32cfa91493f3a3319549cdb67"

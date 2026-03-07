@@ -1,3 +1,4 @@
+using Starbender.AbpMudTheme.Shared;
 using System.Collections.Generic;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 
@@ -9,5 +10,7 @@ public class AbpMudThemeBundleStyleContributor : BundleContributor
     {
         context.Files.AddIfNotContains(AbpMudThemeAssetFiles.MudBlazorCss);
         context.Files.AddIfNotContains(AbpMudThemeAssetFiles.ThemeCss);
+        context.Files.AddIfNotContains(new BundleFile(AbpMudThemeAssetFiles.GoogleFontCss, true));
+        context.Files.AddIfNotContains(AbpMudThemeAssetFiles.MvcLayoutCss);
     }
 }

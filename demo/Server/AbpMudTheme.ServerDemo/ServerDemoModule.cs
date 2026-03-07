@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 using MudBlazor;
 using MudBlazor.Services;
 using OpenIddict.Validation.AspNetCore;
+using Starbender.AbpMudTheme.Extensions;
 using Starbender.AbpMudTheme.Mvc;
 using Starbender.AbpMudTheme.Mvc.Bundling;
 using Starbender.AbpMudTheme.Server;
@@ -279,28 +280,27 @@ public class ServerDemoModule : AbpModule
         // The MudBlazor Services are already configured but you may 
         // override the defaults here. If you don't want any additional 
         // customizations, you can remove the AddMudServices(...) here
-        context.Services.AddMudServices(config =>
-        {
-            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
-            config.SnackbarConfiguration.RequireInteraction = false;
-            config.SnackbarConfiguration.PreventDuplicates = false;
-            config.SnackbarConfiguration.NewestOnTop = false;
-            config.SnackbarConfiguration.ShowCloseIcon = true;
-            config.SnackbarConfiguration.VisibleStateDuration = 5000;
-            config.SnackbarConfiguration.HideTransitionDuration = 500;
-            config.SnackbarConfiguration.ShowTransitionDuration = 500;
-            config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
-        });
+        //context.Services.AddMudServices(config =>
+        //{
+        //    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+        //    config.SnackbarConfiguration.RequireInteraction = false;
+        //    config.SnackbarConfiguration.PreventDuplicates = false;
+        //    config.SnackbarConfiguration.NewestOnTop = false;
+        //    config.SnackbarConfiguration.ShowCloseIcon = true;
+        //    config.SnackbarConfiguration.VisibleStateDuration = 5000;
+        //    config.SnackbarConfiguration.HideTransitionDuration = 500;
+        //    config.SnackbarConfiguration.ShowTransitionDuration = 500;
+        //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        //});
+
+        // You can load a theme from the configuration
+        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
 
         // You can override the AbpMudTheme here
-        // Note: DO NOT try to assign a new MudTheme(), you must set properties on the 
-        // instance passed to Configure
-        // TODO: Add a theme.Replace(MudTheme) extension so you can just 
-        //       provide a whole new theme.
-        Configure<MudTheme>(theme =>
-        {
-            theme.LayoutProperties.DrawerWidthLeft = "300px";
-        });
+        //Configure<MudTheme>(theme =>
+        //{
+        //    theme.LayoutProperties.DrawerWidthLeft = "200px";
+        //});
     }
 
     private void ConfigureRouter(ServiceConfigurationContext _)

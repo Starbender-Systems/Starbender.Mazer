@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MudBlazor;
 using Starbender.AbpMudTheme.Mvc.Bundling;
 using Starbender.AbpMudTheme.Mvc.Toolbars;
 using Volo.Abp;
@@ -41,10 +42,7 @@ public class AbpMudThemeMvcModule : AbpModule
 
         Configure<AbpVirtualFileSystemOptions>(options =>
         {
-            options.FileSets.AddEmbedded<AbpMudThemeMvcModule>(
-                "Starbender.AbpMudTheme.Mvc",
-                "/wwwroot"
-            );
+            options.FileSets.AddEmbedded<AbpMudThemeMvcModule>("Starbender.AbpMudTheme.Mvc");
         });
 
         Configure<AbpToolbarOptions>(options =>

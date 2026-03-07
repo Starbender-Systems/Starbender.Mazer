@@ -28,6 +28,7 @@ using Volo.Abp.UI.Navigation;
 using Starbender.AbpMudTheme.WebAssembly;
 using MudBlazor.Services;
 using MudBlazor;
+using Starbender.AbpMudTheme.Extensions;
 
 namespace AbpMudTheme.WebAssemblyDemo;
 
@@ -118,7 +119,8 @@ public class WebAssemblyDemoBlazorModule : AbpModule
     private void ConfigureMudBlazor(ServiceConfigurationContext context)
     {
         // The MudBlazor Services are already configured but you may 
-        // override the defaults here by calling AddMudServices 
+        // override the defaults here. If you don't want any additional 
+        // customizations, you can remove the AddMudServices(...) here
         //context.Services.AddMudServices(config =>
         //{
         //    config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
@@ -132,11 +134,13 @@ public class WebAssemblyDemoBlazorModule : AbpModule
         //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         //});
 
-        // TODO: Add a theme.Replace(MudTheme) extension so you can just 
-        //       provide a whole new theme.
+        // You can load a theme from the configuration
+        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
+
+        // You can override the AbpMudTheme here
         //Configure<MudTheme>(theme =>
         //{
-        //    theme.LayoutProperties.DrawerWidthLeft = "300px";
+        //    theme.LayoutProperties.DrawerWidthLeft = "200px";
         //});
     }
 

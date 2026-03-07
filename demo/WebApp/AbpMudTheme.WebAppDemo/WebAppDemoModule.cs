@@ -16,6 +16,7 @@ using Starbender.AbpMudTheme.Mvc;
 using Starbender.AbpMudTheme.Mvc.Bundling;
 using Starbender.AbpMudTheme.Server;
 using Starbender.AbpMudTheme.WebAssembly.Bundling;
+using Starbender.AbpMudTheme.Extensions;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -303,11 +304,13 @@ public class WebAppDemoModule : AbpModule
         //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         //});
 
-        // TODO: Add a theme.Replace(MudTheme) extension so you can just 
-        //       provide a whole new theme.
+        // You can load a theme from the configuration
+        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
+
+        // You can override the AbpMudTheme here
         //Configure<MudTheme>(theme =>
         //{
-        //    theme.LayoutProperties.DrawerWidthLeft = "300px";
+        //    theme.LayoutProperties.DrawerWidthLeft = "200px";
         //});
     }
 

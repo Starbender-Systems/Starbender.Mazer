@@ -2,28 +2,6 @@
 # yarn lockfile v1
 
 
-"@abp/aspnetcore.components.server.basictheme@~10.0.2":
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/@abp/aspnetcore.components.server.basictheme/-/aspnetcore.components.server.basictheme-10.0.3.tgz#dcfd05f37ea30a1a330b59bf7cc1208ea74efc45"
-  integrity sha512-OlJbz+Lg/Dmo+FXfXdReKPjxTXK4BHIeWmyS4h9rV0z9zuSCHTl8Nvlg47rkAh4cVMWe/79rxmAIlH6bF4mZ3A==
-  dependencies:
-    "@abp/aspnetcore.components.server.theming" "~10.0.3"
-
-"@abp/aspnetcore.components.server.theming@~10.0.3":
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/@abp/aspnetcore.components.server.theming/-/aspnetcore.components.server.theming-10.0.3.tgz#c133e4a7ac122c3f7c114319de8d449e0cc7f333"
-  integrity sha512-/Q8i+qw9Ye2Uqfe4otFV9PAPN9IaTYE7EgGE0gRcwJEaVejnO7vFKo/3MFgfZ61jgnBA0mf4HCB8iDf6u+RpKg==
-  dependencies:
-    "@abp/bootstrap" "~10.0.3"
-    "@abp/font-awesome" "~10.0.3"
-
-"@abp/aspnetcore.mvc.ui.theme.basic@~10.0.2":
-  version "10.0.3"
-  resolved "https://registry.yarnpkg.com/@abp/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-10.0.3.tgz#fdd0b769531e0d2d6ba6c37a12e424c3cfae8a8d"
-  integrity sha512-Z4b6A2yekSdFKM29pWpc252Wz/uofSKTlSzoO1mImLWnm4LH6YeQwK5eEx9LSYtHq0Y0R5i+yVhqYed98hWong==
-  dependencies:
-    "@abp/aspnetcore.mvc.ui.theme.shared" "~10.0.3"
-
 "@abp/aspnetcore.mvc.ui.theme.shared@~10.0.3":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@abp/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-10.0.3.tgz#1e7edfe0f229f5c32cfa91493f3a3319549cdb67"

@@ -17,6 +17,7 @@
     <Project Path="src/Starbender.AbpMudTheme.Installer/Starbender.AbpMudTheme.Installer.csproj" />
     <Project Path="src/Starbender.AbpMudTheme.Mvc/Starbender.AbpMudTheme.Mvc.csproj" />
     <Project Path="src/Starbender.AbpMudTheme.Server/Starbender.AbpMudTheme.Server.csproj" />
+    <Project Path="src/Starbender.AbpMudTheme.Shared/Starbender.AbpMudTheme.Shared.shproj" Id="863e5223-7b18-4911-817b-5d92d77d6aa4" />
     <Project Path="src/Starbender.AbpMudTheme.WebAssembly.Bundling/Starbender.AbpMudTheme.WebAssembly.Bundling.csproj" />
     <Project Path="src/Starbender.AbpMudTheme.WebAssembly/Starbender.AbpMudTheme.WebAssembly.csproj" />
     <Project Path="src/Starbender.AbpMudTheme/Starbender.AbpMudTheme.csproj" />
