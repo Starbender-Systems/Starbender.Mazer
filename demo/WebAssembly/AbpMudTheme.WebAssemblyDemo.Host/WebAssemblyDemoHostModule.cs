@@ -53,9 +53,11 @@ using Volo.Abp.Studio.Client.AspNetCore;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Starbender.AbpMudTheme;
+using AbpMudTheme.WebAssemblyDemo.Menus;
 
 namespace AbpMudTheme.WebAssemblyDemo;
 
@@ -177,6 +179,7 @@ public class WebAssemblyDemoHostModule : AbpModule
         ConfigureAuthentication(context);
         ConfigureBundles();
         ConfigureMultiTenancy();
+        ConfigureMenu(context);
         ConfigureUrls(configuration);
         ConfigureSwagger(context.Services, configuration);
         ConfigureAutoApiControllers();
@@ -289,6 +292,14 @@ public class WebAssemblyDemoHostModule : AbpModule
         Configure<AbpMultiTenancyOptions>(options =>
         {
             options.IsEnabled = MultiTenancyConsts.IsEnabled;
+        });
+    }
+
+    private void ConfigureMenu(ServiceConfigurationContext context)
+    {
+        Configure<AbpNavigationOptions>(options =>
+        {
+            options.MenuContributors.Add(new WebAssemblyDemoMenuContributor(context.Services.GetConfiguration()));
         });
     }
 
