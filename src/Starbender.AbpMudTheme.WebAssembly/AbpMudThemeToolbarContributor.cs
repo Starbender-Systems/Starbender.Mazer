@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Starbender.AbpMudTheme.Components.Theme;
+using Starbender.AbpMudTheme.WebAssembly.Components;
 using System.Threading.Tasks;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 

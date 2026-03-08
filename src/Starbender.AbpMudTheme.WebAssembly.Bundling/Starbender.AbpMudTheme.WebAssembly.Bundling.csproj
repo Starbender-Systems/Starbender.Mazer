@@ -1,7 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <Import Project="..\Starbender.AbpMudTheme.Shared\Starbender.AbpMudTheme.Shared.projitems" Label="Shared" />
-
     <Import Project="..\..\configureawait.props" />
 
     <PropertyGroup>
@@ -16,6 +14,10 @@
 
     <ItemGroup>
       <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Starbender.AbpMudTheme.Shared\Starbender.AbpMudTheme.Shared.csproj" />
     </ItemGroup>
 
 </Project>

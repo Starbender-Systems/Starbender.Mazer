@@ -20,7 +20,7 @@ public class Program
             builder.Host.AddAppSettingsSecretsJson()
                 .UseAutofac()
                 .UseSerilog((context, services, loggerConfiguration) =>
-                {                   
+                {
                     if (IsMigrateDatabase(args))
                     {
                         loggerConfiguration
@@ -31,11 +31,11 @@ public class Program
                     else
                     {
                         loggerConfiguration
-                        #if DEBUG
+#if DEBUG
                             .MinimumLevel.Debug()
-                        #else
+#else
                             .MinimumLevel.Information()
-                        #endif
+#endif
                             .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
                             .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
                             .Enrich.FromLogContext()

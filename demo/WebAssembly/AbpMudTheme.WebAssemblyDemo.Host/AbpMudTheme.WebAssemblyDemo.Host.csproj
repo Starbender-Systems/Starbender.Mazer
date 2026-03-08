@@ -84,7 +84,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Starbender.AbpMudTheme.Mvc\Starbender.AbpMudTheme.Mvc.csproj" />
-    <ProjectReference Include="..\..\..\src\Starbender.AbpMudTheme.WebAssembly.Bundling\Starbender.AbpMudTheme.WebAssembly.Bundling.csproj" />
     <ProjectReference Include="..\AbpMudTheme.WebAssemblyDemo.Blazor\AbpMudTheme.WebAssemblyDemo.Blazor.csproj" />
     <ProjectReference Include="..\AbpMudTheme.WebAssemblyDemo.Contracts\AbpMudTheme.WebAssemblyDemo.Contracts.csproj" />
   </ItemGroup>

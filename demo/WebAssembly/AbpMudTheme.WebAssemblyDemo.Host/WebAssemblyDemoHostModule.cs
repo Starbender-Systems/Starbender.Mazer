@@ -2,17 +2,14 @@ using AbpMudTheme.WebAssemblyDemo.Components;
 using AbpMudTheme.WebAssemblyDemo.Data;
 using AbpMudTheme.WebAssemblyDemo.Localization;
 using AbpMudTheme.WebAssemblyDemo.MultiTenancy;
+using AbpMudTheme.WebAssemblyDemo.Menus;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
-using MudBlazor;
 using OpenIddict.Validation.AspNetCore;
-using Starbender.AbpMudTheme.Mvc;
-using Starbender.AbpMudTheme.Mvc.Bundling;
-using Starbender.AbpMudTheme.WebAssembly.Bundling;
-using Starbender.AbpMudTheme.Extensions;
+
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
@@ -57,7 +54,11 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Starbender.AbpMudTheme;
-using AbpMudTheme.WebAssemblyDemo.Menus;
+
+using Starbender.AbpMudTheme.WebAssembly.Bundling;
+using Starbender.AbpMudTheme.Extensions;
+using Starbender.AbpMudTheme.Mvc.Bundling;
+using Starbender.AbpMudTheme.Mvc;
 
 namespace AbpMudTheme.WebAssemblyDemo;
 
@@ -101,8 +102,8 @@ namespace AbpMudTheme.WebAssemblyDemo;
     typeof(AbpSettingManagementApplicationModule),
 
     // theme
-    typeof(AbpMudThemeModule),
     typeof(AbpMudThemeMvcModule),
+    typeof(AbpMudThemeModule),
     typeof(AbpMudThemeWebAssemblyBundlingModule),
 
     // Entity Framework Core packages for the used modules
@@ -187,7 +188,7 @@ public class WebAssemblyDemoHostModule : AbpModule
         ConfigureDataProtection(context);
         ConfigureVirtualFiles(hostingEnvironment);
         ConfigureEfCore(context);
-        //ConfigureMudTheme(context);
+        ConfigureMudTheme(context);
     }
 
     private void ConfigureMudTheme(ServiceConfigurationContext context)
@@ -207,14 +208,14 @@ public class WebAssemblyDemoHostModule : AbpModule
         //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         //});
 
-        // You can load a theme from the configuration
-        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
-
         // You can override the AbpMudTheme here
         //Configure<MudTheme>(theme =>
         //{
         //    theme.LayoutProperties.DrawerWidthLeft = "200px";
         //});
+
+        // You can load a theme from the configuration
+        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
     }
 
     private void ConfigureStudio(IHostEnvironment hostingEnvironment)
@@ -241,7 +242,6 @@ public class WebAssemblyDemoHostModule : AbpModule
     {
         Configure<AbpBundlingOptions>(options =>
         {
-            // MVC UI
             options.StyleBundles.Configure(
                 AbpMudThemeBundles.Styles.Global,
                 bundle =>
@@ -252,23 +252,6 @@ public class WebAssemblyDemoHostModule : AbpModule
 
             options.ScriptBundles.Configure(
                 AbpMudThemeBundles.Scripts.Global,
-                bundle =>
-                {
-                    bundle.AddFiles("/global-scripts.js");
-                }
-            );
-
-            // Blazor UI
-            options.StyleBundles.Configure(
-                BlazorWebAssemblyStandardBundles.Styles.Global,
-                bundle =>
-                {
-                    bundle.AddFiles("/global-styles.css");
-                }
-            );
-
-            options.ScriptBundles.Configure(
-                BlazorWebAssemblyStandardBundles.Scripts.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-scripts.js");

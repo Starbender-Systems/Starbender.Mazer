@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using MudBlazor;
 using Starbender.AbpMudTheme.Mvc.Bundling;
 using Starbender.AbpMudTheme.Mvc.Toolbars;
-using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
@@ -32,11 +30,11 @@ public class AbpMudThemeMvcModule : AbpModule
     {
         Configure<AbpThemingOptions>(options =>
         {
-            options.Themes.Add<MudBlazorTheme>();
+            options.Themes.Add<StarbenderTheme>();
 
             if (options.DefaultThemeName == null)
             {
-                options.DefaultThemeName = MudBlazorTheme.Name;
+                options.DefaultThemeName = StarbenderTheme.Name;
             }
         });
 

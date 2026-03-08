@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using MudBlazor;
-using MudBlazor.Services;
 using OpenIddict.Validation.AspNetCore;
 using Starbender.AbpMudTheme.Mvc;
 using Starbender.AbpMudTheme.Mvc.Bundling;
@@ -304,14 +302,14 @@ public class WebAppDemoModule : AbpModule
         //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         //});
 
-        // You can load a theme from the configuration
-        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
-
         // You can override the AbpMudTheme here
         //Configure<MudTheme>(theme =>
         //{
         //    theme.LayoutProperties.DrawerWidthLeft = "200px";
         //});
+
+        // You can load a theme from the configuration
+        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
     }
 
     private void ConfigureRouter(ServiceConfigurationContext _)

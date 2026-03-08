@@ -19,7 +19,7 @@ public class AbpMudThemeMainTopToolbarContributor : IToolbarContributor
             return;
         }
 
-        if (context.Theme is not MudBlazorTheme)
+        if (context.Theme is not StarbenderTheme)
         {
             return;
         }

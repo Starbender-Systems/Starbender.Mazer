@@ -128,14 +128,14 @@ public class WebAppDemoClientModule : AbpModule
         //    config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         //});
 
-        // You can load a theme from the configuration
-        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
-
         // You can override the AbpMudTheme here
         //Configure<MudTheme>(theme =>
         //{
         //    theme.LayoutProperties.DrawerWidthLeft = "200px";
         //});
+
+        // You can load a theme from the configuration
+        context.Services.AddMudTheme(context.Configuration.GetSection("MudTheme"));
     }
 
     private static void ConfigureAuthentication(WebAssemblyHostBuilder builder)

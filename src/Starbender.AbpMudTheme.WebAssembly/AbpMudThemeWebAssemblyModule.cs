@@ -10,10 +10,10 @@ using Volo.Abp.Modularity;
 namespace Starbender.AbpMudTheme.WebAssembly;
 
 [DependsOn(
-    typeof(AbpAspNetCoreComponentsWebAssemblyThemingModule),
-    typeof(AbpHttpClientIdentityModelWebAssemblyModule),
+    typeof(AbpMudThemeWebAssemblyBundlingModule),
     typeof(AbpMudThemeModule),
-    typeof(AbpMudThemeWebAssemblyBundlingModule)
+    typeof(AbpAspNetCoreComponentsWebAssemblyThemingModule),
+    typeof(AbpHttpClientIdentityModelWebAssemblyModule)
     )]
 public class AbpMudThemeWebAssemblyModule : AbpModule
 {

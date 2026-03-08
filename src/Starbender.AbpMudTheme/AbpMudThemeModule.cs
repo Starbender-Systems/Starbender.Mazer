@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using MudBlazor;
 using MudBlazor.Services;
+using System;
 using Volo.Abp.AspNetCore.Components.Web.Theming;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Theming;
 using Volo.Abp.Modularity;
@@ -17,11 +18,11 @@ public class AbpMudThemeModule : AbpModule
     {
         Configure<AbpThemingOptions>(options =>
         {
-            options.Themes.Add<MudBlazorTheme>();
+            options.Themes.Add<StarbenderTheme>();
 
             if (options.DefaultThemeName == null)
             {
-                options.DefaultThemeName = MudBlazorTheme.Name;
+                options.DefaultThemeName = StarbenderTheme.Name;
             }
         });
 

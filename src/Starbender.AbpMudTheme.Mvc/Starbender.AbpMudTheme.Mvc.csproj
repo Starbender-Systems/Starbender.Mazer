@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <Import Project="..\Starbender.AbpMudTheme.Shared\Starbender.AbpMudTheme.Shared.projitems" Label="Shared" />
-
   <Import Project="..\..\configureawait.props" />
 
   <PropertyGroup>
@@ -24,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\favicon.ico" Link="wwwroot\themes\abpmudtheme\favicon.ico" />
+    <Content Include="..\favicon.ico" Link="wwwroot\favicon.ico" />
     <Content Include="..\Nuget.png" Link="Nuget.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -34,6 +32,10 @@
     <PackageReference Include="MudBlazor" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Starbender.AbpMudTheme.Shared\Starbender.AbpMudTheme.Shared.csproj" />
   </ItemGroup>
 
 </Project>

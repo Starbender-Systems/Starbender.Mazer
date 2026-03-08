@@ -1,5 +1,4 @@
-﻿using Starbender.AbpMudTheme.Shared;
-using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
+﻿using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 
 namespace Starbender.AbpMudTheme.Mvc.Bundling;
 
