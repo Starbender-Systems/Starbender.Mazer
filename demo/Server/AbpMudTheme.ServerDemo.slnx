@@ -1,7 +1,0 @@
-<Solution>
-    <Configurations>
-        <Platform Name="Any CPU" />
-    </Configurations>
-
-    <Project Path="AbpMudTheme.ServerDemo/AbpMudTheme.ServerDemo.csproj" />
-</Solution>

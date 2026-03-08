@@ -1,10 +1,10 @@
-﻿{
+{
   "applications": {
-    "AbpMudTheme.WebAppDemo": {
+    "Mazer.WebAppDemo": {
       "type": "dotnet-project",
       "launchUrl": "https://localhost:44386",
       "healthCheckEndpoint": "/",
-      "path": "../../AbpMudTheme.WebAppDemo/AbpMudTheme.WebAppDemo.csproj",
+      "path": "../../Mazer.WebAppDemo/Mazer.WebAppDemo.csproj",
       "execution": {
         "order": 0
       }

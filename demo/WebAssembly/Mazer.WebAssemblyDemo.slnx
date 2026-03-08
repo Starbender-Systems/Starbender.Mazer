@@ -1,0 +1,9 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU" />
+    </Configurations>
+
+    <Project Path="Mazer.WebAssemblyDemo.Contracts/Mazer.WebAssemblyDemo.Contracts.csproj" />
+    <Project Path="Mazer.WebAssemblyDemo.Blazor/Mazer.WebAssemblyDemo.Blazor.csproj" />
+    <Project Path="Mazer.WebAssemblyDemo.Host/Mazer.WebAssemblyDemo.Host.csproj" />
+</Solution>

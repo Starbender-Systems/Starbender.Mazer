@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "name": "my-app",
+  "private": true,
+  "dependencies": {
+    "@abp/bootstrap": "~10.0.3",
+    "@abp/font-awesome": "~10.0.3",
+    "@abp/aspnetcore.mvc.ui.theme.shared": "~10.0.3"
+  },
+  "resolutions": {
+    "jquery": "3.7.1"
+  }
+}

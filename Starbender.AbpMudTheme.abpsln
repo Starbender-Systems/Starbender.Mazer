@@ -1,7 +1,0 @@
-{
-  "modules": {
-    "Starbender.AbpMudTheme": {
-      "path": "Starbender.AbpMudTheme.abpmdl"
-    }
-  }
-}

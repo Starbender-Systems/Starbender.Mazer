@@ -1,9 +1,0 @@
-<Solution>
-    <Configurations>
-        <Platform Name="Any CPU" />
-    </Configurations>
-
-    <Project Path="AbpMudTheme.WebAssemblyDemo.Contracts/AbpMudTheme.WebAssemblyDemo.Contracts.csproj" />
-    <Project Path="AbpMudTheme.WebAssemblyDemo.Blazor/AbpMudTheme.WebAssemblyDemo.Blazor.csproj" />
-    <Project Path="AbpMudTheme.WebAssemblyDemo.Host/AbpMudTheme.WebAssemblyDemo.Host.csproj" />
-</Solution>

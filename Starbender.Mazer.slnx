@@ -1,0 +1,46 @@
+<Solution>
+  <Folder Name="/demo/" />
+  <Folder Name="/demo/BlazorServer/">
+    <Project Path="demo/Server/Mazer.ServerDemo/Mazer.ServerDemo.csproj" />
+  </Folder>
+  <Folder Name="/demo/MvcUi/">
+    <Project Path="demo/MvcUi/Mazer.MvcDemo/Mazer.MvcDemo.csproj" />
+  </Folder>
+  <Folder Name="/demo/WebApp/">
+    <Project Path="demo/WebApp/Mazer.WebAppDemo.Client/Mazer.WebAppDemo.Client.csproj" />
+    <Project Path="demo/WebApp/Mazer.WebAppDemo.Contracts/Mazer.WebAppDemo.Contracts.csproj" />
+    <Project Path="demo/WebApp/Mazer.WebAppDemo/Mazer.WebAppDemo.csproj" />
+  </Folder>
+  <Folder Name="/demo/WebAssembly/">
+    <Project Path="demo/WebAssembly/Mazer.WebAssemblyDemo.Blazor/Mazer.WebAssemblyDemo.Blazor.csproj" />
+    <Project Path="demo/WebAssembly/Mazer.WebAssemblyDemo.Contracts/Mazer.WebAssemblyDemo.Contracts.csproj" />
+    <Project Path="demo/WebAssembly/Mazer.WebAssemblyDemo.Host/Mazer.WebAssemblyDemo.Host.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Starbender.Mazer.Installer/Starbender.Mazer.Installer.csproj" />
+    <Project Path="src/Starbender.Mazer.Mvc/Starbender.Mazer.Mvc.csproj" />
+    <Project Path="src/Starbender.Mazer.Server/Starbender.Mazer.Server.csproj" />
+    <Project Path="src/Starbender.Mazer.Shared/Starbender.Mazer.Shared.csproj" />
+    <Project Path="src/Starbender.Mazer.WebAssembly.Bundling/Starbender.Mazer.WebAssembly.Bundling.csproj" />
+    <Project Path="src/Starbender.Mazer.WebAssembly/Starbender.Mazer.WebAssembly.csproj" />
+    <Project Path="src/Starbender.Mazer/Starbender.Mazer.csproj" />
+  </Folder>
+  <Folder Name="/_SolutionItems/">
+    <File Path=".editorconfig" />
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="configureawait.props" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="LICENSE.md" />
+    <File Path="NuGet.Config" />
+    <File Path="README.md" />
+    <File Path="Starbender.Mazer.abpmdl" />
+    <File Path="Starbender.Mazer.abpsln" />
+  </Folder>
+  <Folder Name="/_SolutionItems/abp/">
+    <File Path="configureawait.props" />
+    <File Path="Starbender.Mazer.abpmdl" />
+    <File Path="Starbender.Mazer.abpsln" />
+  </Folder>
+</Solution>

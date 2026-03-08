@@ -1,10 +1,10 @@
 services:
   webassemblydemo-web:
-    image: abpmudtheme/webassemblydemo:latest
+    image: Mazer/webassemblydemo:latest
     container_name: webassemblydemo
     build:
       context: ../../
-      dockerfile: AbpMudTheme.WebAssemblyDemo.Host/Dockerfile.local
+      dockerfile: Mazer.WebAssemblyDemo.Host/Dockerfile.local
     environment:
       - ASPNETCORE_URLS=https://+:8081;http://+:8080;
       - Kestrel__Certificates__Default__Path=/app/certs/localhost.pfx
@@ -23,11 +23,11 @@ services:
       - abp-network  
   
   db-migrator:
-    image: abpmudtheme/webassemblydemo:latest
+    image: Mazer/webassemblydemo:latest
     container_name: db-migrator
     build:
       context: ../../
-      dockerfile: AbpMudTheme.WebAssemblyDemo.Host/Dockerfile.local
+      dockerfile: Mazer.WebAssemblyDemo.Host/Dockerfile.local
     environment:
       - ConnectionStrings__Default=Data Source=sql-server;Initial Catalog=WebAssemblyDemo;User Id=sa;Password=myPassw0rd;MultipleActiveResultSets=true;TrustServerCertificate=True;
     command:

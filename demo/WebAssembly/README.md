@@ -1,4 +1,4 @@
-# AbpMudTheme.WebAssemblyDemo
+# Mazer.WebAssemblyDemo
 
 ## About this solution
 

@@ -1,4 +1,4 @@
-# AbpMudTheme.ServerDemo
+# Mazer.ServerDemo
 
 ## About this solution
 

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\Nuget.png" Link="Nuget.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components.Server.Theming" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Starbender.Mazer.Shared\Starbender.Mazer.Shared.csproj" />
+    <ProjectReference Include="..\Starbender.Mazer\Starbender.Mazer.csproj" />
+  </ItemGroup>
+
+</Project>

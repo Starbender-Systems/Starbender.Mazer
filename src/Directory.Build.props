@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
 		<AbpProjectType>module</AbpProjectType>
-		<RepositoryUrl>hhttps://github.com/alvahdean/Starbender.AbpMudTheme.git</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/alvahdean/Starbender.AbpMudTheme.git</PackageProjectUrl>
+		<RepositoryUrl>hhttps://github.com/alvahdean/Starbender.Mazer.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/alvahdean/Starbender.Mazer.git</PackageProjectUrl>
 		<Company>StarbenderSystems</Company>
 		<RepositoryType>GIT</RepositoryType>
 		<Authors>Dean Fuqua</Authors>
@@ -13,6 +13,8 @@
 		<PackageTags>blazor csharp abp mudblazor theme</PackageTags>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+		<IsPackable>true</IsPackable>
+    	<OutputType>Library</OutputType>
 	</PropertyGroup>
 
 	<ItemGroup Condition="'$(UsingMicrosoftNETSdkWeb)' != 'true' AND '$(UsingMicrosoftNETSdkRazor)' != 'true'">

@@ -26,12 +26,12 @@ Run-Step "InstallLibs" {
 }
 
 Run-Step "DbMigrator" {
-    Set-Location (Join-Path $scriptRoot "../../AbpMudTheme.ServerDemo")
+    Set-Location (Join-Path $scriptRoot "../../Mazer.ServerDemo")
     dotnet run --migrate-database
 }
 
 Run-Step "DevCert" {
-    Set-Location (Join-Path $scriptRoot "../../AbpMudTheme.ServerDemo")
+    Set-Location (Join-Path $scriptRoot "../../Mazer.ServerDemo")
     dotnet dev-certs https -v -ep openiddict.pfx -p 5311caeb-4c3b-43ce-8d88-500f0599366b
 }
 

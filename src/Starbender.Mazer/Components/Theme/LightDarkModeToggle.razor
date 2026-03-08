@@ -1,0 +1,7 @@
+@inherits AbpComponentBase
+
+@inject MudBlazorThemeManager ThemeManager
+
+<MudIconButton Color="@Color.Inherit" aria-label="Toggle light and dark mode"
+               OnClick="ToggleDarkMode"
+               Icon="@(ThemeManager.IsDarkMode ? Icons.Material.Outlined.DarkMode : Icons.Material.Outlined.LightMode)" />

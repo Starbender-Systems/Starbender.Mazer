@@ -185,11 +185,17 @@
     <PackageVersion Include="TickerQ.Utilities" Version="10.1.1" />
     <PackageVersion Include="TickerQ.EntityFrameworkCore" Version="10.1.1" />
     <PackageVersion Include="Unidecode.NET" Version="2.1.0" />
+    <PackageVersion Include="Volo.Abp.Account.Application.Contracts" Version="10.0.2" />
+    <PackageVersion Include="Volo.Abp.Account.Web" Version="10.0.2" />
+    <PackageVersion Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="10.0.2" />
+    <PackageVersion Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.AspNetCore.Components.Server.Theming" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.AspNetCore.Components.Web.Theming" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.AspNetCore.Components.WebAssembly.Theming" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling" Version="10.0.2" />
+    <PackageVersion Include="Volo.Abp.Core" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.Http.Client.IdentityModel.WebAssembly" Version="10.0.2" />
+    <PackageVersion Include="Volo.Abp.Identity.AspNetCore" Version="10.0.2" />
     <PackageVersion Include="Volo.Abp.VirtualFileSystem" Version="10.0.2" />
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.extensibility.execution" Version="2.9.3" />
