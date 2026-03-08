@@ -1,0 +1,26 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "demo": {}
+    }
+  },
+  "packages": {
+    "Starbender.Mazer.Server": {
+      "path": "src/Starbender.Mazer.Server/Starbender.Mazer.Server.abppkg",
+      "folder": "src"
+    },
+    "Starbender.Mazer": {
+      "path": "src/Starbender.Mazer/Starbender.Mazer.abppkg",
+      "folder": "src"
+    },
+    "Starbender.Mazer.WebAssembly": {
+      "path": "src/Starbender.Mazer.WebAssembly/Starbender.Mazer.WebAssembly.abppkg",
+      "folder": "src"
+    },
+    "Starbender.Mazer.WebAssembly.Bundling": {
+      "path": "src/Starbender.Mazer.WebAssembly.Bundling/Starbender.Mazer.WebAssembly.Bundling.abppkg",
+      "folder": "src"
+    }
+  }
+}

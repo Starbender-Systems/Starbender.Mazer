@@ -1,4 +1,4 @@
-# AbpMudTheme.WebAppDemo
+# Mazer.WebAppDemo
 
 ## About this solution
 

@@ -1,4 +1,4 @@
-# AbpMudTheme.MvcDemo
+# Mazer.MvcDemo
 
 ## About this solution
 

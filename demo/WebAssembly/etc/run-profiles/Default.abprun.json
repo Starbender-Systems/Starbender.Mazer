@@ -1,11 +1,11 @@
-﻿{
+{
   "applications": {
-    "AbpMudTheme.WebAssemblyDemo": {
+    "Mazer.WebAssemblyDemo": {
       "type": "dotnet-project",
       "launchUrl": "https://localhost:44318",
       "healthCheckEndpoint": "/",
       "healthCheckEndpoint": "/",
-      "path": "../../AbpMudTheme.WebAssemblyDemo.Host/AbpMudTheme.WebAssemblyDemo.Host.csproj",
+      "path": "../../Mazer.WebAssemblyDemo.Host/Mazer.WebAssemblyDemo.Host.csproj",
       "execution": {
         "order": 0
       }

@@ -255,7 +255,7 @@ paket-files/
 **/.abpstudio/
 
 # WebAppDemo
-AbpMudTheme.WebAppDemo/Logs/*
+Mazer.WebAppDemo/Logs/*
 
 *.db
 *.db-shm

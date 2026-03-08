@@ -1,0 +1,14 @@
+@using Microsoft.Extensions.Logging
+@using Microsoft.Extensions.Options
+@using MudBlazor
+@using Starbender.Mazer.Mvc
+@using Starbender.Mazer.Mvc.Themes.Mazer.Styling
+@inject IOptionsMonitor<MudTheme> MudThemeOptions
+@inject ILogger<MazerMvcModule> Logger
+@{
+    var paletteVariablesCss = MudThemeCssVariablesBuilder.Build(MudThemeOptions.CurrentValue);
+    Logger.LogDebug(paletteVariablesCss);
+}
+<style id="abp-mud-theme-palette-variables">
+@Html.Raw(paletteVariablesCss)
+</style>

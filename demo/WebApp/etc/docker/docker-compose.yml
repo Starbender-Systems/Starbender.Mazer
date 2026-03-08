@@ -1,10 +1,10 @@
 services:
   webappdemo:
-    image: abpmudtheme/webappdemo:latest
+    image: Mazer/webappdemo:latest
     container_name: webappdemo
     build:
       context: ../../
-      dockerfile: AbpMudTheme.WebAppDemo/Dockerfile.local
+      dockerfile: Mazer.WebAppDemo/Dockerfile.local
     environment:
       - ASPNETCORE_URLS=https://+:8081;http://+:8080;
       - Kestrel__Certificates__Default__Path=/app/certs/localhost.pfx
@@ -23,11 +23,11 @@ services:
       - abp-network  
   
   db-migrator:
-    image: abpmudtheme/webappdemo:latest
+    image: Mazer/webappdemo:latest
     container_name: db-migrator
     build:
       context: ../../
-      dockerfile: AbpMudTheme.WebAppDemo/Dockerfile.local
+      dockerfile: Mazer.WebAppDemo/Dockerfile.local
     environment:
       - ConnectionStrings__Default=Data Source=sql-server;Initial Catalog=WebAppDemo;User Id=sa;Password=myPassw0rd;MultipleActiveResultSets=true;TrustServerCertificate=True;
     command:

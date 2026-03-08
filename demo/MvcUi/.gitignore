@@ -255,7 +255,7 @@ paket-files/
 **/.abpstudio/
 
 # MvcDemo
-AbpMudTheme.MvcDemo/Logs/*
+Mazer.MvcDemo/Logs/*
 
 *.db
 *.db-shm

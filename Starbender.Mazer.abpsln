@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "Starbender.Mazer": {
+      "path": "Starbender.Mazer.abpmdl"
+    }
+  }
+}

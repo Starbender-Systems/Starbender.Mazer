@@ -1,0 +1,47 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using MudBlazor;
+using MudBlazor.Services;
+using System;
+using Volo.Abp.AspNetCore.Components.Web.Theming;
+using Volo.Abp.AspNetCore.Components.Web.Theming.Theming;
+using Volo.Abp.Modularity;
+
+namespace Starbender.Mazer;
+
+[DependsOn(
+    typeof(AbpAspNetCoreComponentsWebThemingModule)
+)]
+public class MazerModule : AbpModule
+{
+    public override void ConfigureServices(ServiceConfigurationContext context)
+    {
+        Configure<AbpThemingOptions>(options =>
+        {
+            options.Themes.Add<StarbenderTheme>();
+
+            if (options.DefaultThemeName == null)
+            {
+                options.DefaultThemeName = StarbenderTheme.Name;
+            }
+        });
+
+        ConfigureMudBlazor(context);
+    }
+
+    private void ConfigureMudBlazor(ServiceConfigurationContext context)
+    {
+        context.Services.AddMudServices(config =>
+        {
+            config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+            config.SnackbarConfiguration.RequireInteraction = false;
+            config.SnackbarConfiguration.PreventDuplicates = false;
+            config.SnackbarConfiguration.NewestOnTop = false;
+            config.SnackbarConfiguration.ShowCloseIcon = true;
+            config.SnackbarConfiguration.VisibleStateDuration = 5000;
+            config.SnackbarConfiguration.HideTransitionDuration = 500;
+            config.SnackbarConfiguration.ShowTransitionDuration = 500;
+            config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+        });
+    }
+}

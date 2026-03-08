@@ -255,7 +255,7 @@ paket-files/
 **/.abpstudio/
 
 # WebAssemblyDemo
-AbpMudTheme.WebAssemblyDemo/Logs/*
+Mazer.WebAssemblyDemo/Logs/*
 
 *.db
 *.db-shm

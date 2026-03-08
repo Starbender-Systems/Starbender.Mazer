@@ -1,0 +1,49 @@
+{
+  "id": "13f2b4ac-71a2-4f06-8fdf-b0485d1dfc43",
+  "template": "app-nolayers",
+  "versions": {
+    "AbpFramework": "10.0.2",
+    "AbpStudio": "2.1.9",
+    "TargetDotnetFramework": "net10.0"
+  },
+  "modules": {
+    "Mazer.WebAppDemo": {
+      "path": "Mazer.WebAppDemo.abpmdl"
+    }
+  },
+  "runProfiles": {
+    "Default": {
+      "path": "etc/run-profiles/Default.abprun.json"
+    }
+  },
+  "options": {
+    "httpRequests": {
+      "ignoredUrls": [
+      
+      ]
+    }
+  },
+  "creatingStudioConfiguration": {
+    "template": "app-nolayers",
+    "createdAbpStudioVersion": "2.1.9",
+    "creationTool": "ABP Studio CLI",
+    "multiTenancy": "true",
+    "runInstallLibs": "",
+    "useLocalReferences": "false",
+    "uiFramework": "blazor-webapp",
+    "databaseProvider": "ef",
+    "runDbMigrator": "",
+    "includeTests": "false",
+    "databaseManagementSystem": "sqlserver",
+    "createInitialMigration": "",
+    "theme": "basic",
+    "themeStyle": "",
+    "themeMenuPlacement": "",
+    "publicWebsite": "",
+    "socialLogin": "true",
+    "sampleCrudPage": "true",
+    "selectedLanguages": ["English", "Arabic", "Chinese (Simplified)", "Chinese (Traditional)", "Czech", "English (United Kingdom)", "Finnish", "French", "German (Germany)", "Hindi ", "Hungarian", "Icelandic", "Italian", "Portuguese (Brazil)", "Romanian (Romania)", "Russian", "Slovak", "Spanish", "Swedish", "Turkish", ],
+    "defaultLanguage": "English",
+    "createCommand": "abp new Mazer.WebAppDemo -t app-nolayers --ui-framework blazor-webapp --mobile  --database-provider ef --database-management-system sqlserver --theme basic --skip-migration  --skip-migrator  --no-tests --without-cms-kit --sample-crud-page --dont-run-install-libs --dont-run-bundling -no-file-management"
+  }
+}

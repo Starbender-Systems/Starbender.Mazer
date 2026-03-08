@@ -2,13 +2,13 @@ param ($version='latest')
 
 $currentFolder = $PSScriptRoot
 $slnFolder = Join-Path $currentFolder "../../"
-$appFolder = Join-Path $slnFolder "AbpMudTheme.MvcDemo"
+$appFolder = Join-Path $slnFolder "Mazer.MvcDemo"
 
 
 Write-Host "********* BUILDING Application *********" -ForegroundColor Green
 Set-Location $appFolder
 dotnet publish -c Release
-docker build -f Dockerfile.local -t abpmudtheme/mvcdemo:$version .
+docker build -f Dockerfile.local -t Mazer/mvcdemo:$version .
 
 ### ALL COMPLETED
 Write-Host "********* COMPLETED *********" -ForegroundColor Green

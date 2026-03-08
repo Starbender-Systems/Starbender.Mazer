@@ -1,10 +1,10 @@
 services:
   mvcdemo-web:
-    image: abpmudtheme/mvcdemo:latest
+    image: Mazer/mvcdemo:latest
     container_name: mvcdemo
     build:
       context: ../../
-      dockerfile: AbpMudTheme.MvcDemo/Dockerfile.local
+      dockerfile: Mazer.MvcDemo/Dockerfile.local
     environment:
       - ASPNETCORE_URLS=https://+:8081;http://+:8080;
       - Kestrel__Certificates__Default__Path=/app/certs/localhost.pfx
@@ -23,11 +23,11 @@ services:
       - abp-network  
   
   db-migrator:
-    image: abpmudtheme/mvcdemo:latest
+    image: Mazer/mvcdemo:latest
     container_name: db-migrator
     build:
       context: ../../
-      dockerfile: AbpMudTheme.MvcDemo/Dockerfile.local
+      dockerfile: Mazer.MvcDemo/Dockerfile.local
     environment:
       - ConnectionStrings__Default=Data Source=sql-server;Initial Catalog=MvcDemo;User Id=sa;Password=myPassw0rd;MultipleActiveResultSets=true;TrustServerCertificate=True;
     command:

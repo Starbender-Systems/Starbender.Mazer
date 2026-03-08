@@ -1,0 +1,24 @@
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.Brand
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.Toolbar
+
+<header class="abp-mud-appbar" id="main-navbar">
+    <div class="abp-mud-appbar-content">
+        <button class="abp-mud-drawer-toggle"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-controls="abp-mud-drawer"
+                aria-expanded="true">
+            <span class="abp-mud-drawer-toggle-icon" aria-hidden="true">&#9776;</span>
+        </button>
+
+        <div class="abp-mud-brand">
+            @(await Component.InvokeAsync<MainNavbarBrandViewComponent>())
+        </div>
+
+        <div class="abp-mud-appbar-spacer"></div>
+
+        <ul class="navbar-nav flex-row align-items-center" id="main-navbar-tools">
+            @(await Component.InvokeAsync<MainNavbarToolbarViewComponent>())
+        </ul>
+    </div>
+</header>

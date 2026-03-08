@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
 		<AbpProjectType>module</AbpProjectType>
-		<RepositoryUrl>hhttps://github.com/alvahdean/Starbender.AbpMudTheme.git</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/alvahdean/Starbender.AbpMudTheme.git</PackageProjectUrl>
+		<RepositoryUrl>hhttps://github.com/alvahdean/Starbender.Mazer.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/alvahdean/Starbender.Mazer.git</PackageProjectUrl>
 		<Company>StarbenderSystems</Company>
 		<RepositoryType>GIT</RepositoryType>
 		<Authors>Dean Fuqua</Authors>

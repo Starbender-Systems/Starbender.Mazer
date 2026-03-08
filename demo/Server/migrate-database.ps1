@@ -1,3 +1,3 @@
-dotnet run --project AbpMudTheme.ServerDemo --migrate-database
+dotnet run --project Mazer.ServerDemo --migrate-database
 
 exit $LASTEXITCODE

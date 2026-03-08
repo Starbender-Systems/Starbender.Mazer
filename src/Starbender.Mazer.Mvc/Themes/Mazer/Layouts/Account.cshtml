@@ -1,0 +1,189 @@
+@using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Options
+@using Starbender.Mazer.Mvc.Bundling
+@using Volo.Abp.AspNetCore.MultiTenancy
+@using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+@using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.MainNavbar
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.PageAlerts
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
+@using Volo.Abp.MultiTenancy
+@using Volo.Abp.Localization
+@using Volo.Abp.Ui.Branding
+@using Volo.Abp.Ui.LayoutHooks
+
+@* Added from Application Layout *@
+@using Volo.Abp.AspNetCore.Mvc.UI.Bundling.TagHelpers
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.ContentTitle
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.Brand
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.Menu
+@using Starbender.Mazer.Mvc.Themes.Mazer.Components.Toolbar
+
+@inject IBrandingProvider BrandingProvider
+@inject IOptions<AbpMultiTenancyOptions> MultiTenancyOptions
+@inject ICurrentTenant CurrentTenant
+@inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
+@inject ITenantResolveResultAccessor TenantResolveResultAccessor
+@inject IOptions<AbpThemingOptions> ThemingOptions
+
+@{
+    Layout = null;
+    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
+    var rtl = CultureHelper.IsRtl ? "rtl" : string.Empty;
+}
+
+<!DOCTYPE html>
+
+<html lang="@CultureInfo.CurrentCulture.Name" dir="@rtl" class="abp-theme-init-pending">
+<head>
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
+    @if (!ThemingOptions.Value.BaseUrl.IsNullOrWhiteSpace())
+    {
+        <base href="@ThemingOptions.Value.BaseUrl" />
+    }
+
+    <title>@(ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title)</title>
+
+    <style>
+        html.abp-theme-init-pending body {
+            visibility: hidden;
+        }
+
+        .abp-account-layout .abp-mud-drawer-toggle {
+            display: none;
+        }
+    </style>
+    <noscript>
+        <style>
+            html.abp-theme-init-pending body {
+                visibility: visible;
+            }
+        </style>
+    </noscript>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var storageKey = "abpMudBlazorTheme.state";
+            var isDarkMode = false;
+
+            try {
+                var raw = window.localStorage.getItem(storageKey);
+                if (raw) {
+                    var state = JSON.parse(raw);
+                    if (state && typeof state.isDarkMode === "boolean") {
+                        isDarkMode = state.isDarkMode;
+                    } else {
+                        isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                    }
+                } else {
+                    isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+                }
+            } catch (error) {
+                isDarkMode = !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+            }
+
+            var mode = isDarkMode ? "dark" : "light";
+            root.setAttribute("data-bs-theme", mode);
+
+            if (document.body) {
+                document.body.setAttribute("data-bs-theme", mode);
+            } else {
+                document.addEventListener("DOMContentLoaded", function () {
+                    if (document.body) {
+                        document.body.setAttribute("data-bs-theme", mode);
+                    }
+                }, { once: true });
+            }
+
+            root.classList.remove("abp-theme-init-pending");
+        })();
+    </script>
+
+    @if (ViewBag.Description != null)
+    {
+        <meta name="description" content="@(ViewBag.Description as string)" />
+    }
+    <abp-style-bundle name="@MazerBundles.Styles.Global" />
+    @await Html.PartialAsync("~/Themes/Mazer/Layouts/_MudThemePaletteVariables.cshtml")
+
+    @await RenderSectionAsync("styles", false)
+
+    @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
+</head>
+<body class="abp-account-layout @rtl">
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
+
+    <div class="abp-mud-shell">
+        @(await Component.InvokeAsync<MainNavbarViewComponent>())
+
+        <div class="abp-mud-layout">
+            <main class="abp-mud-main">
+                <div class="@containerClass mt-4">
+                    <abp-row>
+                        <abp-column class="col mx-auto mb-5" style="max-width: 440px">
+                            <div class="brand-container">
+                                <h2 class="brand-text">@BrandingProvider.AppName</h2>
+                            </div>
+                            @if (MultiTenancyOptions.Value.IsEnabled &&
+                              (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true ||
+                               TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(QueryStringTenantResolveContributor.ContributorName) == true))
+                            {
+                                <div class="card shadow-sm rounded mb-3">
+                                    <div class="card-body px-5">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span style="font-size: .8em;" class="text-uppercase text-muted">@MultiTenancyStringLocalizer["Tenant"]</span><br />
+                                                <h6 class="m-0 d-inline-block">
+                                                    @if (CurrentTenant.Id == null)
+                                                    {
+                                                        <span>
+                                                            @MultiTenancyStringLocalizer["NotSelected"]
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                                                    }
+                                                </h6>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-sm mt-3 btn-outline-primary">@MultiTenancyStringLocalizer["Switch"]</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @(await Component.InvokeAsync<PageAlertsViewComponent>())
+                            @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.First, StandardLayouts.Account)
+                            @RenderBody()
+                            @await Component.InvokeLayoutHookAsync(LayoutHooks.PageContent.Last, StandardLayouts.Account)
+                        </abp-column>
+                    </abp-row>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <abp-script-bundle name="@MazerBundles.Scripts.Global" />
+
+    <script src="~/Abp/ApplicationLocalizationScript?cultureName=@CultureInfo.CurrentUICulture.Name"></script>
+    <script src="~/Abp/ApplicationConfigurationScript"></script>
+    <script src="~/Abp/ServiceProxyScript"></script>
+
+    @await RenderSectionAsync("scripts", false)
+
+    @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Account)
+</body>
+</html>

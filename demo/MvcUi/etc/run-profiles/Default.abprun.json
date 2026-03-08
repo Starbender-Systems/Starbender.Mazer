@@ -1,11 +1,11 @@
-﻿{
+{
   "applications": {
-    "AbpMudTheme.MvcDemo": {
+    "Mazer.MvcDemo": {
       "type": "dotnet-project",
       "launchUrl": "https://localhost:44381",
       "healthCheckEndpoint": "/health-status",
       "healthUiEndpoint": "/health-ui",
-      "path": "../../AbpMudTheme.MvcDemo/AbpMudTheme.MvcDemo.csproj",
+      "path": "../../Mazer.MvcDemo/Mazer.MvcDemo.csproj",
       "execution": {
         "order": 0
       }
