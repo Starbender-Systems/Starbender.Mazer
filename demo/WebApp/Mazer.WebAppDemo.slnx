@@ -1,9 +1,0 @@
-<Solution>
-    <Configurations>
-        <Platform Name="Any CPU" />
-    </Configurations>
-
-    <Project Path="Mazer.WebAppDemo.Contracts/Mazer.WebAppDemo.Contracts.csproj" />
-    <Project Path="Mazer.WebAppDemo.Client/Mazer.WebAppDemo.Client.csproj" />
-    <Project Path="Mazer.WebAppDemo/Mazer.WebAppDemo.csproj" />
-</Solution>

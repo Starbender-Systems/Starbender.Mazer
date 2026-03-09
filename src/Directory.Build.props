@@ -1,21 +1,30 @@
 <Project>
 	<PropertyGroup>
 		<AbpProjectType>module</AbpProjectType>
-		<RepositoryUrl>hhttps://github.com/alvahdean/Starbender.Mazer.git</RepositoryUrl>
+		<RepositoryUrl>https://github.com/alvahdean/Starbender.Mazer.git</RepositoryUrl>
 		<PackageProjectUrl>https://github.com/alvahdean/Starbender.Mazer.git</PackageProjectUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<Company>StarbenderSystems</Company>
 		<RepositoryType>GIT</RepositoryType>
 		<Authors>Dean Fuqua</Authors>
 		<PackageReadmeFile>Nuget.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<PackageIcon>NugetIcon.png</PackageIcon>
+		<PackageIcon>Nuget.png</PackageIcon>
 		<PackageTags>blazor csharp abp mudblazor theme</PackageTags>
+		<Description>Starbender Mazer theme components for ABP Framework applications.</Description>
 		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
 		<IsPackable>true</IsPackable>
-    	<OutputType>Library</OutputType>
+	    	<OutputType>Library</OutputType>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)Nuget.png" Pack="true" PackagePath="\" Visible="false" Link="Nuget.png" Condition="Exists('$(MSBuildThisFileDirectory)Nuget.png')" />
+		<None Include="$(MSBuildThisFileDirectory)..\LICENSE.md" Pack="true" PackagePath="\" Visible="false" Link="LICENSE.md" Condition="Exists('$(MSBuildThisFileDirectory)..\LICENSE.md')" />
+		<None Include="$(MSBuildProjectDirectory)\Nuget.md" Pack="true" PackagePath="\" Visible="false" Condition="Exists('$(MSBuildProjectDirectory)\Nuget.md')" />
+	</ItemGroup>
 
 	<ItemGroup Condition="'$(UsingMicrosoftNETSdkWeb)' != 'true' AND '$(UsingMicrosoftNETSdkRazor)' != 'true'">
 		<None Remove="*.abppkg.analyze.json" />

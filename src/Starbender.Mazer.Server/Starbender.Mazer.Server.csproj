@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\Nuget.png" Link="Nuget.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" />
     <PackageReference Include="Volo.Abp.AspNetCore.Components.Server.Theming" />
   </ItemGroup>

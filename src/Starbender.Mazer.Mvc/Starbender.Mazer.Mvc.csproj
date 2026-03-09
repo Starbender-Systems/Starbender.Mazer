@@ -23,9 +23,6 @@
 
   <ItemGroup>
     <Content Include="..\favicon.ico" Link="wwwroot\favicon.ico" />
-    <Content Include="..\Nuget.png" Link="Nuget.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
