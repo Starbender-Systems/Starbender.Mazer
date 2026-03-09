@@ -1,0 +1,131 @@
+name: Build And Publish Packages
+
+on:
+  push:
+    branches:
+      - development
+      - main
+      - production
+  pull_request:
+    branches:
+      - development
+      - main
+      - production
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+jobs:
+  build-pack-publish:
+    runs-on: ubuntu-latest
+    env:
+      SOLUTION_FILE: Starbender.Mazer.slnx
+      PACKAGE_OUTPUT_DIR: artifacts/nuget
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore solution
+        run: dotnet restore "$SOLUTION_FILE"
+
+      - name: Build solution
+        run: dotnet build "$SOLUTION_FILE" --configuration Release --no-restore
+
+      - name: Pack projects under src
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$PACKAGE_OUTPUT_DIR"
+
+          is_development_prerelease=false
+          if [ "${GITHUB_EVENT_NAME}" != "pull_request" ] && [ "${GITHUB_REF_NAME}" = "development" ]; then
+            is_development_prerelease=true
+            echo "Using prerelease package versions with suffix: prerelease-${GITHUB_RUN_NUMBER}"
+          fi
+
+          mapfile -d '' projects < <(find src -name '*.csproj' -print0 | sort -z)
+          if [ "${#projects[@]}" -eq 0 ]; then
+            echo "No .csproj files found under src/"
+            exit 1
+          fi
+
+          for project in "${projects[@]}"; do
+            echo "Packing $project"
+            if [ "$is_development_prerelease" = "true" ]; then
+              current_version="$(dotnet msbuild "$project" -nologo -getProperty:Version | awk 'NF { last=$0 } END { print last }')"
+              if [ -z "$current_version" ]; then
+                echo "Could not resolve Version for $project"
+                exit 1
+              fi
+
+              prerelease_version="${current_version}-prerelease-${GITHUB_RUN_NUMBER}"
+              echo "Resolved package version: $prerelease_version"
+              dotnet pack "$project" --configuration Release --no-build --output "$PACKAGE_OUTPUT_DIR" -p:PackageVersion="$prerelease_version"
+            else
+              dotnet pack "$project" --configuration Release --no-build --output "$PACKAGE_OUTPUT_DIR"
+            fi
+          done
+
+      - name: Upload NuGet package artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-packages
+          path: |
+            artifacts/nuget/*.nupkg
+            artifacts/nuget/*.snupkg
+          if-no-files-found: error
+
+      - name: Publish packages to GitHub Packages
+        if: github.event_name != 'pull_request' && github.ref_name == 'development'
+        shell: bash
+        env:
+          GITHUB_OWNER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          for package in "$PACKAGE_OUTPUT_DIR"/*.nupkg; do
+            echo "Publishing $package to GitHub Packages"
+            dotnet nuget push "$package" \
+              --source "https://nuget.pkg.github.com/${GITHUB_OWNER}/index.json" \
+              --api-key "$GITHUB_TOKEN" \
+              --skip-duplicate
+          done
+
+      - name: NuGet Login (Trusted Publishing)
+        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || github.ref_name == 'production')
+        id: nuget_login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USERNAME }}
+
+      - name: Publish packages to NuGet.org
+        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || github.ref_name == 'production')
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${{ vars.NUGET_USERNAME }}" ]; then
+            echo "NUGET_USERNAME repository variable is not set."
+            exit 1
+          fi
+
+          shopt -s nullglob
+          for package in "$PACKAGE_OUTPUT_DIR"/*.nupkg "$PACKAGE_OUTPUT_DIR"/*.snupkg; do
+            if [ -f "$package" ]; then
+              echo "Publishing $package to NuGet.org"
+              dotnet nuget push "$package" \
+                --source "https://api.nuget.org/v3/index.json" \
+                --api-key "${{ steps.nuget_login.outputs.NUGET_API_KEY }}" \
+                --skip-duplicate
+            fi
+          done

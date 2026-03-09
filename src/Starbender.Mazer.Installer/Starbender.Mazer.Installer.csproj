@@ -14,11 +14,8 @@
         <Pack>true</Pack>
         <PackagePath>content\</PackagePath>
       </Content>
-      <Content Include="..\Nuget.png" Link="Nuget.png">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      </Content>
-      <None Remove="..\..\**\*.abppkg*" />
-      <Content Include="..\..\**\*.abppkg*">
+      <None Remove="..\..\src\**\*.abppkg*" />
+      <Content Include="..\..\src\**\*.abppkg*">
         <Pack>true</Pack>
         <PackagePath>content\</PackagePath>
       </Content>
