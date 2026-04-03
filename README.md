@@ -2,6 +2,12 @@
 ## ℹ️ Description
 This is a [MudBlazor](https://mudblazor.com) based theme for Blazor applications that use the [ABP Framework](https://abp.io).
 
+## Community
+
+- Contribution guide: [`.github/CONTRIBUTING.md`](.github/CONTRIBUTING.md)
+- Code of conduct: [`.github/CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md)
+- Security policy: [`.github/SECURITY.md`](.github/SECURITY.md)
+
 ## Converting Existing Projects
 Chances are that you have an existing ABP Blazor project with a different ABP theme. 
 The process to convert to the Mazer is relatively straightforward for most applications.
