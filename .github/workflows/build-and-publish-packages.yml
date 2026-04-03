@@ -5,18 +5,14 @@ on:
     branches:
       - development
       - main
-      - production
   pull_request:
     branches:
       - development
       - main
-      - production
   workflow_dispatch:
 
 permissions:
   contents: read
-  packages: write
-  id-token: write
 
 jobs:
   build-pack-publish:
@@ -46,8 +42,13 @@ jobs:
           set -euo pipefail
           mkdir -p "$PACKAGE_OUTPUT_DIR"
 
+          target_branch="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+            target_branch="${GITHUB_BASE_REF}"
+          fi
+
           is_development_prerelease=false
-          if [ "${GITHUB_EVENT_NAME}" != "pull_request" ] && [ "${GITHUB_REF_NAME}" = "development" ]; then
+          if [ "$target_branch" = "development" ]; then
             is_development_prerelease=true
             echo "Using prerelease package versions with suffix: prerelease-${GITHUB_RUN_NUMBER}"
           fi
@@ -84,38 +85,43 @@ jobs:
             artifacts/nuget/*.snupkg
           if-no-files-found: error
 
-      - name: Publish packages to GitHub Packages
-        if: github.event_name != 'pull_request' && github.ref_name == 'development'
-        shell: bash
-        env:
-          GITHUB_OWNER: ${{ github.repository_owner }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          set -euo pipefail
-          shopt -s nullglob
-
-          for package in "$PACKAGE_OUTPUT_DIR"/*.nupkg; do
-            echo "Publishing $package to GitHub Packages"
-            dotnet nuget push "$package" \
-              --source "https://nuget.pkg.github.com/${GITHUB_OWNER}/index.json" \
-              --api-key "$GITHUB_TOKEN" \
-              --skip-duplicate
-          done
-
-      - name: NuGet Login (Trusted Publishing)
-        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || github.ref_name == 'production')
-        id: nuget_login
-        uses: NuGet/login@v1
+      - name: Detect merged pull request push
+        if: github.event_name == 'push' && (github.ref_name == 'development' || github.ref_name == 'main')
+        id: merged_pr_check
+        uses: actions/github-script@v7
         with:
-          user: ${{ vars.NUGET_USERNAME }}
+          script: |
+            const response = await github.request(
+              'GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls',
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                commit_sha: context.sha,
+                mediaType: {
+                  previews: ['groot'],
+                },
+              }
+            );
+
+            const targetBranch = context.ref.replace('refs/heads/', '');
+            const mergedPr = response.data.find((pr) => pr.merged_at && pr.base.ref === targetBranch);
+
+            core.setOutput('should_publish', mergedPr ? 'true' : 'false');
+            if (mergedPr) {
+              core.info(`Publish enabled for merged PR #${mergedPr.number} into ${targetBranch}.`);
+            } else {
+              core.info(`Skipping publish because ${context.sha} is not associated with a merged PR into ${targetBranch}.`);
+            }
 
       - name: Publish packages to NuGet.org
-        if: github.event_name != 'pull_request' && (github.ref_name == 'main' || github.ref_name == 'production')
+        if: github.event_name == 'push' && (github.ref_name == 'development' || github.ref_name == 'main') && steps.merged_pr_check.outputs.should_publish == 'true'
         shell: bash
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
           set -euo pipefail
-          if [ -z "${{ vars.NUGET_USERNAME }}" ]; then
-            echo "NUGET_USERNAME repository variable is not set."
+          if [ -z "${NUGET_API_KEY}" ]; then
+            echo "NUGET_API_KEY secret is not set."
             exit 1
           fi
 
@@ -125,7 +131,7 @@ jobs:
               echo "Publishing $package to NuGet.org"
               dotnet nuget push "$package" \
                 --source "https://api.nuget.org/v3/index.json" \
-                --api-key "${{ steps.nuget_login.outputs.NUGET_API_KEY }}" \
+                --api-key "${NUGET_API_KEY}" \
                 --skip-duplicate
             fi
           done
