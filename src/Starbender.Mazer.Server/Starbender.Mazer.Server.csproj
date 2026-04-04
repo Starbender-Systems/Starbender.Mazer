@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Starbender.Mazer.Shared\Starbender.Mazer.Shared.csproj" />
-    <ProjectReference Include="..\Starbender.Mazer\Starbender.Mazer.csproj" />
+    <ProjectReference Include="..\Starbender.Mazer.Blazor\Starbender.Mazer.Blazor.csproj" />
   </ItemGroup>
 
 </Project>

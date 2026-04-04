@@ -10,8 +10,8 @@
       "path": "src/Starbender.Mazer.Server/Starbender.Mazer.Server.abppkg",
       "folder": "src"
     },
-    "Starbender.Mazer": {
-      "path": "src/Starbender.Mazer/Starbender.Mazer.abppkg",
+    "Starbender.Mazer.Blazor": {
+      "path": "src/Starbender.Mazer.Blazor/Starbender.Mazer.Blazor.abppkg",
       "folder": "src"
     },
     "Starbender.Mazer.WebAssembly": {

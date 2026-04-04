@@ -23,7 +23,7 @@
     <Project Path="src/Starbender.Mazer.Shared/Starbender.Mazer.Shared.csproj" />
     <Project Path="src/Starbender.Mazer.WebAssembly.Bundling/Starbender.Mazer.WebAssembly.Bundling.csproj" />
     <Project Path="src/Starbender.Mazer.WebAssembly/Starbender.Mazer.WebAssembly.csproj" />
-    <Project Path="src/Starbender.Mazer/Starbender.Mazer.csproj" />
+    <Project Path="src/Starbender.Mazer.Blazor/Starbender.Mazer.Blazor.csproj" />
   </Folder>
   <Folder Name="/_SolutionItems/">
     <File Path=".editorconfig" />

@@ -10,7 +10,7 @@
         <PackageReference Include="Volo.Abp.AspNetCore.Components.WebAssembly.Theming" />
         <PackageReference Include="Volo.Abp.Http.Client.IdentityModel.WebAssembly" />
         <ProjectReference Include="..\Starbender.Mazer.WebAssembly.Bundling\Starbender.Mazer.WebAssembly.Bundling.csproj" />
-        <ProjectReference Include="..\Starbender.Mazer\Starbender.Mazer.csproj" />
+        <ProjectReference Include="..\Starbender.Mazer.Blazor\Starbender.Mazer.Blazor.csproj" />
     </ItemGroup>
 
 </Project>
