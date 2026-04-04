@@ -1,6 +1,6 @@
 # Starbender.Mazer
 ## Description
-Starbender.Mazer is a UI theme toolkit for applications built with the [ABP Framework](https://abp.io). It provides a cohesive Mazer-inspired visual style across ABP's supported UI models, combining [MudBlazor](https://mudblazor.com) components for Blazor experiences with matching MVC theme assets and layouts for server-rendered pages.
+Starbender.Mazer is a UI theme toolkit for applications built with the [ABP Framework](https://abp.io). Its core Blazor package is published as `Starbender.Mazer.Blazor`, providing a cohesive Mazer-inspired visual style across ABP's supported UI models while combining [MudBlazor](https://mudblazor.com) components for Blazor experiences with matching MVC theme assets and layouts for server-rendered pages.
 
 The goal of the project is to give ABP applications a consistent, modern look and feel without forcing each UI stack to be styled separately. It includes the modules, layouts, bundle contributors, toolbar integrations, and theme configuration hooks needed to use the same design language across MVC, Blazor Server, Blazor WebAssembly, and hybrid Blazor WebApp solutions.
 

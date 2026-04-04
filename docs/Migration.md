@@ -73,7 +73,7 @@ Use these Starbender.Mazer packages and modules as the migration targets:
 Notes:
 
 - `MazerMvcModule` is still important for applications that expose MVC / Razor Pages endpoints, including account and host pages.
-- `MazerWebAssemblyBundlingModule` is the piece that adds Starbender.Mazer assets into ABP's Blazor WebAssembly global asset pipeline.
+- `MazerWebAssemblyBundlingModule` is the piece that adds `Starbender.Mazer.Blazor` assets into ABP's Blazor WebAssembly global asset pipeline.
 - In some hosted Blazor WebAssembly solutions, the host may resolve `MazerWebAssemblyBundlingModule` transitively through the client project. If that is not true in your solution, add a direct package reference for the needed assembly.
 
 ## MVC / Razor Pages

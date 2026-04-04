@@ -1,6 +1,6 @@
 {
   "modules": {
-    "Starbender.Mazer": {
+    "Starbender.Mazer.Blazor": {
       "path": "Starbender.Mazer.abpmdl"
     }
   }
