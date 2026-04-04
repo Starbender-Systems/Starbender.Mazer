@@ -1,6 +1,6 @@
 <Project>
 	<PropertyGroup>
-		<ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
 		<GenerateEmbeddedFilesManifest>false</GenerateEmbeddedFilesManifest>
 	</PropertyGroup>
 </Project>

@@ -19,23 +19,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Validation" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.UI" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Components" Version="10.0.2" />
+    <PackageReference Include="Volo.Abp.Validation" />
+    <PackageReference Include="Volo.Abp.UI" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Components" />
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="10.0.2" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="10.0.2" />
+    <PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" />
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" />
   </ItemGroup>
 
   <ItemGroup>

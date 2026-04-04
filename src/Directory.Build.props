@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
 		<AbpProjectType>module</AbpProjectType>
-		<RepositoryUrl>https://github.com/alvahdean/Starbender.Mazer.git</RepositoryUrl>
-		<PackageProjectUrl>https://github.com/alvahdean/Starbender.Mazer.git</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Starbender-Systems/Starbender.Mazer.git</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/Starbender-Systems/Starbender.Mazer.git</PackageProjectUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<Company>StarbenderSystems</Company>
 		<RepositoryType>GIT</RepositoryType>
