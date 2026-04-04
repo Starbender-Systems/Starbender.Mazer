@@ -180,12 +180,7 @@ public class MvcDemoDbMigrationService : ITransientDependency
 
     private string GetEntityFrameworkCoreProjectFolderPath()
     {
-        var slnDirectoryPath = GetSolutionDirectoryPath();
-
-        if (slnDirectoryPath == null)
-        {
-            throw new Exception("Solution folder not found!");
-        }
+        var slnDirectoryPath = GetSolutionDirectoryPath() ?? throw new Exception("Solution folder not found!");
 
         return Path.Combine(slnDirectoryPath, "Mazer.MvcDemo");
     }

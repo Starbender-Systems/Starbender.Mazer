@@ -11,7 +11,7 @@ namespace Starbender.Mazer.Components.Theme;
 
 public partial class PageAlert : ComponentBase, IDisposable
 {
-    private readonly List<PageAlertItem> Alerts = new();
+    private readonly List<PageAlertItem> _alerts = new();
 
     [Inject]
     protected IAlertManager AlertManager { get; set; } = default!;
@@ -26,14 +26,14 @@ public partial class PageAlert : ComponentBase, IDisposable
         NavigationManager.LocationChanged += NavigationManagerOnLocationChanged;
         AlertManager.Alerts.CollectionChanged += AlertsOnCollectionChanged;
 
-        Alerts.AddRange(AlertManager.Alerts.Select(x => new PageAlertItem(x)));
+        _alerts.AddRange(AlertManager.Alerts.Select(x => new PageAlertItem(x)));
     }
 
     private void NavigationManagerOnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
         // Keep parity with existing ABP Blazorise behavior.
         AlertManager.Alerts.Clear();
-        Alerts.Clear();
+        _alerts.Clear();
     }
 
     private void AlertsOnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
@@ -42,7 +42,7 @@ public partial class PageAlert : ComponentBase, IDisposable
         {
             foreach (var item in e.NewItems.OfType<AlertMessage>())
             {
-                Alerts.Add(new PageAlertItem(item));
+                _alerts.Add(new PageAlertItem(item));
             }
         }
 

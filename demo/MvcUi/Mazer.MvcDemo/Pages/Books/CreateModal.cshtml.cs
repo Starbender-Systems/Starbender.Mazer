@@ -9,7 +9,7 @@ namespace Mazer.MvcDemo.Pages.Books;
 public class CreateModalModel : AbpPageModel
 {
     [BindProperty]
-    public CreateUpdateBookDto Book { get; set; }
+    public CreateUpdateBookDto Book { get; set; } = new();
 
     private readonly IBookAppService _bookAppService;
 
