@@ -15,7 +15,7 @@ public class WebAppDemoDbSchemaMigrator : ITransientDependency
 
     public async Task MigrateAsync()
     {
-        
+
         /* We intentionally resolving the WebAppDemoDbContext
          * from IServiceProvider (instead of directly injecting it)
          * to properly get the connection string of the current tenant in the

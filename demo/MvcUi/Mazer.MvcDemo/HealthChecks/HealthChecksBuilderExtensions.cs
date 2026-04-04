@@ -18,7 +18,7 @@ public static class HealthChecksBuilderExtensions
         {
             healthCheckUrl = "/health-status";
         }
-        
+
         services.ConfigureHealthCheckEndpoint("/health-status");
 
         var healthChecksUiBuilder = services.AddHealthChecksUI(settings =>

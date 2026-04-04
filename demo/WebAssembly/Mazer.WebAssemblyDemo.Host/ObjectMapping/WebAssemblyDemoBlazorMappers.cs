@@ -17,7 +17,7 @@ public partial class WebAssemblyDemoBookToBookDtoMapper : MapperBase<Book, BookD
 public partial class WebAssemblyDemoCreateUpdateBookDtoToBookMapper : MapperBase<CreateUpdateBookDto, Book>
 {
     public override partial Book Map(CreateUpdateBookDto source);
-    
+
     public override partial void Map(CreateUpdateBookDto source, Book destination);
 }
 

@@ -4,7 +4,6 @@ public static class WebAppDemoPermissions
 {
     public const string GroupName = "WebAppDemo";
 
-
     public static class Books
     {
         public const string Default = GroupName + ".Books";

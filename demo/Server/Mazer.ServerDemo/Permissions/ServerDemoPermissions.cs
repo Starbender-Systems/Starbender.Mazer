@@ -4,7 +4,6 @@ public static class ServerDemoPermissions
 {
     public const string GroupName = "ServerDemo";
 
-
     public static class Books
     {
         public const string Default = GroupName + ".Books";

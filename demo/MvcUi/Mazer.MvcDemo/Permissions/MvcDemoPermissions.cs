@@ -4,7 +4,6 @@ public static class MvcDemoPermissions
 {
     public const string GroupName = "MvcDemo";
 
-
     public static class Books
     {
         public const string Default = GroupName + ".Books";

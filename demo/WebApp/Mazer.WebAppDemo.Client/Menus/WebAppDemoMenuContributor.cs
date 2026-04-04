@@ -65,7 +65,6 @@ public class WebAppDemoMenuContributor : IMenuContributor
 
         */
 
-
         //Administration
         var administration = context.Menu.GetAdministration();
         administration.Order = 4;
@@ -78,7 +77,7 @@ public class WebAppDemoMenuContributor : IMenuContributor
 
         //Administration->Settings
         administration.SetSubItemOrder(SettingManagementMenus.GroupName, 9);
-    
+
         var bookStoreMenu = new ApplicationMenuItem(
             "BooksStore",
             l["Menu:Books"],

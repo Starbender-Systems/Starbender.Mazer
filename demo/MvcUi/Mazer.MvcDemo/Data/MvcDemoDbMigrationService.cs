@@ -79,7 +79,7 @@ public class MvcDemoDbMigrationService : ITransientDependency
 
             Logger.LogInformation("Successfully completed all database migrations.");
         }
-        
+
         Logger.LogInformation("You can safely end this process...");
     }
 
@@ -87,14 +87,14 @@ public class MvcDemoDbMigrationService : ITransientDependency
     {
         Logger.LogInformation(
             $"Migrating schema for {(tenant == null ? "host" : tenant.Name + " tenant")} database...");
-        
+
         await _dbSchemaMigrator.MigrateAsync();
     }
 
     private async Task SeedDataAsync(Tenant? tenant = null)
     {
         Logger.LogInformation($"Executing {(tenant == null ? "host" : tenant.Name + " tenant")} database seed...");
-        
+
         await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
             .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, IdentityDataSeedContributor.AdminEmailDefaultValue)
             .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, IdentityDataSeedContributor.AdminPasswordDefaultValue)
@@ -190,7 +190,7 @@ public class MvcDemoDbMigrationService : ITransientDependency
         return Path.Combine(slnDirectoryPath, "Mazer.MvcDemo");
     }
 
-    private string GetSolutionDirectoryPath()
+    private string? GetSolutionDirectoryPath()
     {
         var currentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
 

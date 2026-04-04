@@ -9,7 +9,7 @@ public class ServerDemoDbContextFactory : IDesignTimeDbContextFactory<ServerDemo
     {
         ServerDemoGlobalFeatureConfigurator.Configure();
         ServerDemoModuleExtensionConfigurator.Configure();
-        
+
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<ServerDemoDbContext>()

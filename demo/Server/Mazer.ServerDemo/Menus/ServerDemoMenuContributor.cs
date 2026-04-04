@@ -61,8 +61,6 @@ public class ServerDemoMenuContributor : IMenuContributor
 
         */
 
-
-
         //Administration->Identity
         administration.SetSubItemOrder(IdentityMenuNames.GroupName, 1);
 

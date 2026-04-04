@@ -9,7 +9,7 @@ public class WebAppDemoDbContextFactory : IDesignTimeDbContextFactory<WebAppDemo
     {
         WebAppDemoGlobalFeatureConfigurator.Configure();
         WebAppDemoModuleExtensionConfigurator.Configure();
-        
+
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<WebAppDemoDbContext>()

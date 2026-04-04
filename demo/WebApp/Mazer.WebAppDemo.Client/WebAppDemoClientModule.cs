@@ -31,35 +31,44 @@ namespace Mazer.WebAppDemo;
     typeof(WebAppDemoContractsModule),
 
     // ABP Framework packages
+
     typeof(AbpAutofacWebAssemblyModule),
 
     // Account module packages
+
     typeof(AbpAccountHttpApiClientModule),
 
     // OpenIddict module packages
+
     typeof(AbpOpenIddictDomainSharedModule),
 
     // Identity module packages
+
     typeof(AbpIdentityBlazorWebAssemblyModule),
     typeof(AbpIdentityHttpApiClientModule),
 
     // Language Management module packages
+
     typeof(AbpTenantManagementBlazorWebAssemblyModule),
     typeof(AbpTenantManagementHttpApiClientModule),
 
     // Permission Management module packages
+
     typeof(AbpPermissionManagementBlazorWebAssemblyModule),
     typeof(AbpPermissionManagementHttpApiClientModule),
 
     // Feature Management module packages
+
     typeof(AbpFeatureManagementBlazorWebAssemblyModule),
     typeof(AbpFeatureManagementHttpApiClientModule),
 
     // Setting Management module packages
+
     typeof(AbpSettingManagementHttpApiClientModule),
     typeof(AbpSettingManagementBlazorWebAssemblyModule),
 
     // Theme
+
     typeof(MazerWebAssemblyBundlingModule),
     typeof(MazerWebAssemblyModule)
 )]

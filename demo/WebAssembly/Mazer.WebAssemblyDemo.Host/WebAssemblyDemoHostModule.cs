@@ -66,6 +66,7 @@ namespace Mazer.WebAssemblyDemo;
     typeof(WebAssemblyDemoContractsModule),
 
     // ABP Framework packages
+
     typeof(AbpAspNetCoreMvcModule),
     typeof(AbpAutofacModule),
     typeof(AbpMapperlyModule),
@@ -75,38 +76,46 @@ namespace Mazer.WebAssemblyDemo;
     typeof(AbpStudioClientAspNetCoreModule),
 
     // Account module packages
+
     typeof(AbpAccountApplicationModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpAccountWebOpenIddictModule),
 
     // Identity module packages
+
     typeof(AbpPermissionManagementDomainIdentityModule),
     typeof(AbpPermissionManagementDomainOpenIddictModule),
     typeof(AbpIdentityApplicationModule),
     typeof(AbpIdentityHttpApiModule),
 
     // Tenant Management module packages
+
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpTenantManagementApplicationModule),
 
     // Permission Management module packages
+
     typeof(AbpPermissionManagementApplicationModule),
     typeof(AbpPermissionManagementHttpApiModule),
 
     // Feature Management module packages
+
     typeof(AbpFeatureManagementHttpApiModule),
     typeof(AbpFeatureManagementApplicationModule),
 
     // Setting Management module packages
+
     typeof(AbpSettingManagementHttpApiModule),
     typeof(AbpSettingManagementApplicationModule),
 
     // theme
+
     typeof(MazerMvcModule),
     typeof(MazerModule),
     typeof(MazerWebAssemblyBundlingModule),
 
     // Entity Framework Core packages for the used modules
+
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpFeatureManagementEntityFrameworkCoreModule),
     typeof(AbpIdentityEntityFrameworkCoreModule),

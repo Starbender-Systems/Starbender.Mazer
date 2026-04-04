@@ -66,6 +66,7 @@ namespace Mazer.MvcDemo;
 
 [DependsOn(
     // ABP Framework packages
+
     typeof(AbpAspNetCoreMvcModule),
     typeof(AbpAutofacModule),
     typeof(AbpMapperlyModule),
@@ -75,19 +76,23 @@ namespace Mazer.MvcDemo;
     typeof(AbpStudioClientAspNetCoreModule),
 
     // Theme module packages
+
     typeof(MazerMvcModule),
 
     // Account module packages
+
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAccountHttpApiModule),
     typeof(AbpAccountApplicationModule),
 
     // Tenant Management module packages
+
     typeof(AbpTenantManagementWebModule),
     typeof(AbpTenantManagementHttpApiModule),
     typeof(AbpTenantManagementApplicationModule),
 
     // Identity module packages
+
     typeof(AbpPermissionManagementDomainIdentityModule),
     typeof(AbpPermissionManagementDomainOpenIddictModule),
     typeof(AbpIdentityWebModule),
@@ -95,21 +100,25 @@ namespace Mazer.MvcDemo;
     typeof(AbpIdentityApplicationModule),
 
     // Permission Management module packages
+
     typeof(AbpPermissionManagementWebModule),
     typeof(AbpPermissionManagementApplicationModule),
     typeof(AbpPermissionManagementHttpApiModule),
 
     // Feature Management module packages
+
     typeof(AbpFeatureManagementWebModule),
     typeof(AbpFeatureManagementHttpApiModule),
     typeof(AbpFeatureManagementApplicationModule),
 
     // Setting Management module packages
+
     typeof(AbpSettingManagementWebModule),
     typeof(AbpSettingManagementHttpApiModule),
     typeof(AbpSettingManagementApplicationModule),
 
     // Entity Framework Core packages for the used modules
+
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpFeatureManagementEntityFrameworkCoreModule),
     typeof(AbpIdentityEntityFrameworkCoreModule),

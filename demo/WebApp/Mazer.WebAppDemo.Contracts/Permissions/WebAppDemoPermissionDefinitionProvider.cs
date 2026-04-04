@@ -11,7 +11,6 @@ public class WebAppDemoPermissionDefinitionProvider : PermissionDefinitionProvid
     {
         var myGroup = context.AddGroup(WebAppDemoPermissions.GroupName);
 
-
         var booksPermission = myGroup.AddPermission(WebAppDemoPermissions.Books.Default, L("Permission:Books"));
         booksPermission.AddChild(WebAppDemoPermissions.Books.Create, L("Permission:Books.Create"));
         booksPermission.AddChild(WebAppDemoPermissions.Books.Edit, L("Permission:Books.Edit"));
