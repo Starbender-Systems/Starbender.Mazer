@@ -39,9 +39,9 @@ public partial class UiNotificationAlert : ComponentBase, IDisposable
             Type = e.NotificationType,
             Message = e.Message,
             Title = e.Title,
-            OkButtonText = e.Options.OkButtonText == null
+            OkButtonText = e.Options.OkButtonText is null
                 ? null
-                : await e.Options.OkButtonText.LocalizeAsync(StringLocalizerFactory)
+                : (await e.Options.OkButtonText.LocalizeAsync(StringLocalizerFactory)).Value
         };
 
         Notifications.Add(item);

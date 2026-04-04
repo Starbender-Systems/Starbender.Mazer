@@ -7,6 +7,7 @@
     <AssemblyName>Starbender.Mazer.Blazor</AssemblyName>
     <PackageId>Starbender.Mazer.Blazor</PackageId>
     <RootNamespace>Starbender.Mazer</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

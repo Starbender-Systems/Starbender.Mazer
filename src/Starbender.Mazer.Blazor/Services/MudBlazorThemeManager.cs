@@ -8,14 +8,14 @@ namespace Starbender.Mazer.Services;
 public class MudBlazorThemeManager : IScopedDependency, IDisposable
 {
     private readonly IOptionsMonitor<MudTheme> _themeMonitor;
-    private readonly IDisposable _subscription;
+    private readonly IDisposable _subscription = default!;
     private MudTheme _theme = new();
 
     public MudBlazorThemeManager(IOptionsMonitor<MudTheme> themeMonitor)
     {
         _themeMonitor = themeMonitor;
-        _subscription = _themeMonitor.OnChange(SetTheme);
-        _theme = themeMonitor.CurrentValue;
+        _subscription = _themeMonitor.OnChange(SetTheme) ?? throw new InvalidOperationException("Theme monitor subscription could not be created.");
+        _theme = themeMonitor.CurrentValue ?? new MudTheme();
     }
 
     public event Action? ThemeChanged;

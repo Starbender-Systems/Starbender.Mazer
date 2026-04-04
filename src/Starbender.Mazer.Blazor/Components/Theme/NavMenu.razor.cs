@@ -11,12 +11,12 @@ public partial class NavMenu : IDisposable
     [Parameter] public bool Row { get; set; }
 
     [Inject]
-    protected IMenuManager MenuManager { get; set; }
+    protected IMenuManager MenuManager { get; set; } = default!;
 
     [Inject]
-    protected ApplicationConfigurationChangedService ApplicationConfigurationChangedService { get; set; }
+    protected ApplicationConfigurationChangedService ApplicationConfigurationChangedService { get; set; } = default!;
 
-    protected ApplicationMenu Menu { get; set; }
+    protected ApplicationMenu Menu { get; set; } = default!;
 
     protected async override Task OnInitializedAsync()
     {

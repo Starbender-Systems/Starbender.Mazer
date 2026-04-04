@@ -67,7 +67,7 @@ public partial class MainLayout : IDisposable
         ThemeManager.ThemeChanged -= OnThemeChanged;
     }
 
-    private void OnLocationChanged(object sender, LocationChangedEventArgs e)
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
         InvokeAsync(StateHasChanged);
     }
