@@ -16,8 +16,18 @@ public partial class MvcDemoBookToBookDtoMapper : MapperBase<Book, BookDto>
 [Mapper(RequiredMappingStrategy = RequiredMappingStrategy.Target)]
 public partial class MvcDemoCreateUpdateBookDtoToBookMapper : MapperBase<CreateUpdateBookDto, Book>
 {
+    [MapperIgnoreTarget(nameof(Book.CreationTime))]
+    [MapperIgnoreTarget(nameof(Book.CreatorId))]
+    [MapperIgnoreTarget(nameof(Book.LastModificationTime))]
+    [MapperIgnoreTarget(nameof(Book.LastModifierId))]
+    [MapperIgnoreTarget(nameof(Book.ConcurrencyStamp))]
     public override partial Book Map(CreateUpdateBookDto source);
 
+    [MapperIgnoreTarget(nameof(Book.CreationTime))]
+    [MapperIgnoreTarget(nameof(Book.CreatorId))]
+    [MapperIgnoreTarget(nameof(Book.LastModificationTime))]
+    [MapperIgnoreTarget(nameof(Book.LastModifierId))]
+    [MapperIgnoreTarget(nameof(Book.ConcurrencyStamp))]
     public override partial void Map(CreateUpdateBookDto source, Book destination);
 }
 
