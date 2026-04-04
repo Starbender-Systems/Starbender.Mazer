@@ -362,3 +362,4 @@ MigrationBackup/
 .dotnet_home/
 
 .dotnet/
+.codex
