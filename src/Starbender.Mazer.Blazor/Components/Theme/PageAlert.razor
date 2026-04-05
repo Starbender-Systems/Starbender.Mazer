@@ -1,4 +1,6 @@
-@foreach (var alert in Alerts.Where(x => x.IsVisible))
+@namespace Starbender.Mazer.Components.Theme
+
+@foreach (var alert in _alerts.Where(x => x.IsVisible))
 {
     <MudAlert Severity="@GetSeverity(alert.AlertMessage.Type)" Dense="true" Class="mb-3">
         <div class="d-flex justify-space-between align-center w-100">

@@ -85,5 +85,3 @@ public partial class LoginDisplay : IDisposable
     }
 }
 
-
-

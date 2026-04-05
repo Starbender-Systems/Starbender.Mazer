@@ -5,5 +5,5 @@ namespace Mazer.MvcDemo.Localization;
 [LocalizationResourceName("MvcDemo")]
 public class MvcDemoResource
 {
-    
+
 }

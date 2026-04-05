@@ -65,7 +65,6 @@ public class WebAssemblyDemoMenuContributor : IMenuContributor
 
         */
 
-
         //Administration
         var administration = context.Menu.GetAdministration();
         administration.Order = 4;
@@ -78,7 +77,7 @@ public class WebAssemblyDemoMenuContributor : IMenuContributor
 
         //Administration->Settings
         administration.SetSubItemOrder(SettingManagementMenus.GroupName, 7);
-    
+
         var bookStoreMenu = new ApplicationMenuItem(
             "BooksStore",
             l["Menu:Books"],
@@ -109,7 +108,6 @@ public class WebAssemblyDemoMenuContributor : IMenuContributor
             $"{authServerUrl.EnsureEndsWith('/')}Account/Manage",
             icon: "fa fa-cog",
             order: 1000).RequireAuthenticated());
-
 
         await Task.CompletedTask;
     }

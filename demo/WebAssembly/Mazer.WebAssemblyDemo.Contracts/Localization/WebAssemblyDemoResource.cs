@@ -5,5 +5,5 @@ namespace Mazer.WebAssemblyDemo.Localization;
 [LocalizationResourceName("WebAssemblyDemo")]
 public class WebAssemblyDemoResource
 {
-    
+
 }

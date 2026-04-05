@@ -4,5 +4,5 @@ namespace Mazer.MvcDemo.Pages;
 
 public class IndexModel : AbpPageModel
 {
-    
+
 }

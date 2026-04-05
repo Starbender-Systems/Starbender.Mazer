@@ -11,7 +11,6 @@ public class ServerDemoPermissionDefinitionProvider : PermissionDefinitionProvid
     {
         var myGroup = context.AddGroup(ServerDemoPermissions.GroupName);
 
-
         var booksPermission = myGroup.AddPermission(ServerDemoPermissions.Books.Default, L("Permission:Books"));
         booksPermission.AddChild(ServerDemoPermissions.Books.Create, L("Permission:Books.Create"));
         booksPermission.AddChild(ServerDemoPermissions.Books.Edit, L("Permission:Books.Edit"));

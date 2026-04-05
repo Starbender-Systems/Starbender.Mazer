@@ -14,7 +14,7 @@ public class EditModalModel : AbpPageModel
     public Guid Id { get; set; }
 
     [BindProperty]
-    public CreateUpdateBookDto Book { get; set; }
+    public CreateUpdateBookDto Book { get; set; } = new();
 
     private readonly IBookAppService _bookAppService;
 

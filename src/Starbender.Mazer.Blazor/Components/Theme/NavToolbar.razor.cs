@@ -10,12 +10,12 @@ namespace Starbender.Mazer.Components.Theme;
 public partial class NavToolbar : IDisposable
 {
     [Inject]
-    private IToolbarManager ToolbarManager { get; set; }
+    private IToolbarManager ToolbarManager { get; set; } = default!;
 
     [Inject]
-    protected ApplicationConfigurationChangedService ApplicationConfigurationChangedService { get; set; }
+    protected ApplicationConfigurationChangedService ApplicationConfigurationChangedService { get; set; } = default!;
 
-    private List<RenderFragment> ToolbarItemRenders { get; set; } = new List<RenderFragment>();
+    private List<RenderFragment> ToolbarItemRenders { get; set; } = new();
 
     protected async override Task OnInitializedAsync()
     {

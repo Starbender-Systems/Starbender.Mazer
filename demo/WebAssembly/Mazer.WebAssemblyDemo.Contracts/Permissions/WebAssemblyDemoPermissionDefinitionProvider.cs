@@ -11,7 +11,6 @@ public class WebAssemblyDemoPermissionDefinitionProvider : PermissionDefinitionP
     {
         var myGroup = context.AddGroup(WebAssemblyDemoPermissions.GroupName);
 
-
         var booksPermission = myGroup.AddPermission(WebAssemblyDemoPermissions.Books.Default, L("Permission:Books"));
         booksPermission.AddChild(WebAssemblyDemoPermissions.Books.Create, L("Permission:Books.Create"));
         booksPermission.AddChild(WebAssemblyDemoPermissions.Books.Edit, L("Permission:Books.Edit"));

@@ -4,7 +4,6 @@ public static class WebAssemblyDemoPermissions
 {
     public const string GroupName = "WebAssemblyDemo";
 
-
     public static class Books
     {
         public const string Default = GroupName + ".Books";

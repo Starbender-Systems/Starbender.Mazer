@@ -36,10 +36,13 @@ public class OpenIddictDataSeedContributor : OpenIddictDataSeedContributorBase, 
 
     private async Task CreateScopesAsync()
     {
-        await CreateScopesAsync(new OpenIddictScopeDescriptor 
+        await CreateScopesAsync(new OpenIddictScopeDescriptor
+
         {
-            Name = "WebAssemblyDemo", 
-            DisplayName = "WebAssemblyDemo API", 
+            Name = "WebAssemblyDemo",
+
+            DisplayName = "WebAssemblyDemo API",
+
             Resources = { "WebAssemblyDemo" }
         });
     }

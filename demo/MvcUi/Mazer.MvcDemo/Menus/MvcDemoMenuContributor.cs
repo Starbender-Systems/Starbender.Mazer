@@ -4,7 +4,6 @@ using Volo.Abp.Authorization.Permissions;
 using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.SettingManagement.Web.Navigation;
 using Volo.Abp.UI.Navigation;
-using Volo.Abp.Identity.Web.Navigation;
 using Volo.Abp.TenantManagement.Web.Navigation;
 
 namespace Mazer.MvcDemo.Menus;
@@ -33,7 +32,6 @@ public class MvcDemoMenuContributor : IMenuContributor
             )
         );
 
-
         //Administration
         var administration = context.Menu.GetAdministration();
         administration.Order = 5;
@@ -44,7 +42,7 @@ public class MvcDemoMenuContributor : IMenuContributor
 
         //Administration->Settings
         administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 8);
-    
+
         context.Menu.AddItem(
             new ApplicationMenuItem(
                 "BooksStore",
@@ -55,10 +53,11 @@ public class MvcDemoMenuContributor : IMenuContributor
                     "BooksStore.Books",
                     l["Menu:Books"],
                     url: "/Books"
-                ).RequirePermissions(MvcDemoPermissions.Books.Default) 
+                ).RequirePermissions(MvcDemoPermissions.Books.Default)
+
             )
         );
-        
+
         return Task.CompletedTask;
     }
 }

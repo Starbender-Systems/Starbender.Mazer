@@ -80,7 +80,7 @@ public class WebAssemblyDemoDbMigrationService : ITransientDependency
 
             Logger.LogInformation("Successfully completed all database migrations.");
         }
-        
+
         Logger.LogInformation("You can safely end this process...");
     }
 
@@ -88,14 +88,14 @@ public class WebAssemblyDemoDbMigrationService : ITransientDependency
     {
         Logger.LogInformation(
             $"Migrating schema for {(tenant == null ? "host" : tenant.Name + " tenant")} database...");
-        
+
         await _dbSchemaMigrator.MigrateAsync();
     }
 
     private async Task SeedDataAsync(Tenant? tenant = null)
     {
         Logger.LogInformation($"Executing {(tenant == null ? "host" : tenant.Name + " tenant")} database seed...");
-        
+
         await _dataSeeder.SeedAsync(new DataSeedContext(tenant?.Id)
             .WithProperty(IdentityDataSeedContributor.AdminEmailPropertyName, IdentityDataSeedContributor.AdminEmailDefaultValue)
             .WithProperty(IdentityDataSeedContributor.AdminPasswordPropertyName, IdentityDataSeedContributor.AdminPasswordDefaultValue)
@@ -195,11 +195,12 @@ public class WebAssemblyDemoDbMigrationService : ITransientDependency
     {
         var currentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
 
-        while (currentDirectory != null && Directory.GetParent(currentDirectory.FullName) != null)
+        while (currentDirectory.Parent is { } parentDirectory)
         {
-            currentDirectory = Directory.GetParent(currentDirectory.FullName);
+            currentDirectory = parentDirectory;
 
-            if (currentDirectory != null && Directory.GetFiles(currentDirectory.FullName).FirstOrDefault(f => f.EndsWith(".sln") || f.EndsWith(".slnx")) != null)
+            if (Directory.EnumerateFiles(currentDirectory.FullName)
+                .Any(f => f.EndsWith(".sln") || f.EndsWith(".slnx")))
             {
                 return currentDirectory.FullName;
             }

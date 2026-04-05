@@ -4,29 +4,28 @@ using Mazer.MvcDemo.Services.Dtos.Books;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.UI.RazorPages;
 
-namespace Mazer.MvcDemo.Pages.Books
+namespace Mazer.MvcDemo.Pages.Books;
+
+public class CreateModalModel : AbpPageModel
 {
-    public class CreateModalModel : AbpPageModel
+    [BindProperty]
+    public CreateUpdateBookDto Book { get; set; } = new();
+
+    private readonly IBookAppService _bookAppService;
+
+    public CreateModalModel(IBookAppService bookAppService)
     {
-        [BindProperty]
-        public CreateUpdateBookDto Book { get; set; }
+        _bookAppService = bookAppService;
+    }
 
-        private readonly IBookAppService _bookAppService;
+    public void OnGet()
+    {
+        Book = new CreateUpdateBookDto();
+    }
 
-        public CreateModalModel(IBookAppService bookAppService)
-        {
-            _bookAppService = bookAppService;
-        }
-
-        public void OnGet()
-        {
-            Book = new CreateUpdateBookDto();
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            await _bookAppService.CreateAsync(Book);
-            return NoContent();
-        }
+    public async Task<IActionResult> OnPostAsync()
+    {
+        await _bookAppService.CreateAsync(Book);
+        return NoContent();
     }
 }

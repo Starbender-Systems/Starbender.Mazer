@@ -17,7 +17,7 @@ namespace Mazer.MvcDemo.Data;
 public class MvcDemoDbContext : AbpDbContext<MvcDemoDbContext>
 {
     public DbSet<Book> Books { get; set; }
-    
+
     public const string DbTablePrefix = "App";
     public const string DbSchema = null;
 
@@ -41,7 +41,7 @@ public class MvcDemoDbContext : AbpDbContext<MvcDemoDbContext>
         builder.ConfigureIdentity();
         builder.ConfigureOpenIddict();
         builder.ConfigureTenantManagement();
-        
+
         builder.Entity<Book>(b =>
         {
             b.ToTable(DbTablePrefix + "Books",
@@ -49,8 +49,9 @@ public class MvcDemoDbContext : AbpDbContext<MvcDemoDbContext>
             b.ConfigureByConvention(); //auto configure for the base class props
             b.Property(x => x.Name).IsRequired().HasMaxLength(128);
         });
-        
+
         /* Configure your own entities here */
+
     }
 }
 

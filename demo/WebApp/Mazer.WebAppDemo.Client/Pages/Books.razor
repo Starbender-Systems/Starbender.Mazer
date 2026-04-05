@@ -9,7 +9,7 @@
 @using Mazer.WebAppDemo.Localization
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.AspNetCore.Components.Web
-@inject IStringLocalizer<WebAppDemoResource> L
+
 @inject AbpBlazorMessageLocalizerHelper<WebAppDemoResource> LH
 @inherits AbpCrudPageBase<IBookAppService, BookDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateBookDto>
 
@@ -89,7 +89,6 @@
 </Card>
 
 <Modal @ref="@CreateModal">
-    <ModalBackdrop />
     <ModalContent IsCentered="true">
         <Form>
             <ModalHeader>
@@ -142,7 +141,6 @@
 </Modal>
 
 <Modal @ref="@EditModal">
-    <ModalBackdrop />
     <ModalContent IsCentered="true">
         <Form>
             <ModalHeader>
