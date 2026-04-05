@@ -1,4 +1,6 @@
 <Project>
+	<Import Project="..\Directory.Build.props" />
+
 	<PropertyGroup>
 		<AbpProjectType>module</AbpProjectType>
 		<RepositoryUrl>https://github.com/Starbender-Systems/Starbender.Mazer.git</RepositoryUrl>
