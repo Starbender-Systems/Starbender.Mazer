@@ -1,8 +1,6 @@
 @using System.Globalization
 @using Microsoft.Extensions.Hosting
-
-
-@using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling
+@using Starbender.Mazer.Server.Bundling
 @using Volo.Abp.Localization
 @using Volo.Abp.AspNetCore.Components.Web.Theming.Bundling
 @inject IHostEnvironment Env
@@ -18,7 +16,7 @@
     <title>Mazer.ServerDemo</title>
     <base href="/" />
 
-    <AbpStyles BundleName="@BlazorStandardBundles.Styles.Global" />
+    <AbpStyles BundleName="@BlazorMazerBundles.Styles.Global" />
 
     <link href="Mazer.ServerDemo.styles.css" rel="stylesheet"/>
 
@@ -43,7 +41,7 @@
         <a class="dismiss">🗙</a>
     </div>
     
-    <AbpScripts BundleName="@BlazorStandardBundles.Scripts.Global" />
+    <AbpScripts BundleName="@BlazorMazerBundles.Scripts.Global" />
 
     <script src="_framework/blazor.web.js"></script>
 

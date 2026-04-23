@@ -14,11 +14,11 @@ using OpenIddict.Validation.AspNetCore;
 using Starbender.Mazer.Mvc;
 using Starbender.Mazer.Mvc.Bundling;
 using Starbender.Mazer.Server;
+using Starbender.Mazer.Server.Bundling;
 using Starbender.Mazer.Extensions;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
-using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Mvc;
@@ -264,7 +264,7 @@ public class ServerDemoModule : AbpModule
             );
 
             options.StyleBundles.Configure(
-               BlazorStandardBundles.Styles.Global,
+               BlazorMazerBundles.Styles.Global,
                bundle =>
                {
                    bundle.AddFiles("/global-styles.css");

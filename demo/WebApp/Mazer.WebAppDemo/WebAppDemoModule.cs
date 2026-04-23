@@ -13,12 +13,12 @@ using OpenIddict.Validation.AspNetCore;
 using Starbender.Mazer.Mvc;
 using Starbender.Mazer.Mvc.Bundling;
 using Starbender.Mazer.Server;
+using Starbender.Mazer.Server.Bundling;
 using Starbender.Mazer.WebAssembly.Bundling;
 using Starbender.Mazer.Extensions;
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
-using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.Web;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Routing;
 using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
@@ -260,14 +260,14 @@ public class WebAppDemoModule : AbpModule
 
             // Blazor UI
             options.StyleBundles.Configure(
-                BlazorStandardBundles.Styles.Global,
+                BlazorMazerBundles.Styles.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-styles.css");
                 }
             );
             options.ScriptBundles.Configure(
-                BlazorStandardBundles.Scripts.Global,
+                BlazorMazerBundles.Scripts.Global,
                 bundle =>
                 {
                     bundle.AddFiles("/global-scripts.js");
@@ -278,10 +278,10 @@ public class WebAppDemoModule : AbpModule
 
         Configure<AbpBundlingOptions>(options =>
         {
-            var globalStyles = options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global);
+            var globalStyles = options.StyleBundles.Get(BlazorMazerWebAssemblyBundles.Styles.Global);
             globalStyles.AddContributors(typeof(WebAppDemoStyleBundleContributor));
 
-            var globalScripts = options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global);
+            var globalScripts = options.ScriptBundles.Get(BlazorMazerWebAssemblyBundles.Scripts.Global);
             globalScripts.AddContributors(typeof(WebAppDemoScriptBundleContributor));
 
         });
