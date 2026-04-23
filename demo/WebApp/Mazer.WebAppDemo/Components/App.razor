@@ -16,7 +16,7 @@
     <title>Mazer.WebAppDemo</title>
     <base href="/" />
 
-    <AbpStyles BundleName="@BlazorMazerBundles.Styles.Global" @rendermode="InteractiveAuto" />
+    <AbpStyles BundleName="@BlazorMazerBundles.Styles.Global" WebAssemblyStyleFiles="GlobalStyles" @rendermode="InteractiveAuto" />
 
     <link href="Mazer.WebAppDemo.styles.css" rel="stylesheet"/>
     <link href="Mazer.WebAppDemo.Client.styles.css" rel="stylesheet"/>
@@ -42,9 +42,14 @@
         <a class="dismiss">🗙</a>
     </div>
     
-    <AbpScripts BundleName="@BlazorMazerBundles.Scripts.Global" @rendermode="InteractiveAuto" />
+    <AbpScripts BundleName="@BlazorMazerBundles.Scripts.Global" WebAssemblyScriptFiles="GlobalScripts" @rendermode="InteractiveAuto" />
 
     <script src="_framework/blazor.web.js"></script>
 
 </body>
 </html>
+
+@code {
+    private List<string> GlobalStyles => ["global.css"];
+    private List<string> GlobalScripts => ["global.js"];
+}
