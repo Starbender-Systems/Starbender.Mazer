@@ -203,7 +203,7 @@ In `Routes.razor`:
 For server apps, there are usually two bundle surfaces:
 
 - `MazerBundles` for MVC / Razor Pages
-- `BlazorStandardBundles` for the Blazor app shell
+- `BlazorMazerBundles` for the Blazor app shell
 
 Representative setup:
 
@@ -223,23 +223,25 @@ private void ConfigureBundles()
         );
 
         options.StyleBundles.Configure(
-            BlazorStandardBundles.Styles.Global,
+            BlazorMazerBundles.Styles.Global,
             bundle => { bundle.AddFiles("/global-styles.css"); }
         );
 
         options.ScriptBundles.Configure(
-            BlazorStandardBundles.Scripts.Global,
+            BlazorMazerBundles.Scripts.Global,
             bundle => { bundle.AddFiles("/global-scripts.js"); }
         );
     });
 }
 ```
 
-In `App.razor`, reference the standard ABP Blazor bundles:
+`BlazorMazerBundles` maps to ABP's `BlazorStandardBundles`, but gives consumers a theme-specific surface similar to `BlazorBasicThemeBundles`.
+
+In `App.razor`, reference the Mazer Blazor bundles:
 
 ```razor
-<AbpStyles BundleName="@BlazorStandardBundles.Styles.Global" />
-<AbpScripts BundleName="@BlazorStandardBundles.Scripts.Global" />
+<AbpStyles BundleName="@BlazorMazerBundles.Styles.Global" />
+<AbpScripts BundleName="@BlazorMazerBundles.Scripts.Global" />
 ```
 
 ### 5. Configure MudBlazor and optional Blazorise compatibility
@@ -309,7 +311,7 @@ In the client `Routes.razor`:
 
 ### 4. Configure Blazor global assets on the host
 
-Per ABP's WebAssembly bundling model, the host contributes to the generated `global.css` and `global.js` files by adding contributors to `BlazorWebAssemblyStandardBundles`.
+Per ABP's WebAssembly bundling model, the host contributes to the generated `global.css` and `global.js` files by adding contributors to `BlazorMazerWebAssemblyBundles`.
 
 Representative setup:
 
@@ -331,10 +333,10 @@ private void ConfigureBundles()
 
     Configure<AbpBundlingOptions>(options =>
     {
-        options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global)
+        options.StyleBundles.Get(BlazorMazerWebAssemblyBundles.Styles.Global)
             .AddContributors(typeof(MyAppStyleBundleContributor));
 
-        options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global)
+        options.ScriptBundles.Get(BlazorMazerWebAssemblyBundles.Scripts.Global)
             .AddContributors(typeof(MyAppScriptBundleContributor));
     });
 }
@@ -418,8 +420,8 @@ context.Services.AddRazorComponents()
 Blazor WebApp needs:
 
 - `MazerBundles` for MVC / Razor Pages
-- `BlazorStandardBundles` for server-rendered Blazor content
-- `BlazorWebAssemblyStandardBundles` for generated `global.css` and `global.js`
+- `BlazorMazerBundles` for server-rendered Blazor content
+- `BlazorMazerWebAssemblyBundles` for generated `global.css` and `global.js`
 
 Representative setup:
 
@@ -441,22 +443,22 @@ private void ConfigureBundles()
         );
 
         options.StyleBundles.Configure(
-            BlazorStandardBundles.Styles.Global,
+            BlazorMazerBundles.Styles.Global,
             bundle => { bundle.AddFiles("/global-styles.css"); }
         );
 
         options.ScriptBundles.Configure(
-            BlazorStandardBundles.Scripts.Global,
+            BlazorMazerBundles.Scripts.Global,
             bundle => { bundle.AddFiles("/global-scripts.js"); }
         );
     });
 
     Configure<AbpBundlingOptions>(options =>
     {
-        options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global)
+        options.StyleBundles.Get(BlazorMazerWebAssemblyBundles.Styles.Global)
             .AddContributors(typeof(MyAppStyleBundleContributor));
 
-        options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global)
+        options.ScriptBundles.Get(BlazorMazerWebAssemblyBundles.Scripts.Global)
             .AddContributors(typeof(MyAppScriptBundleContributor));
     });
 }
@@ -464,18 +466,18 @@ private void ConfigureBundles()
 
 ### 5. Update `App.razor` for `InteractiveAuto`
 
-Use `BlazorStandardBundles` for the server side and pass the generated WebAssembly files through `WebAssemblyStyleFiles` and `WebAssemblyScriptFiles`.
+Use `BlazorMazerBundles` for the server side and pass the generated WebAssembly files through `WebAssemblyStyleFiles` and `WebAssemblyScriptFiles`.
 
 Representative structure:
 
 ```razor
 <AbpStyles
-    BundleName="@BlazorStandardBundles.Styles.Global"
+    BundleName="@BlazorMazerBundles.Styles.Global"
     WebAssemblyStyleFiles="GlobalStyles"
     @rendermode="InteractiveAuto" />
 
 <AbpScripts
-    BundleName="@BlazorStandardBundles.Scripts.Global"
+    BundleName="@BlazorMazerBundles.Scripts.Global"
     WebAssemblyScriptFiles="GlobalScripts"
     @rendermode="InteractiveAuto" />
 

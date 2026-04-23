@@ -1,6 +1,5 @@
 using Starbender.Mazer.Server.Bundling;
 using Volo.Abp.AspNetCore.Components.Server.Theming;
-using Volo.Abp.AspNetCore.Components.Server.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.Web.Theming.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.Modularity;
@@ -22,10 +21,10 @@ public class MazerServerModule : AbpModule
 
         Configure<AbpBundlingOptions>(options =>
         {
-            var globalStyles = options.StyleBundles.Get(BlazorStandardBundles.Styles.Global);
+            var globalStyles = options.StyleBundles.Get(BlazorMazerBundles.Styles.Global);
             globalStyles.AddContributors(typeof(MazerStyleContributor));
 
-            var globalScripts = options.ScriptBundles.Get(BlazorStandardBundles.Scripts.Global);
+            var globalScripts = options.ScriptBundles.Get(BlazorMazerBundles.Scripts.Global);
             globalScripts.AddContributors(typeof(MazerScriptContributor));
         });
     }

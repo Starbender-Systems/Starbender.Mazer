@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.OpenApi.Models;
 using OpenIddict.Validation.AspNetCore;
+using Starbender.Mazer.WebAssembly.Bundling;
 
 using Volo.Abp;
 using Volo.Abp.Account;
 using Volo.Abp.Account.Web;
-using Volo.Abp.AspNetCore.Components.WebAssembly.Theming.Bundling;
 using Volo.Abp.AspNetCore.Components.WebAssembly.WebApp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.Localization;
@@ -54,8 +54,6 @@ using Volo.Abp.UI.Navigation;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using Starbender.Mazer;
-
-using Starbender.Mazer.WebAssembly.Bundling;
 using Starbender.Mazer.Extensions;
 using Starbender.Mazer.Mvc.Bundling;
 using Starbender.Mazer.Mvc;
@@ -270,10 +268,10 @@ public class WebAssemblyDemoHostModule : AbpModule
 
         Configure<AbpBundlingOptions>(options =>
         {
-            var globalStyles = options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global);
+            var globalStyles = options.StyleBundles.Get(BlazorMazerWebAssemblyBundles.Styles.Global);
             globalStyles.AddContributors(typeof(WebAssemblyDemoStyleBundleContributor));
 
-            var globalScripts = options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global);
+            var globalScripts = options.ScriptBundles.Get(BlazorMazerWebAssemblyBundles.Scripts.Global);
             globalScripts.AddContributors(typeof(WebAssemblyDemoScriptBundleContributor));
 
         });
