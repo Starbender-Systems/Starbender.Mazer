@@ -10,7 +10,7 @@
 
 	<PropertyGroup>
 		<!--Increment the VersionPrefix at beginning of new release cycle--> 
-		<VersionPrefix>1.0.1</VersionPrefix>
+		<VersionPrefix>1.0.2</VersionPrefix>
 		<Version>$(VersionPrefix)</Version>
 		<AssemblyVersion>$(VersionPrefix).0</AssemblyVersion>
 		<FileVersion>$(VersionPrefix).0</FileVersion>
