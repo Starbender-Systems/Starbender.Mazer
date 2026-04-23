@@ -19,6 +19,10 @@ The goal of the project is to give ABP applications a consistent, modern look an
 Mazer supports Mvc, Blazor Server, Blazor WebAssembly (WASM) and hybrid Blazor WebApp models.
 See the [Migration Guide](docs/Migration.md) for instructions on migrating your ABP UI application to Mazer.
 
+## Compatibility
+The current `1.0.2` package line in this repository is pinned to ABP `10.0.2`.
+Consumers using ABP `10.1.x` should treat that as the current dependency baseline unless a later Mazer release explicitly retargets those package references.
+
 ## Community
 - Contribution guide: [`CONTRIBUTING.md`](.github/CONTRIBUTING.md)
 - Code of conduct: [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md)

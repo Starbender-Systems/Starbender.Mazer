@@ -75,6 +75,7 @@ Notes:
 - `MazerMvcModule` is still important for applications that expose MVC / Razor Pages endpoints, including account and host pages.
 - `MazerWebAssemblyBundlingModule` is the piece that adds `Starbender.Mazer.Blazor` assets into ABP's Blazor WebAssembly global asset pipeline.
 - In some hosted Blazor WebAssembly solutions, the host may resolve `MazerWebAssemblyBundlingModule` transitively through the client project. If that is not true in your solution, add a direct package reference for the needed assembly.
+- The current source tree and published `1.0.2` packages remain pinned to ABP `10.0.2`. This guide does not imply a retarget to ABP `10.1.x`.
 
 ## MVC / Razor Pages
 
@@ -410,10 +411,14 @@ PreConfigure<AbpAspNetCoreComponentsWebOptions>(options =>
 In the server project startup/module:
 
 ```csharp
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
+
 context.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 ```
+
+Keep the `Theme.Shared` import in scope in module examples that also call `app.UseErrorPage()`, because that extension method is provided there.
 
 ### 4. Configure all three bundle surfaces
 
@@ -467,6 +472,8 @@ private void ConfigureBundles()
 ### 5. Update `App.razor` for `InteractiveAuto`
 
 Use `BlazorMazerBundles` for the server side and pass the generated WebAssembly files through `WebAssemblyStyleFiles` and `WebAssemblyScriptFiles`.
+
+These attributes are required when the host contributes to `BlazorMazerWebAssemblyBundles` and expects the generated `global.css` and `global.js` files to be loaded by the Blazor WebApp shell.
 
 Representative structure:
 
