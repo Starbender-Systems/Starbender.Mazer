@@ -13,10 +13,10 @@ public class MazerWebAssemblyBundlingModule : AbpModule
     {
         Configure<AbpBundlingOptions>(options =>
         {
-            var globalStyles = options.StyleBundles.Get(BlazorWebAssemblyStandardBundles.Styles.Global);
+            var globalStyles = options.StyleBundles.Get(BlazorMazerWebAssemblyBundles.Styles.Global);
             globalStyles.AddContributors(typeof(MazerBundleStyleContributor));
 
-            var globalScripts = options.ScriptBundles.Get(BlazorWebAssemblyStandardBundles.Scripts.Global);
+            var globalScripts = options.ScriptBundles.Get(BlazorMazerWebAssemblyBundles.Scripts.Global);
             globalScripts.AddContributors(typeof(MazerBundleScriptContributor));
         });
     }
