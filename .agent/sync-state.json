@@ -1,0 +1,24 @@
+{
+  "files": {
+    "VERSION": "e9dd8507f4bf0c6f42458e41aea833ad0bd3f6127272335eee9bf4d58541ed67",
+    "skills/sb-dotnet-engineering/SKILL.md": "de565526d400b59e413eb7594829e5ec4f426c4372559dbb93945f34b60a7db7",
+    "skills/sb-repository-maintenance/SKILL.md": "d2bef45928d6c66931adc144bd6f61cfcb38fd4497f234d357f684cfc59c4ce2",
+    "standards/architecture.md": "4e113824552ec88a6e6c8d1b166b291d079b73700e0d2bf29e924b85dfcd555f",
+    "standards/dependencies.md": "a6b3ef51983e966159c8d7c8c892a56910b418fe3069ad64dce4a4e2cc330dff",
+    "standards/documentation.md": "0ba10a92f85853276f965b0d0918c21e903dbe42167dedd033eb68b92baa1805",
+    "standards/dotnet.md": "4830c055026ff67fe727be8622f53c56ae90a9950f733d2167d710962278f983",
+    "standards/general.md": "cb9e0cc381463718ad7a8eab5e9c7f64aec6c525c9769b8d39bfb7137760ebfe",
+    "standards/git.md": "e7e48fa6391236315086ec68888fcc0d403525b4abe05d01c24277154ab336df",
+    "standards/security.md": "b443c2563fc5a667cfc991517b41100554de1856f2a12bcf41a65ea2721be1be",
+    "standards/testing.md": "d529c258a7783261c686e2304a553e4d02359a254b18f154555eac107a9c1124",
+    "workflows/code-review.md": "00e86859839943b93e1ca1cb7ee36e6cd87a057589bef618cebe5f3c12c6658d",
+    "workflows/defect-investigation.md": "5fb849a0205a9a6c55092d35febde67454d36a22790fe7652596b28302aa5af6",
+    "workflows/dependency-update.md": "2ffbcd96043aa792fc91f58f562bec1300ac349f9879b4b1c44ed18f0a5a454f",
+    "workflows/ef-migration.md": "bcc9d867ec23e072dfe55342a35e8fe3b4aec090f1bed3278c1074ab9e339a55",
+    "workflows/feature-development.md": "f3555dcf0560013e4b67032002718ea3df519c795fcb2d0a5de91f26032f88d8",
+    "workflows/release.md": "8c4e87122c7f391f5ac0d61353c74a0f5a959fd935f0fa073084c8cacfd77d5e"
+  },
+  "release": "0.1.0",
+  "schema_version": 1,
+  "source_manifest_sha256": "9165dc14677395369a8fda8342cef83bd8c08f676cb3837d05000d1fa865bb13"
+}
