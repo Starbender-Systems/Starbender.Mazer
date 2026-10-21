@@ -1,0 +1,20 @@
+{
+  "name": "starbender-mazer-tooling",
+  "interface": {
+    "displayName": "Starbender.Mazer"
+  },
+  "plugins": [
+    {
+      "name": "starbender-mazer-consumer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/starbender-mazer-consumer"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

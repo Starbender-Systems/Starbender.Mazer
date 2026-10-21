@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "starbender-mazer-consumer",
+  "version": "0.2.2",
+  "description": "Integrate Starbender.Mazer ABP themes, MudBlazor layouts, palettes, navigation, and feedback services.",
+  "repository": "https://github.com/Starbender-Systems/Starbender.Mazer",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Starbender.Mazer Consumer",
+        "shortDescription": "Find and integrate existing library capabilities",
+        "category": "Productivity"
+      }
+    }
+  }
+}

@@ -17,13 +17,18 @@ The goal of the project is to give ABP applications a consistent, modern look an
 
 ## Getting Started
 Mazer supports Mvc, Blazor Server, Blazor WebAssembly (WASM) and hybrid Blazor WebApp models.
-See the [Migration Guide](docs/Migration.md) for instructions on migrating your ABP UI application to Mazer.
+Follow the [installation and theme replacement guide](docs/consumers/installation.md) to install Mazer in an existing ABP application and replace Basic Theme, LeptonX, or LeptonX Lite. It covers package installation/removal, central package versions, module dependencies, explicit theme selection, layouts/assets, and verification for each hosting model.
+For package discovery and coding-agent integration recipes, start with the [consumer catalog](docs/consumers/index.md).
 
 ## Compatibility
-The current `1.0.2` package line in this repository is pinned to ABP `10.0.2`.
-Consumers using ABP `10.1.x` should treat that as the current dependency baseline unless a later Mazer release explicitly retargets those package references.
+The source currently declares Mazer `1.1.0`, targeting .NET 10 with ABP `10.0.2` and MudBlazor `8.6.0`.
+Check published package availability and your application's resolved dependencies separately. See [adoption and compatibility](docs/consumers/adoption.md) before integrating a different ABP or MudBlazor version.
+See the [1.1.0 release notes](docs/consumers/release-notes.md) for the prepared version, upgrade guidance, and publication status.
 
 ## Community
+
+- Developer setup and engineering standards: [DEVELOPING.md](DEVELOPING.md)
+- Agent instructions: [AGENTS.md](AGENTS.md)
 - Contribution guide: [`CONTRIBUTING.md`](.github/CONTRIBUTING.md)
 - Code of conduct: [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md)
 - Security policy: [`SECURITY.md`](.github/SECURITY.md)

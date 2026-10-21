@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "library": {
+    "name": "Starbender.Mazer",
+    "repository": "https://github.com/Starbender-Systems/Starbender.Mazer",
+    "ref": "HEAD"
+  },
+  "plugin": "starbender-mazer-consumer",
+  "packages": [
+    { "id": "Starbender.Mazer.Blazor", "version": "1.1.0" },
+    { "id": "Starbender.Mazer.Installer", "version": "1.1.0" },
+    { "id": "Starbender.Mazer.Mvc", "version": "1.1.0" },
+    { "id": "Starbender.Mazer.Server", "version": "1.1.0" },
+    { "id": "Starbender.Mazer.Shared", "version": "1.1.0" },
+    { "id": "Starbender.Mazer.WebAssembly", "version": "1.1.0" },
+    { "id": "Starbender.Mazer.WebAssembly.Bundling", "version": "1.1.0" }
+  ],
+  "capabilities": [
+    {
+      "id": "theme-installation-replacement",
+      "packages": [
+        "Starbender.Mazer.Mvc",
+        "Starbender.Mazer.Server",
+        "Starbender.Mazer.WebAssembly",
+        "Starbender.Mazer.WebAssembly.Bundling"
+      ],
+      "search_terms": [
+        "install",
+        "replace theme",
+        "migration",
+        "Basic Theme",
+        "LeptonX",
+        "LeptonX Lite",
+        "LeptonXLite",
+        "NuGet",
+        "Central Package Management",
+        "AuthServer",
+        "DefaultThemeName"
+      ],
+      "symbols": [
+        "T:Starbender.Mazer.Mvc.MazerMvcModule",
+        "T:Starbender.Mazer.Server.MazerServerModule",
+        "T:Starbender.Mazer.WebAssembly.MazerWebAssemblyModule",
+        "T:Starbender.Mazer.WebAssembly.Bundling.MazerWebAssemblyBundlingModule"
+      ],
+      "page": "installation.md"
+    },
+    {
+      "id": "mvc-razor-pages-theme",
+      "packages": ["Starbender.Mazer.Mvc"],
+      "search_terms": ["MVC", "Razor Pages", "Basic Theme migration", "account layout", "Bootstrap", "server rendered"],
+      "symbols": ["T:Starbender.Mazer.Mvc.MazerMvcModule", "T:Starbender.Mazer.Mvc.StarbenderTheme"],
+      "page": "recipes/mvc.md"
+    },
+    {
+      "id": "blazor-layout",
+      "packages": ["Starbender.Mazer.Blazor"],
+      "search_terms": ["MainLayout", "MudBlazor providers", "router", "layout hooks", "drawer", "application shell"],
+      "symbols": ["T:Starbender.Mazer.MazerModule", "T:Starbender.Mazer.MainLayout", "T:Starbender.Mazer.StarbenderTheme"],
+      "page": "recipes/blazor-layout.md"
+    },
+    {
+      "id": "blazor-server-theme",
+      "packages": ["Starbender.Mazer.Server", "Starbender.Mazer.Mvc"],
+      "search_terms": ["Blazor Server", "InteractiveServer", "circuit", "server bundles"],
+      "symbols": ["T:Starbender.Mazer.Server.MazerServerModule", "T:Starbender.Mazer.Server.Bundling.BlazorMazerBundles"],
+      "page": "recipes/blazor-server.md"
+    },
+    {
+      "id": "blazor-webassembly-theme",
+      "packages": ["Starbender.Mazer.WebAssembly", "Starbender.Mazer.WebAssembly.Bundling", "Starbender.Mazer.Mvc"],
+      "search_terms": ["WASM", "hosted WebAssembly", "client", "global.css", "global.js", "remote authentication"],
+      "symbols": ["T:Starbender.Mazer.WebAssembly.MazerWebAssemblyModule", "T:Starbender.Mazer.WebAssembly.Bundling.MazerWebAssemblyBundlingModule"],
+      "page": "recipes/blazor-webassembly.md"
+    },
+    {
+      "id": "blazor-webapp-theme",
+      "packages": ["Starbender.Mazer.Server", "Starbender.Mazer.WebAssembly", "Starbender.Mazer.WebAssembly.Bundling", "Starbender.Mazer.Mvc"],
+      "search_terms": ["Blazor WebApp", "InteractiveAuto", "prerender", "hybrid", "IsBlazorWebApp"],
+      "symbols": ["T:Starbender.Mazer.Server.MazerServerModule", "T:Starbender.Mazer.WebAssembly.MazerWebAssemblyModule", "T:Starbender.Mazer.WebAssembly.Bundling.MazerWebAssemblyBundlingModule"],
+      "page": "recipes/blazor-webapp.md"
+    },
+    {
+      "id": "asset-bundling",
+      "packages": ["Starbender.Mazer.Shared", "Starbender.Mazer.Server", "Starbender.Mazer.WebAssembly.Bundling", "Starbender.Mazer.Mvc"],
+      "search_terms": ["CSS", "JavaScript", "static web assets", "404", "bundle contributor", "Mazer.Global", "Blazor.Global", "BlazorWebAssembly.Global"],
+      "symbols": ["T:Starbender.Mazer.MazerAssetFiles", "T:Starbender.Mazer.Mvc.Bundling.MazerBundles", "T:Starbender.Mazer.Server.Bundling.BlazorMazerBundles", "T:Starbender.Mazer.WebAssembly.Bundling.BlazorMazerWebAssemblyBundles"],
+      "page": "recipes/assets.md"
+    },
+    {
+      "id": "theme-configuration-serialization",
+      "packages": ["Starbender.Mazer.Shared"],
+      "search_terms": ["MudTheme", "AddMudTheme", "appsettings", "palette", "typography", "JSON", "serialize", "brand colors"],
+      "symbols": ["T:Starbender.Mazer.MazerSharedModule", "T:Starbender.Mazer.Extensions.ServiceCollectionExtensions", "T:Starbender.Mazer.Utilities.MudThemeJsonSerializer"],
+      "page": "recipes/theming.md"
+    },
+    {
+      "id": "light-dark-mode",
+      "packages": ["Starbender.Mazer.Blazor", "Starbender.Mazer.Mvc"],
+      "search_terms": ["dark mode", "light mode", "localStorage", "MudBlazorThemeManager", "CSS variables", "data-bs-theme"],
+      "symbols": ["T:Starbender.Mazer.Services.MudBlazorThemeManager", "T:Starbender.Mazer.Mvc.Themes.Mazer.Styling.MudThemeCssVariablesBuilder"],
+      "page": "recipes/theming.md"
+    },
+    {
+      "id": "navigation-toolbars-localization",
+      "packages": ["Starbender.Mazer.Blazor", "Starbender.Mazer.Server", "Starbender.Mazer.WebAssembly", "Starbender.Mazer.Mvc"],
+      "search_terms": ["menu", "navigation", "toolbar", "permission", "language switch", "localization", "RTL", "login display"],
+      "symbols": ["T:Starbender.Mazer.Components.Theme.NavMenu", "T:Starbender.Mazer.Server.MazerToolbarContributor", "T:Starbender.Mazer.WebAssembly.MazerToolbarContributor", "T:Starbender.Mazer.Mvc.Toolbars.MazerMainTopToolbarContributor"],
+      "page": "recipes/navigation.md"
+    },
+    {
+      "id": "blazor-feedback-services",
+      "packages": ["Starbender.Mazer.Blazor"],
+      "search_terms": ["notification", "snackbar", "toast", "confirmation", "message", "page progress", "IUiMessageService", "IUiNotificationService", "IUiPageProgressService"],
+      "symbols": ["T:Starbender.Mazer.Services.MudBlazorUiMessageService", "T:Starbender.Mazer.Services.MudBlazorUiNotificationService", "T:Starbender.Mazer.Services.MudBlazorUiPageProgressService"],
+      "page": "recipes/feedback.md"
+    },
+    {
+      "id": "authentication-ui",
+      "packages": ["Starbender.Mazer.WebAssembly", "Starbender.Mazer.Server", "Starbender.Mazer.Mvc"],
+      "search_terms": ["login", "logout", "OIDC", "Account/Login", "authentication callback", "return URL", "unauthorized"],
+      "symbols": ["T:Starbender.Mazer.WebAssembly.MazerWebAssemblyModule", "T:Starbender.Mazer.Server.LoginDisplay"],
+      "page": "recipes/authentication.md"
+    },
+    {
+      "id": "abp-installer-metadata",
+      "packages": ["Starbender.Mazer.Installer"],
+      "search_terms": ["installer", "ABP module descriptors", "abpmdl", "abppkg", "AbpMudBlazorThemeInstallerModule"],
+      "symbols": ["T:Starbender.Mazer.AbpMudBlazorThemeInstallerModule"],
+      "page": "recipes/installer.md"
+    }
+  ]
+}
