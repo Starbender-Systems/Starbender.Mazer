@@ -7,13 +7,13 @@
   },
   "plugin": "starbender-mazer-consumer",
   "packages": [
-    { "id": "Starbender.Mazer.Blazor", "version": "1.1.0" },
-    { "id": "Starbender.Mazer.Installer", "version": "1.1.0" },
-    { "id": "Starbender.Mazer.Mvc", "version": "1.1.0" },
-    { "id": "Starbender.Mazer.Server", "version": "1.1.0" },
-    { "id": "Starbender.Mazer.Shared", "version": "1.1.0" },
-    { "id": "Starbender.Mazer.WebAssembly", "version": "1.1.0" },
-    { "id": "Starbender.Mazer.WebAssembly.Bundling", "version": "1.1.0" }
+    { "id": "Starbender.Mazer.Blazor", "version": "1.1.1" },
+    { "id": "Starbender.Mazer.Installer", "version": "1.1.1" },
+    { "id": "Starbender.Mazer.Mvc", "version": "1.1.1" },
+    { "id": "Starbender.Mazer.Server", "version": "1.1.1" },
+    { "id": "Starbender.Mazer.Shared", "version": "1.1.1" },
+    { "id": "Starbender.Mazer.WebAssembly", "version": "1.1.1" },
+    { "id": "Starbender.Mazer.WebAssembly.Bundling", "version": "1.1.1" }
   ],
   "capabilities": [
     {

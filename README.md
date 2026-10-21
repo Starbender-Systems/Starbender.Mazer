@@ -22,9 +22,9 @@ For package discovery and coding-agent integration recipes, start with the [cons
 The [coding-agent setup guide](docs/consumers/agent-setup.md) covers the shared consumer skill for OpenAI/Codex, Claude Code, and GitHub Copilot.
 
 ## Compatibility
-The source currently declares Mazer `1.1.0`, targeting .NET 10 with ABP `10.0.2` and MudBlazor `8.6.0`.
+The source currently declares Mazer `1.1.1`, targeting .NET 10 with ABP `10.0.2` and MudBlazor `8.6.0`.
 Check published package availability and your application's resolved dependencies separately. See [adoption and compatibility](docs/consumers/adoption.md) before integrating a different ABP or MudBlazor version.
-See the [1.1.0 release notes](docs/consumers/release-notes.md) for the prepared version, upgrade guidance, and publication status.
+See the [1.1.1 release notes](docs/consumers/release-notes.md) for the prepared version, upgrade guidance, and publication status.
 
 ## Community
 

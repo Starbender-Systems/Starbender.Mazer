@@ -1,6 +1,6 @@
 # Starbender.Mazer packages
 
-Every package below evaluates to **1.1.0**, `net10.0`, and `IsPackable=true` in the current source. ABP package references are **10.0.2** and MudBlazor is **8.6.0**. Package availability and a consuming application's resolved dependencies must be checked separately; see [adoption](adoption.md).
+Every package below evaluates to **1.1.1**, `net10.0`, and `IsPackable=true` in the current source. ABP package references are **10.0.2** and MudBlazor is **8.6.0**. Package availability and a consuming application's resolved dependencies must be checked separately; see [adoption](adoption.md).
 
 | Package | Entry point / responsibility | Direct Mazer project dependencies |
 | --- | --- | --- |

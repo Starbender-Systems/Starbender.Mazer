@@ -2,7 +2,7 @@
 
 This is the canonical installation and theme-replacement guide for existing ABP **MVC/Razor Pages, Blazor Server, WebAssembly, and Blazor WebApp** applications. It covers migration from **Basic Theme, LeptonX, and LeptonX Lite**. Use this sequence with the linked hosting recipes; the recipes describe host-specific code and assets.
 
-The current source declares Mazer **1.1.0**, **net10.0**, ABP **10.0.2**, and MudBlazor **8.6.0**. Select a published Mazer version compatible with your application's resolved dependencies. Source version declarations do not establish feed availability or compatibility with other ABP/MudBlazor versions. See [version evidence](adoption.md#establish-version-evidence), the [package map](packages.md), and [release notes](release-notes.md).
+The current source declares Mazer **1.1.1**, **net10.0**, ABP **10.0.2**, and MudBlazor **8.6.0**. Select a published Mazer version compatible with your application's resolved dependencies. Source version declarations do not establish feed availability or compatibility with other ABP/MudBlazor versions. See [version evidence](adoption.md#establish-version-evidence), the [package map](packages.md), and [release notes](release-notes.md).
 
 ## 1. Inventory the existing integration
 
@@ -38,7 +38,7 @@ For a standalone WASM client, use the client row; configure any independent serv
 For projects **without Central Package Management**, the following PowerShell example adds the Server package set without restoring halfway through the migration. Replace the version with one confirmed in your configured feed; repeat the same form for the packages/projects in your selected row.
 
 ```powershell
-$MazerVersion = '1.1.0' # Example source baseline; confirm availability/compatibility first.
+$MazerVersion = '1.1.1' # Example source baseline; confirm availability/compatibility first.
 dotnet add src/MyApp.Blazor/MyApp.Blazor.csproj package Starbender.Mazer.Server --version $MazerVersion --no-restore
 dotnet add src/MyApp.Blazor/MyApp.Blazor.csproj package Starbender.Mazer.Mvc --version $MazerVersion --no-restore
 ```
@@ -48,8 +48,8 @@ For **Central Package Management**, edit the existing applicable `Directory.Pack
 ```xml
 <!-- Directory.Packages.props: use the selected published version. -->
 <ItemGroup>
-  <PackageVersion Include="Starbender.Mazer.Server" Version="1.1.0" />
-  <PackageVersion Include="Starbender.Mazer.Mvc" Version="1.1.0" />
+  <PackageVersion Include="Starbender.Mazer.Server" Version="1.1.1" />
+  <PackageVersion Include="Starbender.Mazer.Mvc" Version="1.1.1" />
 </ItemGroup>
 ```
 

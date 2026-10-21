@@ -1,6 +1,6 @@
 # Integration recipes
 
-These recipes target the **1.1.0 source API**, ABP **10.0.2**, MudBlazor **8.6.0**, and **net10.0**. Check [adoption](../adoption.md) before using them with installed packages.
+These recipes target the **1.1.1 source API**, ABP **10.0.2**, MudBlazor **8.6.0**, and **net10.0**. Check [adoption](../adoption.md) before using them with installed packages.
 
 For installing Mazer or replacing Basic Theme, LeptonX, or LeptonX Lite, follow the canonical [installation and theme replacement guide](../installation.md) before applying the selected host recipe.
 

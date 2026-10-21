@@ -1,6 +1,6 @@
 # Use the consumer skill with coding agents
 
-Consumer plugin **0.3.0** packages one shared skill and the same integration guides for OpenAI/Codex, Claude Code, and GitHub Copilot. It supplies documentation, not an MCP server or an OpenAI API integration. Each host still requires its own installation and access. Follow the consuming application's agent instructions, including AGENTS.md, CLAUDE.md, or .github/copilot-instructions.md where applicable.
+Consumer plugin **0.3.1** packages one shared skill and the same integration guides for OpenAI/Codex, Claude Code, and GitHub Copilot. It supplies documentation, not an MCP server or an OpenAI API integration. Each host still requires its own installation and access. Follow the consuming application's agent instructions, including AGENTS.md, CLAUDE.md, or .github/copilot-instructions.md where applicable.
 
 ## Obtain a complete bundle
 
@@ -8,7 +8,7 @@ Use an extracted consumer marketplace ZIP, not the raw `plugins/starbender-mazer
 
 ```powershell
 py -3.12 tools/consumer_tooling.py bundle . --output ../mazer-agent-preview --allow-dirty-preview
-Expand-Archive ../mazer-agent-preview/starbender-mazer-consumer-0.3.0-preview.zip ../mazer-agent-preview/extracted
+Expand-Archive ../mazer-agent-preview/starbender-mazer-consumer-0.3.1-preview.zip ../mazer-agent-preview/extracted
 ```
 
 Python 3.11+ on other platforms can run the same bundler with `python`; extract the ZIP using your platform's archive tool. API inventory is optional for this preview; the maintenance workflow includes it. A preview is for local review and does not establish publication.
@@ -66,6 +66,8 @@ Use an IDE version that supports agent skills, start an agent session, and ask i
 ## Verify and remove
 
 Native verification on Windows ARM64 on **2026-10-21** used the extracted 0.3.0 preview with its API inventory and isolated CLI profiles:
+
+Those recorded results apply to plugin 0.3.0. Plugin 0.3.1 updates the declared source baseline to Mazer 1.1.1; its integration workflow is unchanged. Packaging checks for the current bundle do not repeat the recorded native CLI tests.
 
 | Client | Installation and discovery | Live use |
 | --- | --- | --- |

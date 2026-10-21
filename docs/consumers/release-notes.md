@@ -1,5 +1,15 @@
 # Release notes
 
+## 1.1.1 (unreleased)
+
+The source now prepares Mazer **1.1.1**, the next patch after **1.1.0**. All seven packages in the [package map](packages.md) share version **1.1.1**, with assembly and file versions **1.1.1.0**. The catalog, installation examples, package readmes, and consumer skill use the same source baseline. Consumer plugin **0.3.1** carries the updated guidance and retains its independent version lifecycle.
+
+The package compatibility baseline remains **.NET 10**, **ABP 10.0.2**, and **MudBlazor 8.6.0**. This version bump changes no runtime APIs, module contracts, theme names, asset paths, database schema, or third-party dependency versions. Demo frontend versions are independent of the Mazer package version.
+
+After a matching build is available in your configured feed, align the application's Mazer references to that actual version across rendering and account/AuthServer projects, restore, and rebuild. Development versions may use `1.1.1-prerelease-<run>`; this source preparation does not assert feed availability or publication. The version bump alone requires no theme or database migration. Restore the prior package references and lockfiles together to roll back.
+
+Validation evaluates all seven package/assembly/file versions, builds and packs the source projects, compiles the documented recipes, and checks the inventory-backed catalog and consumer bundle. Application UI/authentication and live agent behavior remain separate acceptance checks. The recorded native CLI results in [agent setup](agent-setup.md) apply to plugin 0.3.0; this patch updates its declared Mazer baseline without changing the integration workflow.
+
 ## Consumer plugin 0.3.0 (unreleased)
 
 The consumer bundle adds generated Claude Code plugin metadata and a marketplace shared by Claude Code and GitHub Copilot CLI. OpenAI/Codex packaging is preserved. All hosts use one skill and one set of recipes; Copilot IDE and cloud users can import that complete skill into their application's `.github/skills` directory. See [coding-agent setup](agent-setup.md) for installation and verification.

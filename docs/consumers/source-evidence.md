@@ -1,8 +1,8 @@
 # Source evidence and compatibility baseline
 
-Initial catalog authoring inspected commit **7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a**. That historical revision declared Mazer **1.0.4**, ABP **10.0.2**, and MudBlazor **8.6.0**. The pinned links below retain that implementation evidence; they do not identify a 1.1.0 release commit.
+Initial catalog authoring inspected commit **7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a**. That historical revision declared Mazer **1.0.4**, ABP **10.0.2**, and MudBlazor **8.6.0**. The pinned links below retain that implementation evidence; they do not identify the current release commit.
 
-The current source/catalog prepares **Mazer 1.1.0**. This minor-version update changes version metadata and guidance while retaining the same .NET 10, ABP 10.0.2, and MudBlazor 8.6.0 baseline. Evaluate current package IDs, versions, assembly/file versions, frameworks, and packability with `dotnet msbuild <project> -getProperty:PackageId,Version,AssemblyVersion,FileVersion,TargetFramework,IsPackable`; do not infer them from filenames or the historical links. See [release notes](release-notes.md). No package-feed availability claim is made.
+The current source/catalog prepares **Mazer 1.1.1**. This patch-version update changes version metadata and guidance while retaining the same .NET 10, ABP 10.0.2, and MudBlazor 8.6.0 baseline. Evaluate current package IDs, versions, assembly/file versions, frameworks, and packability with `dotnet msbuild <project> -getProperty:PackageId,Version,AssemblyVersion,FileVersion,TargetFramework,IsPackable`; do not infer them from filenames or the historical links. See [release notes](release-notes.md). No package-feed availability claim is made.
 
 The following are pinned upstream source references. All integration instructions needed by the plugin are included in its relative documentation tree; these URLs provide optional implementation evidence.
 
