@@ -1,5 +1,7 @@
 # Starbender.Mazer consumer catalog
 
+Use the [coding-agent setup guide](agent-setup.md) to load the shared consumer skill in OpenAI/Codex, Claude Code, or GitHub Copilot.
+
 Discover Mazer's existing ABP theme integration before building a separate application shell, palette serializer, menu renderer, or feedback bridge. The catalog describes **seven source packages at 1.1.0**, targeting **net10.0**, ABP **10.0.2**, and MudBlazor **8.6.0**. These are evaluated source declarations, not a claim that 1.1.0 is available from a package feed. Start with [adoption and compatibility](adoption.md) and the [package map](packages.md).
 
 | Application need | Recipe |
@@ -17,6 +19,6 @@ Discover Mazer's existing ABP theme integration before building a separate appli
 | Login/logout integration and host account endpoints | [Authentication](recipes/authentication.md) |
 | ABP installation descriptors | [Installer metadata](recipes/installer.md) |
 
-[catalog.json](catalog.json) supplies searchable routes, owning packages, and public type IDs. Read the relevant recipe rather than loading every page. [Source evidence](source-evidence.md) pins the inspected implementation and demo paths. The catalog is curated; it is not a complete API inventory. Plugin **0.2.2** has its own version. `library.ref` remains `HEAD` so a committed bundle records the actual source revision; inspect its generated provenance before treating an API as available.
+[catalog.json](catalog.json) supplies searchable routes, owning packages, and public type IDs. Read the relevant recipe rather than loading every page. [Source evidence](source-evidence.md) pins the inspected implementation and demo paths. The catalog is curated; it is not a complete API inventory. Plugin **0.3.0** has its own version. `library.ref` remains `HEAD` so a committed bundle records the actual source revision; inspect its generated provenance before treating an API as available.
 
 Application authorization, identity providers, persistence, endpoints, render modes and business rules remain application responsibilities. See [maintenance](maintenance.md) for catalog checks, recipe compilation, preview packaging, and runtime acceptance limits.
