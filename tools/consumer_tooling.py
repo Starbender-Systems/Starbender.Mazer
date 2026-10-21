@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate and package library consumer guidance; Python 3.11+, standard library only.
 
-This file is copied unchanged into library repositories by bootstrap_library.py.
+Originally copied by bootstrap_library.py; subsequent changes are library-owned.
 It deliberately has no imports from engineering-standards.
 """
 from __future__ import annotations
@@ -22,6 +22,7 @@ import zipfile
 
 CATALOG = "docs/consumers/catalog.json"
 MARKETPLACE = ".agents/plugins/marketplace.json"
+CLAUDE_MARKETPLACE = ".claude-plugin/marketplace.json"
 PLUGIN_SCHEMA = "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json"
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 SEMVER = re.compile(r"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)"
@@ -197,6 +198,18 @@ def distribution_files(files: dict[str, bytes], name: str) -> dict[str, bytes]:
     marketplace = read_json(files[MARKETPLACE], MARKETPLACE)
     marketplace["plugins"] = [entry for entry in marketplace["plugins"] if entry["name"] == name]
     result[MARKETPLACE] = json_bytes(marketplace)
+    # Host adapters contain metadata only. All hosts load the same skills/ tree.
+    plugin = read_json(files[f"plugins/{name}/plugin.json"], "plugin.json")
+    claude_manifest = f"plugins/{name}/.claude-plugin/plugin.json"
+    require(claude_manifest not in result,
+            "Claude manifest is generated from plugin.json; remove the authored copy")
+    result[claude_manifest] = json_bytes({key: plugin[key] for key in
+                                        ("name", "version", "description", "repository", "author")})
+    # Copilot CLI also discovers this marketplace location. Avoid a second catalog.
+    result[CLAUDE_MARKETPLACE] = json_bytes({
+        "name": marketplace["name"], "owner": {"name": plugin["author"]["name"]},
+        "plugins": [{"name": name, "source": f"./plugins/{name}"}],
+    })
     return result
 
 
@@ -223,6 +236,9 @@ def validate_files(files: dict[str, bytes], inventory: dict | None = None) -> tu
             "Plugin version must be semantic versioning")
     text(plugin.get("description"), "plugin.description")
     require(plugin.get("repository") == library["repository"], "Plugin repository must match the catalog")
+    author = plugin.get("author")
+    require(isinstance(author, dict), "Plugin needs an author for Claude Code and Copilot marketplaces")
+    text(author.get("name"), "plugin.author.name")
     skill_path = f"plugins/{name}/skills/{name}/SKILL.md"
     require(skill_path in files, f"Missing {skill_path}")
     skill = files[skill_path].decode("utf-8")

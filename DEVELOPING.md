@@ -58,16 +58,17 @@ dotnet format Starbender.Mazer.slnx --verify-no-changes --no-restore --include s
 
 Follow [.editorconfig](.editorconfig). Formatting is not currently enforced by a dedicated CI step; do not run an unscoped formatting rewrite as part of unrelated work.
 
-No automated test projects or test runner configuration are currently present. A successful `dotnet test` with no discovered tests is not test evidence. Build the affected packages and demos, then smoke-test affected UI behavior: layout, navigation, login/logout, localization, theme switching, and asset loading as applicable. Report which hosts and flows were exercised and any runtime prerequisites that prevented checks.
+No automated .NET test projects or .NET test runner configuration are currently present. A successful `dotnet test` with no discovered tests is not test evidence. Build the affected packages and demos, then smoke-test affected UI behavior: layout, navigation, login/logout, localization, theme switching, and asset loading as applicable. Report which hosts and flows were exercised and any runtime prerequisites that prevented checks. Consumer packaging has a standalone Python unittest suite described below.
 
 The consumer guides have a separate validation executable, outside the solution. With Python 3.11+ and .NET 10, run:
 
 ```powershell
 py -3.12 tools/check_consumer_recipes.py
 py -3.12 tools/consumer_tooling.py validate . --inventory artifacts/consumer/inventory.json
+py -3.12 tools/test_consumer_tooling.py
 ```
 
-This compiles marked C#/Razor examples throughout the consumer guides against source packages, checks theme configuration/serialization (including absent settings and invalid JSON) and explicit default selection, and emits an exported-type inventory for catalog validation. It does not run an application or verify browser/authentication behavior. See [consumer-tooling maintenance](docs/consumers/maintenance.md) for packaging, version updates, and the remaining runtime checks. Maintain the catalog, recipes, and plugin version together when consumer-facing capabilities change.
+These commands compile marked C#/Razor examples throughout the consumer guides against source packages, check theme configuration/serialization (including absent settings and invalid JSON) and explicit default selection, and emit an exported-type inventory for catalog validation. The bundle tests verify extracted OpenAI/Codex, Claude Code, and Copilot metadata and shared skill portability without installing into user agents. They do not run an application or verify live agent discovery or browser/authentication behavior. See [consumer-tooling maintenance](docs/consumers/maintenance.md) for packaging, version updates, and the remaining runtime checks. Maintain the catalog, recipes, and plugin version together when consumer-facing capabilities change.
 
 ## Running demos and working with data
 
@@ -104,7 +105,7 @@ dotnet run --project demo/WebAssembly/Mazer.WebAssemblyDemo.Blazor/Mazer.WebAsse
 
 - [.NET path instructions](.github/instructions/dotnet.instructions.md) cover C#, Razor/Blazor, project/solution files, and build/dependency properties.
 - [Database path instructions](.github/instructions/database.instructions.md) cover demo EF models, migration services, migrations, and SQL.
-- [Test path instructions](.github/instructions/tests.instructions.md) cover future test projects; there is no test suite yet.
+- [Test path instructions](.github/instructions/tests.instructions.md) cover the consumer-tooling Python tests and future .NET test projects.
 
 Future decisions: select any pinned Node/Yarn/ABP CLI versions and define an automated test strategy. These are not established requirements in this bootstrap.
 
