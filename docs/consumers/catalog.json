@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "library": {
+    "name": "Starbender.Mazer",
+    "repository": "https://github.com/Starbender-Systems/Starbender.Mazer",
+    "ref": "HEAD"
+  },
+  "plugin": "starbender-mazer-consumer",
+  "packages": [],
+  "capabilities": []
+}
