@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <RootNamespace>Mazer.ConsumerExamples</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <ProjectReference Include="../../src/Starbender.Mazer.Blazor/Starbender.Mazer.Blazor.csproj" />
+    <ProjectReference Include="../../src/Starbender.Mazer.Installer/Starbender.Mazer.Installer.csproj" />
+    <ProjectReference Include="../../src/Starbender.Mazer.Mvc/Starbender.Mazer.Mvc.csproj" />
+    <ProjectReference Include="../../src/Starbender.Mazer.Server/Starbender.Mazer.Server.csproj" />
+    <ProjectReference Include="../../src/Starbender.Mazer.Shared/Starbender.Mazer.Shared.csproj" />
+    <ProjectReference Include="../../src/Starbender.Mazer.WebAssembly/Starbender.Mazer.WebAssembly.csproj" />
+    <ProjectReference Include="../../src/Starbender.Mazer.WebAssembly.Bundling/Starbender.Mazer.WebAssembly.Bundling.csproj" />
+    <Compile Include="$(ConsumerRecipeDirectory)/*.cs" />
+    <RazorComponent Include="$(ConsumerRecipeDirectory)/*.razor" Link="%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <Target Name="RequireConsumerRecipes" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(ConsumerRecipeDirectory)' == '' or !Exists('$(ConsumerRecipeDirectory)/theme-settings.json')"
+           Text="Run python tools/check_consumer_recipes.py to compile examples extracted from the documentation." />
+  </Target>
+</Project>

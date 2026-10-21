@@ -1,0 +1,18 @@
+# Source evidence and compatibility baseline
+
+Catalog authoring inspected commit **7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a**. Package IDs, versions, frameworks and packability were evaluated with `dotnet msbuild <project> -getProperty:PackageId,Version,TargetFramework,IsPackable`, not inferred from filenames alone. The source declares 1.0.4 for every package, ABP 10.0.2, and MudBlazor 8.6.0. No package-feed availability claim is made.
+
+The following are pinned upstream source references. All integration instructions needed by the plugin are included in its relative documentation tree; these URLs provide optional implementation evidence.
+
+| Concern | Inspected implementation / example |
+| --- | --- |
+| Package declarations | [Root build properties](https://github.com/Starbender-Systems/Starbender.Mazer/blob/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/Directory.Build.props), [source projects](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src), [dependency versions](https://github.com/Starbender-Systems/Starbender.Mazer/blob/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/Directory.Packages.props) |
+| MVC module, theme, layouts and CSS variables | [Mvc source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.Mvc), [MVC demo](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/demo/MvcUi) |
+| Blazor module, MainLayout, navigation and feedback | [Blazor source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.Blazor) |
+| Theme configuration and serialization | [Shared source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.Shared) |
+| Interactive Server services, bundles and host document | [Server source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.Server), [Server demo](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/demo/Server) |
+| WebAssembly module, authentication and bundle contributors | [WebAssembly source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.WebAssembly), [bundling source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.WebAssembly.Bundling), [WebAssembly demo](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/demo/WebAssembly) |
+| InteractiveAuto render modes and both bundle pipelines | [WebApp demo](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/demo/WebApp) |
+| Actual installer type and descriptors | [Installer source](https://github.com/Starbender-Systems/Starbender.Mazer/tree/7d05c5f1dc8410235eb2d1b71b10fbefc3da2b6a/src/Starbender.Mazer.Installer) |
+
+`catalog.json` uses `library.ref: HEAD` so bundle provenance records the commit actually packaged. This authoring baseline identifies the library code investigated, while the consumer-plugin commit also includes the curated guides and validation tooling. Advance the documented baseline and catalog versions deliberately when library APIs change. Keep the catalog and runtime acceptance evidence aligned; a successful metadata check alone does not establish UI behavior.

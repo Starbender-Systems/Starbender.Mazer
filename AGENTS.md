@@ -33,6 +33,8 @@ Review applicable nested `AGENTS.md` files and [.github/instructions](.github/in
 
 Starbender.Mazer provides .NET 10 ABP theme packages under `src/` and integration demos under `demo/`. [DEVELOPING.md](DEVELOPING.md) documents package boundaries, central dependency files, demo setup, and validation limits.
 
+The library-owned [consumer catalog](docs/consumers/index.md) maps packages and capabilities to integration recipes. Keep it and the consumer plugin current with relevant API changes; [maintenance](docs/consumers/maintenance.md) documents recipe compilation, inventory validation, and portable packaging.
+
 Follow the existing [contribution and release process](.github/CONTRIBUTING.md), [security policy](.github/SECURITY.md), and [CODEOWNERS](.github/CODEOWNERS). Preserve the public theme/module contracts and compatibility across MVC, Blazor Server, WebAssembly, and WebApp when changing shared components.
 
 This repository owns its adapters and [.agent/manifest.yaml](.agent/manifest.yaml). Keep synchronized guidance unchanged locally; propose shared changes upstream and receive updates through reviewable pull requests.

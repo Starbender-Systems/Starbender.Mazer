@@ -17,6 +17,7 @@ Mazer is a UI theme toolkit for ABP applications. [Starbender.Mazer.slnx](Starbe
 | [src/Starbender.Mazer.Installer](src/Starbender.Mazer.Installer/) | ABP module installation metadata and packaged descriptors. |
 | [demo](demo/) | Integration applications and their local SQL Server/EF Core data setup. |
 | [docs/Migration.md](docs/Migration.md) | Consumer migration and theme integration guide. |
+| [docs/consumers](docs/consumers/index.md) | Searchable package/capability catalog and integration recipes assembled into the consumer plugin. |
 
 Keep theme/module APIs, asset paths, authentication/navigation behavior, and ABP bundling consistent across the supported UI models. Check the affected demos when changing shared components or assets.
 
@@ -56,6 +57,15 @@ dotnet format Starbender.Mazer.slnx --verify-no-changes --no-restore --include s
 Follow [.editorconfig](.editorconfig). Formatting is not currently enforced by a dedicated CI step; do not run an unscoped formatting rewrite as part of unrelated work.
 
 No automated test projects or test runner configuration are currently present. A successful `dotnet test` with no discovered tests is not test evidence. Build the affected packages and demos, then smoke-test affected UI behavior: layout, navigation, login/logout, localization, theme switching, and asset loading as applicable. Report which hosts and flows were exercised and any runtime prerequisites that prevented checks.
+
+The consumer guides have a separate validation executable, outside the solution. With Python 3.11+ and .NET 10, run:
+
+```powershell
+py -3.12 tools/check_consumer_recipes.py
+py -3.12 tools/consumer_tooling.py validate . --inventory artifacts/consumer/inventory.json
+```
+
+This compiles the marked C#/Razor examples against source packages, checks theme configuration/serialization, and emits an exported-type inventory for catalog validation. It does not run an application or verify browser/authentication behavior. See [consumer-tooling maintenance](docs/consumers/maintenance.md) for packaging, version updates, and the remaining runtime checks. Maintain the catalog, recipes, and plugin version together when consumer-facing capabilities change.
 
 ## Running demos and working with data
 

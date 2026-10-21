@@ -3,3 +3,6 @@
 
 # Preserve synchronized snapshot bytes and SHA-256 hashes on every platform.
 .agent/** text eol=lf
+
+# Consumer tooling validates portable skill frontmatter with LF separators.
+plugins/**/SKILL.md text eol=lf

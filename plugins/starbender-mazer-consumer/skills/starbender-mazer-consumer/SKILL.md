@@ -1,13 +1,15 @@
 ---
 name: starbender-mazer-consumer
-description: "Discover and integrate Starbender.Mazer capabilities in consuming applications. Use for implementation requests where this library may provide an existing capability. Excludes maintenance of the library itself and unrelated application work."
+description: "Integrate Starbender.Mazer ABP themes in MVC, Blazor Server, WebAssembly, and Blazor WebApp consumers. Use for Mazer adoption, layouts, assets, palettes, navigation, authentication UI, and feedback services. Excludes maintenance of Mazer itself and unrelated application work."
 ---
 
 # Integrate Starbender.Mazer
 
 Read the consuming repository's AGENTS.md and applicable path instructions first. This plugin supplies library capability guidance; the application owns its engineering rules and product decisions.
 
-Use the bundled [catalog](references/index.md), [discovery metadata](references/catalog.json), and [package guide](references/packages.md) to find a capability by application need. Read only relevant capability pages and recipes. Use [adoption](references/adoption.md) for version discovery and configuration checks. An empty starter catalog is not evidence that the library lacks a capability.
+Use the bundled [catalog](references/index.md), [discovery metadata](references/catalog.json), and [package guide](references/packages.md) to find a capability by application need. Read only relevant recipes. Use [adoption](references/adoption.md) for version discovery and configuration checks. The source baseline is Mazer 1.0.4 / .NET 10 / ABP 10.0.2 / MudBlazor 8.6.0; verify the consuming application's resolved versions and feed availability before changing references.
+
+Start with the appropriate [hosting recipe](references/recipes/README.md), then follow links for the requested feature. MVC and Blazor use different theme names and MVC, Server, and WebAssembly use different bundle IDs. WebApp needs configuration in both rendering projects. Preserve the application's existing authentication, startup, routing, and assets when adding the integration.
 
 1. Identify the affected application projects and their actual resolved library versions, including central version files, lockfiles, transitive dependencies, and switched source references where applicable.
 2. Search existing application integrations, then catalog search terms and owning packages. Check relevant source or generated API inventory when available. Bundles may include `references/api/inventory.json`; `references/provenance.json` records the source revision and declared package versions.
