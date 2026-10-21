@@ -19,6 +19,7 @@ The goal of the project is to give ABP applications a consistent, modern look an
 Mazer supports Mvc, Blazor Server, Blazor WebAssembly (WASM) and hybrid Blazor WebApp models.
 Follow the [installation and theme replacement guide](docs/consumers/installation.md) to install Mazer in an existing ABP application and replace Basic Theme, LeptonX, or LeptonX Lite. It covers package installation/removal, central package versions, module dependencies, explicit theme selection, layouts/assets, and verification for each hosting model.
 For package discovery and coding-agent integration recipes, start with the [consumer catalog](docs/consumers/index.md).
+The [coding-agent setup guide](docs/consumers/agent-setup.md) covers the shared consumer skill for OpenAI/Codex, Claude Code, and GitHub Copilot.
 
 ## Compatibility
 The source currently declares Mazer `1.1.0`, targeting .NET 10 with ABP `10.0.2` and MudBlazor `8.6.0`.

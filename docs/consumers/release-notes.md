@@ -1,5 +1,11 @@
 # Release notes
 
+## Consumer plugin 0.3.0 (unreleased)
+
+The consumer bundle adds generated Claude Code plugin metadata and a marketplace shared by Claude Code and GitHub Copilot CLI. OpenAI/Codex packaging is preserved. All hosts use one skill and one set of recipes; Copilot IDE and cloud users can import that complete skill into their application's `.github/skills` directory. See [coding-agent setup](agent-setup.md) for installation and verification.
+
+Host metadata is derived from the canonical plugin name, version, description, repository, author, and marketplace name. This release changes no Mazer packages or runtime contracts. Bundle tests cover extraction, host metadata, portable links, provenance hashes, and standalone repository-skill use; live host acceptance remains a separate check.
+
 ## 1.1.0 (unreleased)
 
 This source checkout prepares the next Mazer minor version, advancing the library from **1.0.4 to 1.1.0**. All seven packages in the [package map](packages.md) share version **1.1.0**; assembly and file versions advance to **1.1.0.0**. This note does not assert that packages or a release tag have been published.

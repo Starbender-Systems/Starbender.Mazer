@@ -7,6 +7,7 @@ on:
       - 'plugins/**'
       - '.agents/plugins/marketplace.json'
       - 'tools/consumer_tooling.py'
+      - 'tools/test_consumer_tooling.py'
       - 'tools/check_consumer_recipes.py'
       - 'tools/ConsumerRecipes/**'
       - 'src/**'
@@ -38,6 +39,8 @@ jobs:
         run: python tools/check_consumer_recipes.py
       - name: Validate catalog and portable links
         run: python tools/consumer_tooling.py validate . --inventory artifacts/consumer/inventory.json
+      - name: Verify extracted multi-host bundles
+        run: python tools/test_consumer_tooling.py
       - name: Assemble review preview
         run: python tools/consumer_tooling.py bundle . --output "${{ runner.temp }}/consumer-tooling" --allow-dirty-preview --inventory artifacts/consumer/inventory.json
       - uses: actions/upload-artifact@v4
