@@ -1,9 +1,25 @@
 # Adopt Starbender.Mazer
 
-Read the application's instructions before changing an integration. Identify actual resolved package versions using its package manager's declarations, central version files, lockfiles, or restore metadata. Source-switched dependencies also need their source revision recorded.
+Read the application's AGENTS.md, setup instructions, and applicable path rules first. Identify its actual model: MVC, interactive Server, WebAssembly, or WebApp with InteractiveAuto. A client plus server project does not by itself establish the render/authentication model.
 
-Use [catalog.json](catalog.json) and the [package guide](packages.md) to discover existing capabilities. Verify signatures, required configuration, dependencies, lifetimes, and supported platform against the installed version. A newer plugin can document APIs absent from an older application dependency; installation of the plugin does not upgrade that dependency.
+## Establish version evidence
 
-For a packaged plugin, inspect `provenance.json` alongside this page. It identifies source/ref resolution, declared package versions, included file hashes, optional API inventory, and whether this is a preview. Declared versions are curated metadata; compiled API verification requires a library-specific inventory adapter. A preview is local validation output, not a release.
+The catalog's seven Mazer packages evaluate to **1.0.4** at the [inspected source revision](source-evidence.md). All target **net10.0** and use ABP **10.0.2**; the source MudBlazor version is **8.6.0**. This guide does not assert package-feed availability or compatibility with ABP 10.1+, newer MudBlazor majors, or every earlier Mazer build.
 
-Maintainers should add tested setup and integration recipes as real capabilities become available. Validate application behavior using the consuming repository's established commands. Report missing version/source evidence and runtime checks separately from successful compilation.
+Inspect application `PackageReference`, `Directory.Packages.props`, lockfiles, `obj/project.assets.json`, and any switched `ProjectReference`. A useful command, after the application's normal restore, is:
+
+```text
+dotnet list path/to/Application.csproj package --include-transitive
+```
+
+For switched source, record the checkout commit and evaluated project versions. Use the application's package-management conventions; do not upgrade dependencies merely to make a recipe available. If versions differ, inspect that version's actual signatures and assets before adapting examples. A catalog entry is discovery evidence, not proof that the installed binary contains it.
+
+## Install or replace a theme
+
+Use the canonical [installation and theme replacement guide](installation.md) for Basic Theme, LeptonX, and LeptonX Lite migrations. It covers project-specific package installation/removal, central versions, ABP modules, explicit defaults, custom layouts/assets, and acceptance checks. The linked hosting recipes supply code fragments; keep application-owned routes, identity, authorization, localization, and business services intact.
+
+## Verify the selected integration
+
+Run the consuming application's established checks and the canonical guide's [runtime acceptance steps](installation.md#7-restore-build-and-verify-the-migration). Package declarations and compiled fragments do not establish installed-binary or live UI compatibility.
+
+In an extracted plugin, `provenance.json` records the bundle's actual commit/ref, declared versions, input hashes, optional inventory and preview status. The source checkout's documentation links remain useful evidence but are not runtime prerequisites for the bundle. Preview output is not a published plugin. The [maintenance guide](maintenance.md) separates recipe compilation and metadata checks from browser/application acceptance.
