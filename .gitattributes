@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve synchronized snapshot bytes and SHA-256 hashes on every platform.
+.agent/** text eol=lf

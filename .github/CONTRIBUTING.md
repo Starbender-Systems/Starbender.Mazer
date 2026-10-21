@@ -24,6 +24,8 @@ Changes intended for release should flow through `development` first. Releases a
 
 ## Local Development
 
+See [DEVELOPING.md](../DEVELOPING.md) for toolchain requirements, architecture, demo setup, validation commands, and the pinned engineering standards. Agent entry points are documented in [AGENTS.md](../AGENTS.md).
+
 1. Install the .NET SDK version used by the repository.
 2. Restore dependencies with `dotnet restore`.
 3. Build the solution with `dotnet build Starbender.Mazer.slnx --configuration Release`.

@@ -24,6 +24,9 @@ The current `1.0.2` package line in this repository is pinned to ABP `10.0.2`.
 Consumers using ABP `10.1.x` should treat that as the current dependency baseline unless a later Mazer release explicitly retargets those package references.
 
 ## Community
+
+- Developer setup and engineering standards: [DEVELOPING.md](DEVELOPING.md)
+- Agent instructions: [AGENTS.md](AGENTS.md)
 - Contribution guide: [`CONTRIBUTING.md`](.github/CONTRIBUTING.md)
 - Code of conduct: [`CODE_OF_CONDUCT.md`](.github/CODE_OF_CONDUCT.md)
 - Security policy: [`SECURITY.md`](.github/SECURITY.md)
