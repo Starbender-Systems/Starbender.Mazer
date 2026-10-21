@@ -17,6 +17,35 @@
   ],
   "capabilities": [
     {
+      "id": "theme-installation-replacement",
+      "packages": [
+        "Starbender.Mazer.Mvc",
+        "Starbender.Mazer.Server",
+        "Starbender.Mazer.WebAssembly",
+        "Starbender.Mazer.WebAssembly.Bundling"
+      ],
+      "search_terms": [
+        "install",
+        "replace theme",
+        "migration",
+        "Basic Theme",
+        "LeptonX",
+        "LeptonX Lite",
+        "LeptonXLite",
+        "NuGet",
+        "Central Package Management",
+        "AuthServer",
+        "DefaultThemeName"
+      ],
+      "symbols": [
+        "T:Starbender.Mazer.Mvc.MazerMvcModule",
+        "T:Starbender.Mazer.Server.MazerServerModule",
+        "T:Starbender.Mazer.WebAssembly.MazerWebAssemblyModule",
+        "T:Starbender.Mazer.WebAssembly.Bundling.MazerWebAssemblyBundlingModule"
+      ],
+      "page": "installation.md"
+    },
+    {
       "id": "mvc-razor-pages-theme",
       "packages": ["Starbender.Mazer.Mvc"],
       "search_terms": ["MVC", "Razor Pages", "Basic Theme migration", "account layout", "Bootstrap", "server rendered"],

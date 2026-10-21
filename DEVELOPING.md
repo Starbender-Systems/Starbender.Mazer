@@ -16,7 +16,7 @@ Mazer is a UI theme toolkit for ABP applications. [Starbender.Mazer.slnx](Starbe
 | [src/Starbender.Mazer.WebAssembly.Bundling](src/Starbender.Mazer.WebAssembly.Bundling/) | WebAssembly bundle contributors and shared asset integration. |
 | [src/Starbender.Mazer.Installer](src/Starbender.Mazer.Installer/) | ABP module installation metadata and packaged descriptors. |
 | [demo](demo/) | Integration applications and their local SQL Server/EF Core data setup. |
-| [docs/Migration.md](docs/Migration.md) | Consumer migration and theme integration guide. |
+| [docs/consumers/installation.md](docs/consumers/installation.md) | Canonical package installation and Basic/LeptonX/Lite theme replacement guide; `docs/Migration.md` preserves earlier entry links. |
 | [docs/consumers](docs/consumers/index.md) | Searchable package/capability catalog and integration recipes assembled into the consumer plugin. |
 
 Keep theme/module APIs, asset paths, authentication/navigation behavior, and ABP bundling consistent across the supported UI models. Check the affected demos when changing shared components or assets.
@@ -65,7 +65,7 @@ py -3.12 tools/check_consumer_recipes.py
 py -3.12 tools/consumer_tooling.py validate . --inventory artifacts/consumer/inventory.json
 ```
 
-This compiles the marked C#/Razor examples against source packages, checks theme configuration/serialization, and emits an exported-type inventory for catalog validation. It does not run an application or verify browser/authentication behavior. See [consumer-tooling maintenance](docs/consumers/maintenance.md) for packaging, version updates, and the remaining runtime checks. Maintain the catalog, recipes, and plugin version together when consumer-facing capabilities change.
+This compiles marked C#/Razor examples throughout the consumer guides against source packages, checks theme configuration/serialization (including absent settings and invalid JSON) and explicit default selection, and emits an exported-type inventory for catalog validation. It does not run an application or verify browser/authentication behavior. See [consumer-tooling maintenance](docs/consumers/maintenance.md) for packaging, version updates, and the remaining runtime checks. Maintain the catalog, recipes, and plugin version together when consumer-facing capabilities change.
 
 ## Running demos and working with data
 

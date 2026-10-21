@@ -17,7 +17,7 @@ LANGUAGES = {"cs": "csharp", "razor": "razor", "json": "json"}
 
 def main() -> None:
     examples: dict[str, str] = {}
-    for page in sorted((ROOT / "docs/consumers/recipes").glob("*.md")):
+    for page in sorted((ROOT / "docs/consumers").rglob("*.md")):
         content = page.read_text(encoding="utf-8")
         matches = list(MARKER.finditer(content))
         if content.count("<!-- recipe-check:") != len(matches):
@@ -50,7 +50,8 @@ def main() -> None:
             ], cwd=ROOT, check=True,
         )
     print(f"Compiled {sum(name.endswith(('.cs', '.razor')) for name in examples)} recipe snippets; "
-          "checked theme configuration/serialization and emitted artifacts/consumer/inventory.json")
+          "checked theme configuration/serialization and explicit selection; "
+          "emitted artifacts/consumer/inventory.json")
 
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ The goal of the project is to give ABP applications a consistent, modern look an
 
 ## Getting Started
 Mazer supports Mvc, Blazor Server, Blazor WebAssembly (WASM) and hybrid Blazor WebApp models.
-See the [Migration Guide](docs/Migration.md) for instructions on migrating your ABP UI application to Mazer.
+Follow the [installation and theme replacement guide](docs/consumers/installation.md) to install Mazer in an existing ABP application and replace Basic Theme, LeptonX, or LeptonX Lite. It covers package installation/removal, central package versions, module dependencies, explicit theme selection, layouts/assets, and verification for each hosting model.
 For package discovery and coding-agent integration recipes, start with the [consumer catalog](docs/consumers/index.md).
 
 ## Compatibility

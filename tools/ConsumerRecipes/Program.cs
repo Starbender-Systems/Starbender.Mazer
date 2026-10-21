@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using MudBlazor;
 using MudBlazor.Utilities;
+using Volo.Abp.Modularity;
+using BlazorThemingOptions = Volo.Abp.AspNetCore.Components.Web.Theming.Theming.AbpThemingOptions;
+using MvcThemingOptions = Volo.Abp.AspNetCore.Mvc.UI.Theming.AbpThemingOptions;
 
 namespace Mazer.ConsumerExamples;
 
@@ -28,6 +31,8 @@ internal static class Program
         scalarConfiguration.AddInMemoryCollection(
             new Dictionary<string, string?> { ["MudTheme"] = document.RootElement.GetProperty("MudTheme").GetRawText() });
         CheckTheme(scalarConfiguration);
+        CheckThemeDefaultsAndInvalidJson();
+        CheckThemeSelection();
 
         // Ensure the Razor files are compiled as components, not just copied as content.
         Type[] components = [typeof(Routes), typeof(AppServer), typeof(AppAuto), typeof(FeedbackPreview)];
@@ -60,7 +65,7 @@ internal static class Program
             }).ToArray()
         };
         File.WriteAllText(args[0], JsonSerializer.Serialize(inventory, new JsonSerializerOptions { WriteIndented = true }) + "\n");
-        Console.WriteLine($"Checked both configuration inputs and serializer round trips; inventoried {assemblies.Length} source assemblies.");
+        Console.WriteLine($"Checked configuration inputs, defaults, invalid JSON, serialization, and theme selection; inventoried {assemblies.Length} source assemblies.");
     }
 
     private static void CheckTheme(IConfiguration configuration)
@@ -75,6 +80,63 @@ internal static class Program
                 theme.LayoutProperties.DefaultBorderRadius != "6px")
             {
                 throw new InvalidOperationException("The documented palette/layout configuration did not survive registration or serialization.");
+            }
+        }
+    }
+
+    private static void CheckThemeDefaultsAndInvalidJson()
+    {
+        foreach (var sectionValue in new string?[] { null, "{}" })
+        {
+            using var configuration = new ConfigurationManager();
+            if (sectionValue is not null)
+            {
+                configuration.AddInMemoryCollection(new Dictionary<string, string?> { ["MudTheme"] = sectionValue });
+            }
+
+            using var services = ThemeConfiguration.AddBrandTheme(new ServiceCollection(), configuration).BuildServiceProvider();
+            var actual = services.GetRequiredService<IOptions<MudTheme>>().Value;
+            if (ThemeConfiguration.Export(actual) != ThemeConfiguration.Export(new MudTheme()))
+            {
+                throw new InvalidOperationException("Missing/empty theme settings did not produce default MudTheme values.");
+            }
+        }
+
+        foreach (var invalidJson in new[] { "null", "{invalid-json" })
+        {
+            using var configuration = new ConfigurationManager();
+            configuration.AddInMemoryCollection(new Dictionary<string, string?> { ["MudTheme"] = invalidJson });
+            try
+            {
+                ThemeConfiguration.AddBrandTheme(new ServiceCollection(), configuration);
+            }
+            catch (JsonException)
+            {
+                continue;
+            }
+
+            throw new InvalidOperationException("Invalid theme JSON was accepted unexpectedly.");
+        }
+    }
+
+    private static void CheckThemeSelection()
+    {
+        foreach (var oldTheme in new[] { "Basic", "LeptonX", "LeptonXLite" })
+        {
+            var services = new ServiceCollection();
+            services.Configure<MvcThemingOptions>(options => options.DefaultThemeName = oldTheme);
+            services.Configure<BlazorThemingOptions>(options => options.DefaultThemeName = oldTheme);
+            var context = new ServiceConfigurationContext(services);
+            new MazerMvcThemeSelectionModule().ConfigureServices(context);
+            new MazerBlazorThemeSelectionModule().ConfigureServices(context);
+            // Even ordinary configuration registered later runs before PostConfigure.
+            services.Configure<MvcThemingOptions>(options => options.DefaultThemeName = oldTheme);
+            services.Configure<BlazorThemingOptions>(options => options.DefaultThemeName = oldTheme);
+            using var provider = services.BuildServiceProvider();
+            if (provider.GetRequiredService<IOptions<MvcThemingOptions>>().Value.DefaultThemeName != Starbender.Mazer.Mvc.StarbenderTheme.Name ||
+                provider.GetRequiredService<IOptions<BlazorThemingOptions>>().Value.DefaultThemeName != Starbender.Mazer.StarbenderTheme.Name)
+            {
+                throw new InvalidOperationException($"Documented theme selection did not replace the {oldTheme} default.");
             }
         }
     }
