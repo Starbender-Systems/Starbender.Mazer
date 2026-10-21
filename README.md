@@ -21,8 +21,9 @@ Follow the [installation and theme replacement guide](docs/consumers/installatio
 For package discovery and coding-agent integration recipes, start with the [consumer catalog](docs/consumers/index.md).
 
 ## Compatibility
-The source currently declares Mazer `1.0.4`, targeting .NET 10 with ABP `10.0.2` and MudBlazor `8.6.0`.
+The source currently declares Mazer `1.1.0`, targeting .NET 10 with ABP `10.0.2` and MudBlazor `8.6.0`.
 Check published package availability and your application's resolved dependencies separately. See [adoption and compatibility](docs/consumers/adoption.md) before integrating a different ABP or MudBlazor version.
+See the [1.1.0 release notes](docs/consumers/release-notes.md) for the prepared version, upgrade guidance, and publication status.
 
 ## Community
 
