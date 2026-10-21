@@ -4,7 +4,7 @@ Read the application's AGENTS.md, setup instructions, and applicable path rules 
 
 ## Establish version evidence
 
-The catalog's seven Mazer packages evaluate to **1.0.4** at the [inspected source revision](source-evidence.md). All target **net10.0** and use ABP **10.0.2**; the source MudBlazor version is **8.6.0**. This guide does not assert package-feed availability or compatibility with ABP 10.1+, newer MudBlazor majors, or every earlier Mazer build.
+The current checkout's seven Mazer packages evaluate to **1.1.0**. [Source evidence](source-evidence.md) distinguishes this prepared version from the historical implementation revision. All target **net10.0** and use ABP **10.0.2**; the source MudBlazor version is **8.6.0**. This guide does not assert package-feed availability or compatibility with ABP 10.1+, newer MudBlazor majors, or every earlier Mazer build. See the [1.1.0 release notes](release-notes.md) for version alignment and upgrade guidance.
 
 Inspect application `PackageReference`, `Directory.Packages.props`, lockfiles, `obj/project.assets.json`, and any switched `ProjectReference`. A useful command, after the application's normal restore, is:
 
